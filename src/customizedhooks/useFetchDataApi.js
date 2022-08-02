@@ -1,11 +1,12 @@
-import axios from "axios";
 import {useState, useEffect} from "react";
+import axios from "axios";
+import configData from "./../configData.json"
 
 const axiosClient = axios.create({
-    baseURL: "https://api.coingecko.com/api/v3"
+    baseURL: configData.BASE_SERVER_URL
 })
 
-const useAxios = (url)=>{
+const useFetchDataApi = (url)=>{
     
     const [data, setData] = useState()
     const [status,setStatus] = useState("")
@@ -30,4 +31,4 @@ const useAxios = (url)=>{
     return [status,loader,data]
 }
 
-export default useAxios
+export default useFetchDataApi

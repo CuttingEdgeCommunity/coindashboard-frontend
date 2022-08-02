@@ -1,7 +1,8 @@
-import useAxios from "./customizedhooks/useAxios"
+import useFetchDataApi from "./customizedhooks/useFetchDataApi";
+import configData from "./configData.json"
 
 function App() {
-  const [status, loader, data] = useAxios("/ping")
+  const [status, loader, data] = useFetchDataApi(configData.PLATFORMS_LIST_PATH)
 
   return (
     <>
@@ -15,7 +16,7 @@ function App() {
       {!loader ? status !== 200 ?
         <h1>Server error message : {status.message}</h1>
         :
-        <h1>Server response DATA: {data.gecko_says}</h1>
+        <h1>Server response DATA: {JSON.stringify(data)}</h1>
         :
         <h1>LOADING DATA.....</h1>
       }
