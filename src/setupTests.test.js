@@ -5,5 +5,5 @@
 import '@testing-library/jest-dom';
 
 test("Example test", () => {
-    expect(" ".toBe(" "));
+    expect(" ").toBe(" ");
 });
