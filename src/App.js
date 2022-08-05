@@ -1,8 +1,9 @@
 import useFetchDataApi from "./customizedhooks/useFetchDataApi";
 import configData from "./configData.json"
+import ReactJson from "react-json-view"
 
 function App() {
-  const [status, loader, data] = useFetchDataApi(configData.PLATFORMS_LIST_PATH)
+  const [status, loader, data] = useFetchDataApi(configData.BITCOIN_EXCHANGE_PATH)
 
   return (
     <>
@@ -16,7 +17,7 @@ function App() {
       {!loader ? status !== 200 ?
         <h1>Server error message : {status.message}</h1>
         :
-        <h1>Server response DATA: {JSON.stringify(data)}</h1>
+        <h1>Server response DATA: <ReactJson src={data} /></h1>
         :
         <h1>LOADING DATA.....</h1>
       }
