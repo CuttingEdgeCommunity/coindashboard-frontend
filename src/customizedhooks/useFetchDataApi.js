@@ -26,7 +26,7 @@ const useFetchDataApi = (url)=>{
             }
         })()
 
-    },[])
+    },[url])
     
     return [status,loader,data]
 }
