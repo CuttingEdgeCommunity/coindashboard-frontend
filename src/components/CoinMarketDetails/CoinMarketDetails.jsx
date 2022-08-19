@@ -12,7 +12,7 @@ function CoinMarketDetails({ data }) {
                     {new Intl.NumberFormat().format(data.market_cap)}
                 </CoinDetails>
                 <CoinDetails field="24H Volume">
-                    {new Intl.NumberFormat().format(data.h24_volume)}
+                    {new Intl.NumberFormat().format(data.daily_volume)}
                 </CoinDetails>
             </div>
         </div>

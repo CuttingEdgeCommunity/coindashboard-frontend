@@ -5,6 +5,8 @@ import { useState } from "react"
 import { useEffect } from "react"
 import axios from "axios"
 import LoaderCoinItems from "../LoaderCoinItems/LoaderCoinItems"
+import Loader from "../Loader/Loader"
+import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
 const axiosClient = axios.create({
     baseURL: configData.BASE_SERVER_URL
@@ -24,7 +26,11 @@ function TableCoins({ setCoinName }) {
                 const data = await axiosClient.get(configData.COINS_PATH, {
                     params: {
                         _page: 1,
-                        _limit: 10
+                        _limit:
+                            Math.ceil(
+                                document.getElementById("scrollable-div")
+                                    .offsetHeight / 654
+                            ) * 10
                     }
                 })
                 setItems(data.data)
@@ -42,7 +48,11 @@ function TableCoins({ setCoinName }) {
             const data = await axiosClient.get(configData.COINS_PATH, {
                 params: {
                     _page: page,
-                    _limit: 10
+                    _limit:
+                        Math.ceil(
+                            document.getElementById("scrollable-div")
+                                .offsetHeight / 654
+                        ) * 10
                 }
             })
             setItems([...items, ...data.data])
@@ -78,18 +88,21 @@ function TableCoins({ setCoinName }) {
                 </div>
                 <TableRow type="header" />
                 <div
-                    id="scrollableDiv"
+                    id="scrollable-div"
                     className="overflow-y-scroll h-5/6 px-1"
                 >
                     {!loaderCoins ? (
                         statusCoins !== 200 ? (
-                            <h1>MESSAGE: {statusCoins.message}</h1>
+                            <ErrorRequestMessage
+                                message={statusCoins.message}
+                                margin={true}
+                            />
                         ) : (
                             <InfiniteScroll
                                 dataLength={items.length} //This is important field to render the next data
                                 next={fetchData}
                                 hasMore={hasMore}
-                                scrollableTarget={"scrollableDiv"}
+                                scrollableTarget={"scrollable-div"}
                                 loader={<LoaderCoinItems />}
                             >
                                 {items.map((coin, index) => {
@@ -97,6 +110,7 @@ function TableCoins({ setCoinName }) {
                                         <TableRow
                                             key={index}
                                             name={coin.name}
+                                            symbol={coin.symbol}
                                             price={coin.current_quote.price}
                                             urlImage={coin.image_url}
                                             alt={coin.symbol}
@@ -110,7 +124,9 @@ function TableCoins({ setCoinName }) {
                             </InfiniteScroll>
                         )
                     ) : (
-                        <h1>LOADING.....</h1>
+                        <div className="w-full h-5/6 flex justify-center items-center">
+                            <Loader />
+                        </div>
                     )}
                 </div>
             </div>

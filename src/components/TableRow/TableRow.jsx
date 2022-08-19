@@ -1,9 +1,10 @@
-import React, { useCallback } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import CoinImage from "../CoinImage/CoinImage"
 
 function TableRow({
     type,
     name,
+    symbol,
     price,
     urlImage,
     alt,
@@ -13,10 +14,17 @@ function TableRow({
     month,
     setCoinName
 }) {
+    const [windowSize, setWindowSize] = useState(window.innerWidth)
     const handleClick = useCallback(() => {
         setCoinName(name)
     }, [])
 
+    useEffect(() => {
+        const handleWindowSize = () => {
+            setWindowSize(window.innerWidth)
+        }
+        window.addEventListener("resize", handleWindowSize)
+    })
     return (
         <div className="flex items-center mb-2 pb-2 dark:border-gray-600 justify-between border-b">
             <div className="flex items-center w-full justify-around">
@@ -33,7 +41,13 @@ function TableRow({
                                 ratioChange={true}
                             />
                             <p className="dark:text-white ml-1 text-md md:text-lg overflow-hidden break-words">
-                                {name ? name : "Name"}
+                                {windowSize >= 655
+                                    ? name
+                                        ? name
+                                        : "Name"
+                                    : symbol
+                                    ? symbol
+                                    : "Name"}
                             </p>
                         </a>
                     ) : (
@@ -58,9 +72,15 @@ function TableRow({
                               )
                             : "1 Hour"}
                     </dd>
-                    <dd className="text-gray-500 font-semibold text-xs sm:text-md md:text-lg">
-                        {hour && hour.pct_change.toPrecision(2) + " %"}
-                    </dd>
+                    {(hour && hour.pct_change.toPrecision(2)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-md">
+                            {hour && hour.pct_change.toPrecision(2) + " %"}
+                        </dd>
+                    ) : (
+                        <dd className="text-red-500 font-semibold text-md">
+                            {hour && hour.pct_change.toPrecision(2) + " %"}
+                        </dd>
+                    )}
                 </div>
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
@@ -69,9 +89,15 @@ function TableRow({
                               new Intl.NumberFormat().format(day.nominal_change)
                             : "1 Day"}
                     </dd>
-                    <dd className="text-gray-500 font-semibold text-xs sm:text-md md:text-lg">
-                        {day && day.pct_change.toPrecision(2) + "%"}
-                    </dd>
+                    {(day && day.pct_change.toPrecision(2)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-md">
+                            {day && day.pct_change.toPrecision(2) + " %"}
+                        </dd>
+                    ) : (
+                        <dd className="text-red-500 font-semibold text-md">
+                            {day && day.pct_change.toPrecision(2) + " %"}
+                        </dd>
+                    )}
                 </div>
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
@@ -82,9 +108,15 @@ function TableRow({
                               )
                             : "1 Week"}
                     </dd>
-                    <dd className="text-gray-500 font-semibold text-xs sm:text-md md:text-lg">
-                        {week && week.pct_change.toPrecision(2) + "%"}
-                    </dd>
+                    {(week && week.pct_change.toPrecision(2)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-md">
+                            {week && week.pct_change.toPrecision(2) + " %"}
+                        </dd>
+                    ) : (
+                        <dd className="text-red-500 font-semibold text-md">
+                            {week && week.pct_change.toPrecision(2) + " %"}
+                        </dd>
+                    )}
                 </div>
                 {/* <div className="flex flex-col justify-center items-center">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">

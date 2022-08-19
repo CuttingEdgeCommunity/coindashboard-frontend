@@ -3,7 +3,7 @@ import ListCoinInfoRow from "../ListCoinInfoRow/ListCoinInfoRow"
 function ListCoinInfo({ data }) {
     return (
         <div id="listCoins" className="pt-2">
-            <div className="border dark:border-gray-600 h-80 mt-2  w-full p-4 bg-white dark:bg-gray-800 relative overflow-hidden">
+            <div className="border dark:border-gray-600 h-80 mt-2 mb-4  w-full p-4 bg-white dark:bg-gray-800 relative overflow-hidden">
                 <div className="w-full flex items-center justify-between mb-2 border-b pb-1 dark:border-gray-600">
                     <p className="text-gray-800 dark:text-white text-xl">
                         Details

@@ -5,20 +5,21 @@ import CoinMarketData from "../CoinMarketData/CoinMarketData"
 import configData from "../../configData.json"
 import ListCoinInfo from "../ListCoinInfo/ListCoinInfo"
 import useFetchDataApi from "../../customizedhooks/useFetchDataApi"
+import Loader from "../Loader/Loader"
+import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
 function Dashbord({ coinName }) {
-    console.log(coinName)
     // do the API call using ---- /api/coins/coinName
     const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
-        configData.COINDETAILS_PATH
+        configData.COINS_PATH + "/" + coinName
     )
     // do the API call for the Chart component using ---- /api/coins/coinName/chart
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        configData.CHART_PATH
+        configData.COINS_PATH + "/" + coinName + "/chart"
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        configData.MARKETDATA_PATH
+        configData.COINS_PATH + "/" + coinName + "/marketdata"
     )
 
     return (
@@ -29,36 +30,41 @@ function Dashbord({ coinName }) {
             <div className="md:col-span-2 col-span-1">
                 {!loaderCoinMarket ? (
                     statusCoinMarket !== 200 ? (
-                        <h1>MESSAGE: {statusCoinMarket.message}</h1>
+                        <ErrorRequestMessage
+                            message={statusCoinMarket.message}
+                        />
                     ) : (
                         <CoinMarketData
                             data={coinMarket}
-                            urlImage={coinInfo.image_url}
+                            urlImage={coinInfo ? coinInfo.image_url : ""}
                         />
                     )
                 ) : (
-                    <h1>LOADING....</h1>
+                    <Loader height={80} width={80} />
                 )}
 
                 {!loaderCoinChart ? (
                     statusCoinChart !== 200 ? (
-                        <h1>MESSAGE: {statusCoinChart.message}</h1>
+                        <ErrorRequestMessage
+                            message={statusCoinChart.message}
+                            margin={true}
+                        />
                     ) : (
                         <ChartCoin data={coinChart} />
                     )
                 ) : (
-                    <h1>LOADING....</h1>
+                    <Loader chart={true} />
                 )}
             </div>
             <div>
                 {!loaderCoinInfo ? (
                     statusCoinInfo !== 200 ? (
-                        <h1>MESSAGE: {statusCoinInfo.message}</h1>
+                        <ErrorRequestMessage message={statusCoinInfo.message} />
                     ) : (
                         <CoinInfo data={coinInfo} />
                     )
                 ) : (
-                    <h1>LOADING...</h1>
+                    <Loader height={80} width={80} />
                 )}
                 <ListCoinInfo />
             </div>

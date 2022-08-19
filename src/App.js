@@ -37,7 +37,7 @@ function App() {
             </header>
             <main>
                 <Home setCoinName={setCoinName} />
-                <Dashbord coinName={coinName} />
+                <Dashbord coinName={coinName.toLowerCase()} />
             </main>
         </>
     )
