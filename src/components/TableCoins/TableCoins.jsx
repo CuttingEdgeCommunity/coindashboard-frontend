@@ -25,8 +25,8 @@ function TableCoins({ setCoinName }) {
             try {
                 const data = await axiosClient.get(configData.COINS_PATH, {
                     params: {
-                        _page: 1,
-                        _limit:
+                        page: 1,
+                        take:
                             Math.ceil(
                                 document.getElementById("scrollable-div")
                                     .offsetHeight / 654
@@ -47,8 +47,8 @@ function TableCoins({ setCoinName }) {
         try {
             const data = await axiosClient.get(configData.COINS_PATH, {
                 params: {
-                    _page: page,
-                    _limit:
+                    page: page,
+                    take:
                         Math.ceil(
                             document.getElementById("scrollable-div")
                                 .offsetHeight / 654

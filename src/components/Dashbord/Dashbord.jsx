@@ -15,7 +15,11 @@ function Dashbord({ coinName }) {
     )
     // do the API call for the Chart component using ---- /api/coins/coinName/chart
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        configData.COINS_PATH + "/" + coinName + "/chart"
+        configData.COINS_PATH + "/" + coinName + "/chart",
+        {
+            chart_from: 1660255200000,
+            chart_to: Date.now()
+        }
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
