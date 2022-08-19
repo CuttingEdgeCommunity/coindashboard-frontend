@@ -15,7 +15,7 @@ const axiosClient = axios.create({
 function TableCoins({ setCoinName }) {
     // Do our API call using ----- /api/coins
     const [items, setItems] = useState([])
-    const [page, setPage] = useState(2)
+    // const [page, setPage] = useState(2)
     const [hasMore, setHasMore] = useState(true)
     const [loaderCoins, setLoaderCoins] = useState(true)
     const [statusCoins, setStatusCoins] = useState(102)
@@ -42,6 +42,8 @@ function TableCoins({ setCoinName }) {
                 setStatusCoins(error)
             } finally {
                 setLoaderCoins(false)
+                // to remove
+                setHasMore(false)
             }
         })()
     }, [])
