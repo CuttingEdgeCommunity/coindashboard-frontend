@@ -1,4 +1,3 @@
-import CoinDetails from "../CoinDetails/CoinDetails"
 import ListCoinInfoRow from "../ListCoinInfoRow/ListCoinInfoRow"
 
 function ListCoinInfo({ data }) {

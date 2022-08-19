@@ -17,7 +17,7 @@ function TableRow({
     const [windowSize, setWindowSize] = useState(window.innerWidth)
     const handleClick = useCallback(() => {
         setCoinName(name)
-    }, [])
+    }, [name, setCoinName])
 
     useEffect(() => {
         const handleWindowSize = () => {
