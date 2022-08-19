@@ -42,6 +42,7 @@ function TableCoins({ setCoinName }) {
                 setStatusCoins(error)
             } finally {
                 setLoaderCoins(false)
+                // to remove
                 setHasMore(false)
             }
         })()
