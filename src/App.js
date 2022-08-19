@@ -5,7 +5,7 @@ import LightImage from "./img/brightness.png"
 import DarkImage from "./img/moon.png"
 
 function App() {
-    const [coinName, setCoinName] = useState("Bitcoin")
+    const [coinName, setCoinName] = useState("bitcoin")
     const [toggleMode, setToggleMode] = useState("dark")
 
     const handleToggleMode = () => {
