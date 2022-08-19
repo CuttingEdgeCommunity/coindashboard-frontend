@@ -24,8 +24,8 @@ const useFetchDataApi = (path, params = null) => {
             }
         })()
     }, [path, params])
-
-    return [status, loader, data]
+    
+    return [status,loader,data]
 }
 
 export default useFetchDataApi
