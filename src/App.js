@@ -29,9 +29,9 @@ function App() {
                     className="cursor-pointer text-sm mr-12"
                 >
                     {toggleMode === "dark" ? (
-                        <img src={LightImage} className="h-8" />
+                        <img src={LightImage} className="h-8" alt="Light" />
                     ) : (
-                        <img src={DarkImage} className="h-8" />
+                        <img src={DarkImage} className="h-8" alt="Dark" />
                     )}
                 </div>
             </header>
