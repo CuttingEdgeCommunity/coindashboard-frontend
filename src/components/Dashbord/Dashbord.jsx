@@ -20,7 +20,7 @@ function Dashbord({ coinName }) {
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        configData.COINS_PATH + "/" + coinName + "/marketdata"
+        configData.COINS_PATH + "/Bitcoin/marketdata"
     )
 
     return (
@@ -30,13 +30,13 @@ function Dashbord({ coinName }) {
         >
             <div className="md:col-span-2 col-span-1">
                 {!loaderCoinMarket ? (
-                    statusCoinMarket !== 200 ? (
+                    statusCoinMarket !==201 ? (
                         <ErrorRequestMessage
                             message={statusCoinMarket.message}
                         />
                     ) : (
                         <CoinMarketData
-                            data={coinMarket}
+                            data={coinMarket[0]}
                             urlImage={BitcoinImg}
                         />
                     )
@@ -45,7 +45,7 @@ function Dashbord({ coinName }) {
                 )}
 
                 {!loaderCoinChart ? (
-                    statusCoinChart !== 200 ? (
+                   statusCoinChart!==200 ? (
                         <ErrorRequestMessage
                             message={statusCoinChart.message}
                             margin={true}
@@ -69,13 +69,13 @@ function Dashbord({ coinName }) {
                 )}
 
                 {!loaderCoinMarket ? (
-                    statusCoinMarket !== 200 ? (
+                   statusCoinMarket !==201 ? (
                         <ErrorRequestMessage
                             message={statusCoinMarket.message}
                             margin={true}
                         />
                     ) : (
-                        <ListCoinInfo data={coinMarket} />
+                        <ListCoinInfo data={coinMarket[0]} />
                     )
                 ) : (
                     <Loader height={80} width={80} chart={true} />

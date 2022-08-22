@@ -13,8 +13,8 @@ function ListCoinInfo({ data }) {
                     <ListCoinInfoRow
                         name="Volume / Market Cap"
                         display={(
-                            data.current_quote.daily_volume /
-                            data.current_quote.market_cap
+                            data.CurrentQuote.daily_volume /
+                            data.CurrentQuote.market_cap
                         ).toPrecision(3)}
                     />
                     <ListCoinInfoRow
@@ -22,7 +22,7 @@ function ListCoinInfo({ data }) {
                         display={
                             "$" +
                             new Intl.NumberFormat().format(
-                                data.current_quote.deltas[0].nominal_change
+                                data.CurrentQuote.deltas[0].nominal
                             )
                         }
                     />
@@ -31,7 +31,7 @@ function ListCoinInfo({ data }) {
                         display={
                             "$" +
                             new Intl.NumberFormat().format(
-                                data.current_quote.deltas[1].nominal_change
+                                data.CurrentQuote.deltas[1].nominal
                             )
                         }
                     />
@@ -40,7 +40,7 @@ function ListCoinInfo({ data }) {
                         display={
                             "$" +
                             new Intl.NumberFormat().format(
-                                data.current_quote.deltas[2].nominal_change
+                                data.CurrentQuote.deltas[2].nominal
                             )
                         }
                     />
