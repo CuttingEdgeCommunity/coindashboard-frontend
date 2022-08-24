@@ -15,7 +15,7 @@ const useFetchDataApi = (path, params = null) => {
         ;(async function () {
             try {
                 const response = await axiosClient.get(path, { params: params })
-                setStatus(response.status)
+                setStatus(200)
                 setData(response.data)
             } catch (error) {
                 setStatus(error)

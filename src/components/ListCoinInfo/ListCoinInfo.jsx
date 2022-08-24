@@ -13,34 +13,43 @@ function ListCoinInfo({ data }) {
                     <ListCoinInfoRow
                         name="Volume / Market Cap"
                         display={(
-                            data.CurrentQuote.daily_volume /
-                            data.CurrentQuote.market_cap
+                            data.current_quote.daily_volume /
+                            data.current_quote.market_cap
                         ).toPrecision(3)}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Hour)"}
                         display={
+                            (data.current_quote.deltas[0].nominal_change < 0
+                                ? "-"
+                                : "") +
                             "$" +
                             new Intl.NumberFormat().format(
-                                data.CurrentQuote.deltas[0].nominal
+                                data.current_quote.deltas[0].nominal_change
                             )
                         }
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Day)"}
                         display={
+                            (data.current_quote.deltas[1].nominal_change < 0
+                                ? "-"
+                                : "") +
                             "$" +
                             new Intl.NumberFormat().format(
-                                data.CurrentQuote.deltas[1].nominal
+                                data.current_quote.deltas[1].nominal_change
                             )
                         }
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Week)"}
                         display={
+                            (-data.current_quote.deltas[2].nominal_change < 0
+                                ? "-"
+                                : "") +
                             "$" +
                             new Intl.NumberFormat().format(
-                                data.CurrentQuote.deltas[2].nominal
+                                data.current_quote.deltas[2].nominal_change
                             )
                         }
                     />

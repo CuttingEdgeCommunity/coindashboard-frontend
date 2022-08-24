@@ -34,7 +34,7 @@ v16.16.0
 
 ```bash
 > cd coindashboard-frontend
-> npm install json-server
+> npm install -g json-server
 
 ```
 

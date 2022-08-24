@@ -3,6 +3,7 @@ import CoinImage from "../CoinImage/CoinImage"
 
 function TableRow({
     type,
+    rank,
     name,
     symbol,
     price,
@@ -28,6 +29,11 @@ function TableRow({
     return (
         <div className="flex items-center mb-2 pb-2 dark:border-gray-600 justify-between border-b">
             <div className="flex items-center w-full justify-around">
+                <div className="flex flex-col justify-center w-10 items-center">
+                    <dd className="text-xs md:text-lg text-gray-900 dark:text-white">
+                        {rank ? rank : "#"}
+                    </dd>
+                </div>
                 <div className="flex text-sm w-1/5 flex-col ml-2 items-start justify-between">
                     {type !== "header" ? (
                         <a
@@ -46,7 +52,7 @@ function TableRow({
                                         ? name
                                         : "Name"
                                     : symbol
-                                    ? symbol
+                                    ? symbol.toUpperCase()
                                     : "Name"}
                             </p>
                         </a>
@@ -66,9 +72,10 @@ function TableRow({
                 <div className="flex flex-col justify-center w-1/5 items-center">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {hour
-                            ? "$" +
+                            ? (hour.nominal_change < 0 ? "-" : "") +
+                              "$" +
                               new Intl.NumberFormat().format(
-                                  hour.nominal_change
+                                  Math.abs(hour.nominal_change)
                               )
                             : "1 Hour"}
                     </dd>
@@ -85,8 +92,11 @@ function TableRow({
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {day
-                            ? "$" +
-                              new Intl.NumberFormat().format(day.nominal_change)
+                            ? (day.nominal_change < 0 ? "-" : "") +
+                              "$" +
+                              new Intl.NumberFormat().format(
+                                  Math.abs(day.nominal_change)
+                              )
                             : "1 Day"}
                     </dd>
                     {(day && day.pct_change.toPrecision(2)) >= 0 ? (
@@ -102,9 +112,10 @@ function TableRow({
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {week
-                            ? "$" +
+                            ? (week.nominal_change < 0 ? "-" : "") +
+                              "$" +
                               new Intl.NumberFormat().format(
-                                  week.nominal_change
+                                  Math.abs(week.nominal_change)
                               )
                             : "1 Week"}
                     </dd>
@@ -133,7 +144,9 @@ function TableRow({
                 </div> */}
                 <div className="text-green-400 text-sm md:text-md font-semibold w-1/5">
                     {price
-                        ? "$" + new Intl.NumberFormat().format(price)
+                        ? (price < 0 ? "-" : "") +
+                          "$" +
+                          new Intl.NumberFormat().format(Math.abs(price))
                         : "Price"}
                 </div>
             </div>
