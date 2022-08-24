@@ -1,5 +1,4 @@
 import TableRow from "../TableRow/TableRow"
-import configData from "../../configData.json"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useState } from "react"
 import { useEffect } from "react"
@@ -9,7 +8,7 @@ import Loader from "../Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
 const axiosClient = axios.create({
-    baseURL: configData.BASE_SERVER_URL
+    baseURL: process.env.REACT_APP_BASE_SERVER_URL
 })
 
 function TableCoins({ setCoinName }) {
@@ -19,12 +18,13 @@ function TableCoins({ setCoinName }) {
     const [hasMore, setHasMore] = useState(true)
     const [loaderCoins, setLoaderCoins] = useState(true)
     const [statusCoins, setStatusCoins] = useState(102)
+    const [input, setInput] = useState("")
 
     useEffect(() => {
         ;(async () => {
             try {
                 const data = await axiosClient.get(
-                    configData.COINS_PATH
+                    process.env.REACT_APP_COINS_PATH
                     //     {
                     //     params: {
                     //         page: 1,
@@ -74,6 +74,11 @@ function TableCoins({ setCoinName }) {
         // }
     }
 
+    const handleChange = (e)=>{
+        setInput(e.target.value)
+        // make an API call with input state as a params
+     }
+
     return (
         <div id="listCoins" className="pt-2 h-screen">
             <div className="border dark:border-gray-600 h-5/6 w-full p-4 pb-6 bg-white dark:bg-gray-800 relative overflow-hidden">
@@ -86,6 +91,7 @@ function TableCoins({ setCoinName }) {
                         <input
                             type="text"
                             id="simple-email"
+                            onChange={handleChange}
                             className=" flex-1 appearance-none border-b border-gray-700s dark:border-gray-300 w-full px-4 bg-white dark:bg-gray-800 dark:text-white text-gray-700 placeholder-gray-400 text-base focus:outline-none "
                             placeholder="Search"
                         />
@@ -111,9 +117,11 @@ function TableCoins({ setCoinName }) {
                                 loader={<LoaderCoinItems />}
                             >
                                 {items.map((coin, index) => {
+                                    if(coin.name.toUpperCase().indexOf(input.toUpperCase()) === -1) return null
                                     return (
                                         <TableRow
                                             key={index}
+                                            rank={index + 1}
                                             name={coin.name}
                                             symbol={coin.symbol}
                                             price={coin.current_quote.price}
