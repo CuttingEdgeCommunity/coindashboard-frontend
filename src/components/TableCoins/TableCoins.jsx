@@ -1,5 +1,4 @@
 import TableRow from "../TableRow/TableRow"
-import configData from "../../configData.json"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useState } from "react"
 import { useEffect } from "react"
@@ -9,7 +8,7 @@ import Loader from "../Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
 const axiosClient = axios.create({
-    baseURL: configData.BASE_SERVER_URL
+    baseURL: process.env.REACT_APP_BASE_SERVER_URL
 })
 
 function TableCoins({ setCoinName }) {
@@ -25,7 +24,7 @@ function TableCoins({ setCoinName }) {
         ;(async () => {
             try {
                 const data = await axiosClient.get(
-                    configData.COINS_PATH
+                    process.env.REACT_APP_COINS_PATH
                     //     {
                     //     params: {
                     //         page: 1,

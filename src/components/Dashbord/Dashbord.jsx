@@ -2,7 +2,6 @@ import React from "react"
 import CoinInfo from "../CoinInfo/CoinInfo"
 import ChartCoin from "../Chart/ChartCoin"
 import CoinMarketData from "../CoinMarketData/CoinMarketData"
-import configData from "../../configData.json"
 import ListCoinInfo from "../ListCoinInfo/ListCoinInfo"
 import useFetchDataApi from "../../customizedhooks/useFetchDataApi"
 import Loader from "../Loader/Loader"
@@ -11,15 +10,15 @@ import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 function Dashbord({ coinName }) {
     // do the API call using ---- /api/coins/coinName
     const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
-        configData.COINS_PATH + "_" + coinName
+        process.env.REACT_APP_COINS_PATH + "_" + coinName
     )
     // do the API call for the Chart component using ---- /api/coins/coinName/chart
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        configData.COINS_PATH + "_" + coinName + "_chart"
+        process.env.REACT_APP_COINS_PATH + "_" + coinName + "_chart"
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        configData.COINS_PATH + "_"+ coinName + "_marketdata"
+        process.env.REACT_APP_COINS_PATH + "_"+ coinName + "_marketdata"
     )
 
     return (

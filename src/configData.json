@@ -1,6 +1,0 @@
-{
-    "BASE_SERVER_URL2": "https://d721daae-624f-4228-94e2-a0c8ec287a54.mock.pstmn.io/",
-    "COINS_PATH2": "api/coins",
-    "BASE_SERVER_URL": "http://localhost:3001",
-    "COINS_PATH": "api_coins"
-}
