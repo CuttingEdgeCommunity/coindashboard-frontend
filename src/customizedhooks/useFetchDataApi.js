@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import configData from "./../configData.json"
 
 const axiosClient = axios.create({
-    baseURL: configData.BASE_SERVER_URL
+    baseURL: process.env.REACT_APP_BASE_SERVER_URL
 })
-
+console.log(process.env)
 const useFetchDataApi = (path, params = null) => {
     const [data, setData] = useState(null)
     const [status, setStatus] = useState(102)

@@ -42,7 +42,13 @@ v16.16.0
 
 ```bash
 > json-server --watch db.json --port 3001
-> npm run start
+> npm run start:dev
+```
+
+### run The react Application in production
+
+```bash
+> npm run start:prod
 ```
 
 ## Editor setup (VS Code)
