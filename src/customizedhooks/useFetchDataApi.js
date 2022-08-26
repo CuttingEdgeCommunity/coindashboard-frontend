@@ -4,7 +4,7 @@ import axios from "axios"
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_BASE_SERVER_URL
 })
-console.log(process.env)
+
 const useFetchDataApi = (path, params = null) => {
     const [data, setData] = useState(null)
     const [status, setStatus] = useState(102)
