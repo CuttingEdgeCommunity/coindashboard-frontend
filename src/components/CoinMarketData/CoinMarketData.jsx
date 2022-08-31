@@ -6,7 +6,7 @@ import CoinMarketHeader from "../CoinMarketHeader/CoinMarketHeader"
 function CoinMarketData({ data, urlImage }) {
 
     return (
-        <div className="bg-white dark:bg-gray-800 p-4 pt-1">
+        <div data-cy="coin-market-data" className="bg-white dark:bg-gray-800 p-4 pt-1">
             <div className="flex-row flex gap-2">
                 <CoinImage urlImage={urlImage} alt="Alternative" />
                 <div className=" flex flex-col w-full">

@@ -1,0 +1,19 @@
+{
+    "name": "Ethereum",
+    "symbol": "eth",
+    "image_url": "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+    "genesis_date": 1438207200000,
+    "is_token": false,
+    "contract_address": "address...",
+    "links": [
+      {
+        "title": "Official Website",
+        "url": "https://ethereum.org/en/"
+      },
+      {
+        "title": "Github project",
+        "url": "https://github.com/ethereum"
+      }
+    ],
+    "description": "Ethereum is a decentralized, open-source blockchain with smart contract functionality. Ether is the native cryptocurrency of the platform. Among cryptocurrencies, Ether is second only to Bitcoin in market capitalization."
+  }

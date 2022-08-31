@@ -1,24 +1,32 @@
 import React from "react"
 import { Line } from "react-chartjs-2"
-import { Chart, registerables } from 'chart.js'
+import { Chart, registerables } from "chart.js"
+import {getChartData} from "../../helpers/helpers"
 Chart.register(...registerables)
-
-function getChartTime(data, i) {
-    const arr = []
-    data.forEach((element) => {
-        if (i === 0) arr.push(new Date(element.timestamp).toLocaleDateString())
-        else arr.push(element.price)
-    })
-    return arr
+const OPTIONS = {
+    scales: {
+        y: {
+            beginAtZero: false,
+            grid: {
+                display: true
+            }
+        },
+        x: {
+            grid: {
+                display: false
+            }
+        }
+    }
 }
 
 function ChartCoin({ data }) {
+    
     const chartData = {
-        labels: getChartTime(data, 0),
+        labels: getChartData(data, 'x'),
         datasets: [
             {
                 label: "Prices",
-                data: getChartTime(data, 1),
+                data: getChartData(data, 'y'),
                 fill: "origin",
                 backgroundColor: "#09C1EC80",
                 borderColor: "#09C1EC",
@@ -26,26 +34,10 @@ function ChartCoin({ data }) {
             }
         ]
     }
+
     return (
         <div className="w-full">
-            <Line
-                data={chartData}
-                options={{
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            grid: {
-                                display: true
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }}
-            />
+            <Line data={chartData} options={OPTIONS} />
         </div>
     )
 }

@@ -80,7 +80,7 @@ function TableCoins({ setCoinName }) {
      }
 
     return (
-        <div id="listCoins" className="pt-2 h-screen">
+        <div id="list-coins" className="pt-2 h-screen">
             <div className="border dark:border-gray-600 h-5/6 w-full p-4 pb-6 bg-white dark:bg-gray-800 relative overflow-hidden">
                 <div className="w-full flex items-center justify-between mb-2 border-b pb-1 dark:border-gray-600">
                     <p className="text-gray-800 dark:text-white text-xl">
@@ -115,6 +115,7 @@ function TableCoins({ setCoinName }) {
                                 hasMore={hasMore}
                                 scrollableTarget={"scrollable-div"}
                                 loader={<LoaderCoinItems />}
+                                className="infinite-scroll"
                             >
                                 {items.map((coin, index) => {
                                     if(coin.name.toUpperCase().indexOf(input.toUpperCase()) === -1) return null

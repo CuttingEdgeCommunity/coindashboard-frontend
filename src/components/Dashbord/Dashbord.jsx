@@ -35,7 +35,7 @@ function Dashbord({ coinName }) {
                     ) : (
                         <CoinMarketData
                             data={coinMarket}
-                            urlImage={coinInfo.image_url}
+                            urlImage={coinInfo ? coinInfo.image_url : null}
                         />
                     )
                 ) : (
@@ -46,7 +46,7 @@ function Dashbord({ coinName }) {
                    statusCoinChart !== 200  ? (
                         <ErrorRequestMessage
                             message={statusCoinChart.message}
-                            margin={true}
+                            margin
                         />
                     ) : (
                         <ChartCoin data={coinChart} />
@@ -70,7 +70,7 @@ function Dashbord({ coinName }) {
                    statusCoinMarket !== 200 ? (
                         <ErrorRequestMessage
                             message={statusCoinMarket.message}
-                            margin={true}
+                            margin
                         />
                     ) : (
                         <ListCoinInfo data={coinMarket} />

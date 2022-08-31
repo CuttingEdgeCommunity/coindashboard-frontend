@@ -5,16 +5,16 @@ import LightImage from "./img/brightness.png"
 import DarkImage from "./img/moon.png"
 
 function App() {
-    const [coinName, setCoinName] = useState("Bitcoin")
+    const [coinName, setCoinName] = useState("")
     const [isDark, setIsDark] = useState(true)
 
     return (
-        <div className={isDark ? "dark":"light"}>
+        <div id="App" className={isDark ? "dark":"light"}>
             <header className="flex justify-between px-8 py-4 text-xl font-semibold border-b dark:border-gray-600 shadow-sm dark:bg-gray-800 dark:text-white">
                 <h1>
                     C<span className="text-red-600">Dashboard</span>
                 </h1>
-                <div
+                <div id="modeChnage"
                     onClick={()=> setIsDark(!isDark)}
                     className="cursor-pointer text-sm mr-12"
                 >
@@ -27,7 +27,7 @@ function App() {
             </header>
             <main>
                 <Home setCoinName={setCoinName} />
-                <Dashbord coinName={coinName.toLowerCase()} />
+                {coinName.length !== 0 && <Dashbord coinName={coinName} />}
             </main>
         </div>
     )

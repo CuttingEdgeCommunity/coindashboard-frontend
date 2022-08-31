@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react"
 import CoinImage from "../CoinImage/CoinImage"
-
+import {formatAmount} from "../../helpers/helpers"
 function TableRow({
     type,
     rank,
@@ -12,10 +12,14 @@ function TableRow({
     hour,
     day,
     week,
-    month,
     setCoinName
 }) {
     const [windowSize, setWindowSize] = useState(window.innerWidth)
+    useEffect(()=>{
+        if(rank === 1){
+            setCoinName(name)
+        }
+    },[])
     const handleClick = useCallback(() => {
         setCoinName(name)
     }, [name, setCoinName])
@@ -34,7 +38,7 @@ function TableRow({
                         {rank ? rank : "#"}
                     </dd>
                 </div>
-                <div className="flex text-sm w-1/5 flex-col ml-2 items-start justify-between">
+                <div data-cy="list-item" className="flex text-sm w-1/5 flex-col ml-2 items-start justify-between">
                     {type !== "header" ? (
                         <a
                             href="#dashboard"
@@ -58,11 +62,6 @@ function TableRow({
                         </a>
                     ) : (
                         <span className="flex items-center">
-                            <CoinImage
-                                urlImage={urlImage}
-                                alt={alt}
-                                ratioChange={true}
-                            />
                             <p className="dark:text-white ml-1 text-sm md:text-lg">
                                 {name ? name : "Name"}
                             </p>
@@ -72,11 +71,7 @@ function TableRow({
                 <div className="flex flex-col justify-center w-1/5 items-center">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {hour
-                            ? (hour.nominal_change < 0 ? "-" : "") +
-                              "$" +
-                              new Intl.NumberFormat().format(
-                                  Math.abs(hour.nominal_change)
-                              )
+                            ?  formatAmount(hour.nominal_change)
                             : "1 Hour"}
                     </dd>
                     {(hour && hour.pct_change.toPrecision(2)) >= 0 ? (
@@ -92,11 +87,7 @@ function TableRow({
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {day
-                            ? (day.nominal_change < 0 ? "-" : "") +
-                              "$" +
-                              new Intl.NumberFormat().format(
-                                  Math.abs(day.nominal_change)
-                              )
+                            ? formatAmount(day.nominal_change)
                             : "1 Day"}
                     </dd>
                     {(day && day.pct_change.toPrecision(2)) >= 0 ? (
@@ -112,11 +103,7 @@ function TableRow({
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {week
-                            ? (week.nominal_change < 0 ? "-" : "") +
-                              "$" +
-                              new Intl.NumberFormat().format(
-                                  Math.abs(week.nominal_change)
-                              )
+                            ? formatAmount(week.nominal_change)
                             : "1 Week"}
                     </dd>
                     {(week && week.pct_change.toPrecision(2)) >= 0 ? (
@@ -129,24 +116,9 @@ function TableRow({
                         </dd>
                     )}
                 </div>
-                {/* <div className="flex flex-col justify-center items-center">
-                    <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
-                        {month
-                            ? "$" +
-                              new Intl.NumberFormat().format(
-                                  month.nominal_change
-                              )
-                            : "1 Month"}
-                    </dd>
-                    <dd className="text-gray-500 font-semibold text-xs sm:text-md md:text-lg">
-                        {month && month.pct_change.toPrecision(2) + "%"}
-                    </dd>
-                </div> */}
                 <div className="text-green-400 text-sm md:text-md font-semibold w-1/5">
                     {price
-                        ? (price < 0 ? "-" : "") +
-                          "$" +
-                          new Intl.NumberFormat().format(Math.abs(price))
+                        ? formatAmount(price)
                         : "Price"}
                 </div>
             </div>
