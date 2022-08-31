@@ -19,7 +19,7 @@ function TableRow({
         if(rank === 1){
             setCoinName(name)
         }
-    },[])
+    },[rank,name,setCoinName])
     const handleClick = useCallback(() => {
         setCoinName(name)
     }, [name, setCoinName])
