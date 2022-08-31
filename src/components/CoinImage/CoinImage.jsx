@@ -1,6 +1,10 @@
 import React from "react"
 
-function CoinImage({ urlImage=null, alt="IMAGE NOT FOUND", ratioChange = false }) {
+function CoinImage({
+    urlImage = null,
+    alt = "IMAGE NOT FOUND",
+    ratioChange = false
+}) {
     let height = "h-16"
     let width = "h-16"
     if (ratioChange !== false) {

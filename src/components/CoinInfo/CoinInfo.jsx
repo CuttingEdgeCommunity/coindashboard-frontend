@@ -1,9 +1,12 @@
 import React from "react"
 import CoinImage from "../CoinImage/CoinImage"
 
-function CoinInfo({ data=null }) {
+function CoinInfo({ data = null }) {
     return (
-        <div data-cy="coin-info" className="flex flex-col justify-center items-center border dark:border-gray-600 bg-white dark:bg-gray-800 p-4">
+        <div
+            data-cy="coin-info"
+            className="flex flex-col justify-center items-center border dark:border-gray-600 bg-white dark:bg-gray-800 p-4"
+        >
             <div className="flex-row gap-4 flex justify-center items-center">
                 <CoinImage urlImage={data.image_url} />
                 <div className=" flex flex-col">

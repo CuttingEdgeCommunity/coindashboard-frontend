@@ -18,7 +18,7 @@ function Dashbord({ coinName }) {
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/"+ coinName + "/marketdata"
+        process.env.REACT_APP_COINS_PATH + "/" + coinName + "/marketdata"
     )
 
     return (
@@ -28,7 +28,7 @@ function Dashbord({ coinName }) {
         >
             <div className="md:col-span-2 col-span-1">
                 {!loaderCoinMarket && !loaderCoinInfo ? (
-                    statusCoinMarket !== 200  ? (
+                    statusCoinMarket !== 200 ? (
                         <ErrorRequestMessage
                             message={statusCoinMarket.message}
                         />
@@ -43,7 +43,7 @@ function Dashbord({ coinName }) {
                 )}
 
                 {!loaderCoinChart ? (
-                   statusCoinChart !== 200  ? (
+                    statusCoinChart !== 200 ? (
                         <ErrorRequestMessage
                             message={statusCoinChart.message}
                             margin
@@ -67,7 +67,7 @@ function Dashbord({ coinName }) {
                 )}
 
                 {!loaderCoinMarket ? (
-                   statusCoinMarket !== 200 ? (
+                    statusCoinMarket !== 200 ? (
                         <ErrorRequestMessage
                             message={statusCoinMarket.message}
                             margin
@@ -76,7 +76,7 @@ function Dashbord({ coinName }) {
                         <ListCoinInfo data={coinMarket} />
                     )
                 ) : (
-                    <Loader height={80} width={80} chart={true} />
+                    <Loader height={80} width={80} chart />
                 )}
             </div>
         </main>

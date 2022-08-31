@@ -74,10 +74,10 @@ function TableCoins({ setCoinName }) {
         // }
     }
 
-    const handleChange = (e)=>{
+    const handleChange = (e) => {
         setInput(e.target.value)
         // make an API call with input state as a params
-     }
+    }
 
     return (
         <div id="list-coins" className="pt-2 h-screen">
@@ -118,7 +118,12 @@ function TableCoins({ setCoinName }) {
                                 className="infinite-scroll"
                             >
                                 {items.map((coin, index) => {
-                                    if(coin.name.toUpperCase().indexOf(input.toUpperCase()) === -1) return null
+                                    if (
+                                        coin.name
+                                            .toUpperCase()
+                                            .indexOf(input.toUpperCase()) === -1
+                                    )
+                                        return null
                                     return (
                                         <TableRow
                                             key={index}

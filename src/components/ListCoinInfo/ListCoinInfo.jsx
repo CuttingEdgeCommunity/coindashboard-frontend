@@ -1,5 +1,6 @@
 import ListCoinInfoRow from "../ListCoinInfoRow/ListCoinInfoRow"
 import { formatAmount } from "../../helpers/helpers"
+
 function ListCoinInfo({ data }) {
     return (
         <div id="list-coin-info" className="pt-2">
