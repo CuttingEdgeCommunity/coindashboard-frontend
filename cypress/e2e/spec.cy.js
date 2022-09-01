@@ -1,6 +1,8 @@
+const port = process.env.PORT || "3000"
+
 describe("User interaction", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:80");
+    cy.visit("http://localhost:"+port);
   });
   it("coin with rank 1 should be visible on the dashboard", () => {
     cy.get(".infinite-scroll:first-child").contains("1");
