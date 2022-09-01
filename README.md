@@ -41,14 +41,22 @@ v16.16.0
 ### run The local JSON server and the react Application
 
 ```bash
+> cd coindashboard-frontend
 > json-server --watch db.json --port 3001
-> npm run start:dev
+> npm run start
 ```
 
 ### run The react Application in production
 
 ```bash
+> cd coindashboard-frontend
 > npm run start:prod
+```
+### run E2E Tests for the application with cypress
+
+```bash
+> cd coindashboard-frontend
+> npx cypress open
 ```
 
 ## Editor setup (VS Code)

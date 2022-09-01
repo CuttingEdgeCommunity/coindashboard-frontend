@@ -1,19 +1,19 @@
 describe("User interaction", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
-    cy.intercept("GET", "http://localhost:3001/api/coins", {
+    cy.intercept("GET", "http://localhost:3001/api_coins", {
       fixture: "coins.json",
     }).as("getCoinsList");
-    cy.intercept("GET", "http://localhost:3001/api/coins/Ethereum", {
+    cy.intercept("GET", "http://localhost:3001/api_coins_Ethereum", {
       fixture: "coinInfo.json",
     }).as("getCoinInfo");
-    cy.intercept("GET", "http://localhost:3001/api/coins/Ethereum/chart", {
+    cy.intercept("GET", "http://localhost:3001/api_coins_Ethereum_chart", {
       fixture: "chart.json",
     }).as("getCoinChart");
-    cy.intercept("GET", "http://localhost:3001/api/coins/Ethereum/marketdata", {
+    cy.intercept("GET", "http://localhost:3001/api_coins_Ethereum_marketdata", {
       fixture: "marketdata.json",
     }).as("getCoinMarketdata");
-    cy.intercept("GET", "http://localhost:3001/api/coins/Bitcoin/marketdata", {
+    cy.intercept("GET", "http://localhost:3001/api_coins_Bitcoin_marketdata", {
       fixture: "bitcoinInfo.json",
     }).as("getCoinMarketdataBitcoin");
   });
