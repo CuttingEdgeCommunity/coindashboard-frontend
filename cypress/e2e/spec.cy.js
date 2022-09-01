@@ -1,6 +1,6 @@
 describe("User interaction", () => {
   beforeEach(() => {
-    cy.visit("http://localhost");
+    cy.visit("http://localhost:80");
   });
   it("coin with rank 1 should be visible on the dashboard", () => {
     cy.get(".infinite-scroll:first-child").contains("1");
