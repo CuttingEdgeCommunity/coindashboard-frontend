@@ -11,7 +11,7 @@ const useFetchDataApi = (path, params = null) => {
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
-        ;(async function () {
+        async function fetching() {
             try {
                 const response = await axiosClient.get(path, { params: params })
                 setStatus(200)
@@ -21,7 +21,8 @@ const useFetchDataApi = (path, params = null) => {
             } finally {
                 setLoader(false)
             }
-        })()
+        }
+        fetching()
     }, [path, params])
 
     return [status, loader, data]

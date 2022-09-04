@@ -14,26 +14,26 @@ function ListCoinInfo({ data }) {
                     <ListCoinInfoRow
                         name="Volume / Market Cap"
                         display={(
-                            data.current_quote.daily_volume /
-                            data.current_quote.market_cap
+                            data.CurrentQuote.daily_volume /
+                            data.CurrentQuote.market_cap
                         ).toPrecision(3)}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Hour)"}
                         display={formatAmount(
-                            data.current_quote.deltas[0].nominal_change
+                            data.CurrentQuote.deltas[0].nominal
                         )}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Day)"}
                         display={formatAmount(
-                            data.current_quote.deltas[1].nominal_change
+                            data.CurrentQuote.deltas[1].nominal
                         )}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Week)"}
                         display={formatAmount(
-                            data.current_quote.deltas[2].nominal_change
+                            data.CurrentQuote.deltas[2].nominal
                         )}
                     />
                     <ListCoinInfoRow name="Market Cap Rank*" display={1} />

@@ -49,6 +49,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "cypress": "^10.6.0",
+    "eslint": "^8.23.0",
+    "eslint-plugin-react": "^7.31.6",
     "graphql": "^16.6.0",
     "msw": "^0.46.0",
     "postcss": "^8.4.14",

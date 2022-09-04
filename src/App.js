@@ -5,7 +5,7 @@ import LightImage from "./img/brightness.png"
 import DarkImage from "./img/moon.png"
 
 function App() {
-    const [coinName, setCoinName] = useState("")
+    const [coinSymbol, setCoinSymbol] = useState("")
     const [isDark, setIsDark] = useState(true)
 
     return (
@@ -27,8 +27,10 @@ function App() {
                 </div>
             </header>
             <main>
-                <Home setCoinName={setCoinName} />
-                {coinName.length !== 0 && <Dashbord coinName={coinName} />}
+                <Home setCoinSymbol={setCoinSymbol} />
+                {coinSymbol.length !== 0 && (
+                    <Dashbord coinSymbol={coinSymbol} />
+                )}
             </main>
         </div>
     )

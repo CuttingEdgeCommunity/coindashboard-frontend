@@ -7,18 +7,18 @@ import useFetchDataApi from "../../customizedhooks/useFetchDataApi"
 import Loader from "../Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
-function Dashbord({ coinName }) {
+function Dashbord({ coinSymbol }) {
     // do the API call using ---- /api/coins/coinName
     const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinName
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol
     )
     // do the API call for the Chart component using ---- /api/coins/coinName/chart
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinName + "/chart"
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart"
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinName + "/marketdata"
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata"
     )
 
     return (

@@ -11,6 +11,6 @@ const formatTimestamp = (timestamp) => new Date(timestamp).toLocaleDateString()
 //extract the x and y axis
 export function getChartData(data, i) {
     return data.map((element) =>
-        i === 'x' ? formatTimestamp(element.timestamp) : element.price
+        i === "x" ? formatTimestamp(element.timestamp) : element.price
     )
 }

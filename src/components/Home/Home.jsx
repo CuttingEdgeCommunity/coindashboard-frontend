@@ -1,12 +1,12 @@
 import React from "react"
 import TableCoins from "../TableCoins/TableCoins"
 
-function Home({ setCoinName }) {
+function Home({ setCoinSymbol }) {
     return (
         <div>
             <div className="bg-white dark:bg-gray-800">
                 <div className="text-center w-full mx-auto py-4 px-4">
-                    <TableCoins setCoinName={setCoinName} />
+                    <TableCoins setCoinSymbol={setCoinSymbol} />
                 </div>
             </div>
         </div>

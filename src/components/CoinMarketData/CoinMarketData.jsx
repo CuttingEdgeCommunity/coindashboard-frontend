@@ -15,12 +15,12 @@ function CoinMarketData({ data, urlImage }) {
                     <CoinMarketHeader
                         name={data.name}
                         symbol={data.symbol}
-                        price={data.current_quote.price}
+                        price={data.CurrentQuote.price}
                         lastUpdate={new Date(
-                            data.current_quote.last_update_timestamp
+                            data.CurrentQuote.last_update_timestamp
                         ).toLocaleString()}
                     />
-                    <CoinMarketDetails data={data.current_quote} />
+                    <CoinMarketDetails data={data.CurrentQuote} />
                 </div>
             </div>
         </div>
