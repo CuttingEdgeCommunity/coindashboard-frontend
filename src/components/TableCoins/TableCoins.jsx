@@ -14,7 +14,7 @@ const axiosClient = axios.create({
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
     const [items, setItems] = useState([])
-    const [page, setPage] = useState(2)
+    const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
     const [loaderCoins, setLoaderCoins] = useState(true)
     const [statusCoins, setStatusCoins] = useState(102)
@@ -32,7 +32,7 @@ function TableCoins({ setCoinSymbol }) {
         const fetching = async () => {
             try {
                 const data = await axiosClient.get(
-                    process.env.REACT_APP_COINS_PATH + `?page=1&take=${take()}`
+                    process.env.REACT_APP_COINS_PATH + `?page=0&take=${take()}`
                 )
                 setItems(data.data)
                 setStatusCoins(data.status)
