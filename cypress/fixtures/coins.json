@@ -1,0 +1,91 @@
+[
+    {
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image_url": "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+      "current_quote": {
+        "price": 24073.4,
+        "deltas": [
+          {
+            "interval": "ONE_HOUR",
+            "pct_change": 0.086318,
+            "nominal_change": 24131.6
+          },
+          {
+            "interval": "ONE_DAY",
+            "pct_change": 0.036318,
+            "nominal_change": 24144.6
+          },
+          {
+            "interval": "SEVEN_DAY",
+            "pct_change": 0.036318,
+            "nominal_change": 24144.6
+          },
+          {
+            "interval": "THIRTY_DAY",
+            "pct_change": 12.552752825351243,
+            "nominal_change": 2613.986893569027
+          }
+        ],
+        "market_cap": 460513164207,
+        "daily_volume": 27508459604,
+        "last_update_timestamp": 1660598250101
+      }
+    },
+    {
+      "name": "Ethereum",
+      "symbol": "eth",
+      "image_url": "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+      "current_quote": {
+        "price": 1628.42,
+        "deltas": [
+          {
+            "interval": "ONE_HOUR",
+            "pct_change": -1.1,
+            "nominal_change": 24131.6
+          },
+          {
+            "interval": "ONE_DAY",
+            "pct_change": 1.1,
+            "nominal_change": 24144.6
+          },
+          {
+            "interval": "SEVEN_DAY",
+            "pct_change": -13.4,
+            "nominal_change": 24144.6
+          }
+        ],
+        "market_cap": 195682139657,
+        "daily_volume": 17390482685,
+        "last_update_timestamp": 1661328419722
+      }
+    },
+    {
+      "name": "Tether",
+      "symbol": "usdt",
+      "image_url": "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
+      "current_quote": {
+        "price": 0.997218,
+        "deltas": [
+          {
+            "interval": "ONE_HOUR",
+            "pct_change": 0.0,
+            "nominal_change": 24131.6
+          },
+          {
+            "interval": "ONE_DAY",
+            "pct_change": -0.1,
+            "nominal_change": 24144.6
+          },
+          {
+            "interval": "SEVEN_DAY",
+            "pct_change": -0.1,
+            "nominal_change": 24144.6
+          }
+        ],
+        "market_cap": 67587929903,
+        "daily_volume": 39961582354,
+        "last_update_timestamp": 1661328419722
+      }
+    }
+  ]

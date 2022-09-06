@@ -19,7 +19,7 @@ v16.16.0
 ### Clone the repository
 
 ```bash
-> git clone https://github.com/CuttingEdgeCommunity/coindashboard-frontend
+> git clone [--branch <branch-name>] https://github.com/CuttingEdgeCommunity/coindashboard-frontend
 ```
 
 ### Install dependencies
@@ -27,28 +27,33 @@ v16.16.0
 ```bash
 > cd coindashboard-frontend
 > npm install
-
-```
-
-### Install dependencies for developpment purposes
-
-```bash
-> cd coindashboard-frontend
-> npm install -g json-server
-
 ```
 
 ### run The local JSON server and the react Application
 
 ```bash
-> json-server --watch db.json --port 3001
-> npm run start:dev
+> cd coindashboard-frontend
+> npm run start
 ```
 
 ### run The react Application in production
 
 ```bash
+> cd coindashboard-frontend
 > npm run start:prod
+```
+### run E2E Cypress Tests within a Browser interface 
+
+```bash
+> cd coindashboard-frontend
+> npm run test:browser
+```
+
+### run E2E Cypress Tests within a CLI
+
+```bash
+> cd coindashboard-frontend
+> npm run test
 ```
 
 ## Editor setup (VS Code)

@@ -11,30 +11,28 @@ const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_BASE_SERVER_URL
 })
 
-function TableCoins({ setCoinName }) {
+function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
     const [items, setItems] = useState([])
-    // const [page, setPage] = useState(2)
+    const [page, setPage] = useState(2)
     const [hasMore, setHasMore] = useState(true)
     const [loaderCoins, setLoaderCoins] = useState(true)
     const [statusCoins, setStatusCoins] = useState(102)
     const [input, setInput] = useState("")
 
+    const take = () => {
+        return (
+            Math.ceil(
+                document.getElementById("scrollable-div").offsetHeight / 654
+            ) * 10
+        )
+    }
+
     useEffect(() => {
-        ;(async () => {
+        const fetching = async () => {
             try {
                 const data = await axiosClient.get(
-                    process.env.REACT_APP_COINS_PATH
-                    //     {
-                    //     params: {
-                    //         page: 1,
-                    //         take:
-                    //             Math.ceil(
-                    //                 document.getElementById("scrollable-div")
-                    //                     .offsetHeight / 654
-                    //             ) * 10
-                    //     }
-                    // }
+                    process.env.REACT_APP_COINS_PATH + `?page=1&take=${take()}`
                 )
                 setItems(data.data)
                 setStatusCoins(data.status)
@@ -42,45 +40,38 @@ function TableCoins({ setCoinName }) {
                 setStatusCoins(error)
             } finally {
                 setLoaderCoins(false)
-                // to remove
-                setHasMore(false)
             }
-        })()
+        }
+        fetching()
     }, [])
 
     const fetchData = async () => {
-        // try {
-        //     const data = await axiosClient.get(configData.COINS_PATH, {
-        //         params: {
-        //             page: page,
-        //             take:
-        //                 Math.ceil(
-        //                     document.getElementById("scrollable-div")
-        //                         .offsetHeight / 654
-        //                 ) * 10
-        //         }
-        //     })
-        //     setItems([...items, ...data.data])
-        //     if (data.data.length < 10 || data.data.length === 0) {
-        //         setHasMore(false)
-        //     } else {
-        //         setPage(page + 1)
-        //     }
-        //     setStatusCoins(data.status)
-        // } catch (error) {
-        //     setStatusCoins(error)
-        // } finally {
-        //     setLoaderCoins(false)
-        // }
+        try {
+            const data = await axiosClient.get(
+                process.env.REACT_APP_COINS_PATH +
+                    `?page=${page}&take=${take()}`
+            )
+            setItems([...items, ...data.data])
+            if (data.data.length < 10 || data.data.length === 0) {
+                setHasMore(false)
+            } else {
+                setPage(page + 1)
+            }
+            setStatusCoins(data.status)
+        } catch (error) {
+            setStatusCoins(error)
+        } finally {
+            setLoaderCoins(false)
+        }
     }
 
-    const handleChange = (e)=>{
+    const handleChange = (e) => {
         setInput(e.target.value)
         // make an API call with input state as a params
-     }
+    }
 
     return (
-        <div id="listCoins" className="pt-2 h-screen">
+        <div id="list-coins" className="pt-2 h-screen">
             <div className="border dark:border-gray-600 h-5/6 w-full p-4 pb-6 bg-white dark:bg-gray-800 relative overflow-hidden">
                 <div className="w-full flex items-center justify-between mb-2 border-b pb-1 dark:border-gray-600">
                     <p className="text-gray-800 dark:text-white text-xl">
@@ -115,22 +106,28 @@ function TableCoins({ setCoinName }) {
                                 hasMore={hasMore}
                                 scrollableTarget={"scrollable-div"}
                                 loader={<LoaderCoinItems />}
+                                className="infinite-scroll"
                             >
                                 {items.map((coin, index) => {
-                                    if(coin.name.toUpperCase().indexOf(input.toUpperCase()) === -1) return null
+                                    if (
+                                        coin.name
+                                            .toUpperCase()
+                                            .indexOf(input.toUpperCase()) === -1
+                                    )
+                                        return null
                                     return (
                                         <TableRow
                                             key={index}
                                             rank={index + 1}
                                             name={coin.name}
                                             symbol={coin.symbol}
-                                            price={coin.current_quote.price}
+                                            price={coin.CurrentQuote.price}
                                             urlImage={coin.image_url}
                                             alt={coin.symbol}
-                                            hour={coin.current_quote.deltas[0]}
-                                            day={coin.current_quote.deltas[1]}
-                                            week={coin.current_quote.deltas[2]}
-                                            setCoinName={setCoinName}
+                                            hour={coin.CurrentQuote.deltas[0]}
+                                            day={coin.CurrentQuote.deltas[1]}
+                                            week={coin.CurrentQuote.deltas[2]}
+                                            setCoinSymbol={setCoinSymbol}
                                         />
                                     )
                                 })}

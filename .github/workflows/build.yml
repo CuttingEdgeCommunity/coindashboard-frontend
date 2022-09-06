@@ -27,15 +27,24 @@ jobs:
       
       - name: Build project
         run: npm run build
-      
-      - name: Test project
-        run: npm test
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build
           path: build/ 
+
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm start
+          browser: chrome
 
   deploy:
     runs-on: ubuntu-latest

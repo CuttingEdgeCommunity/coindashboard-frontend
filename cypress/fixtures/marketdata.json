@@ -1,0 +1,27 @@
+{
+    "name": "Ethereum",
+    "symbol": "eth",
+    "current_quote": {
+      "price": 1628.42,
+      "deltas": [
+        {
+          "interval": "ONE_HOUR",
+          "pct_change": -1.1,
+          "nominal_change": 24131.6
+        },
+        {
+          "interval": "ONE_DAY",
+          "pct_change": 1.1,
+          "nominal_change": 24144.6
+        },
+        {
+          "interval": "SEVEN_DAY",
+          "pct_change": -13.4,
+          "nominal_change": 24144.6
+        }
+      ],
+      "market_cap": 195682139657,
+      "daily_volume": 17390482685,
+      "last_update_timestamp": 1661328419722
+    }
+  }

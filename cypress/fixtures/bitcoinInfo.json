@@ -1,0 +1,27 @@
+{
+    "name": "Bitcoin",
+    "symbol": "btc",
+    "current_quote": {
+      "price": 24073.4,
+      "deltas": [
+        {
+          "interval": "ONE_HOUR",
+          "pct_change": 0.086318,
+          "nominal_change": 24131.6
+        },
+        {
+          "interval": "ONE_DAY",
+          "pct_change": 0.036318,
+          "nominal_change": 24144.6
+        },
+        {
+          "interval": "SEVEN_DAY",
+          "pct_change": 0.036318,
+          "nominal_change": 24144.6
+        }
+      ],
+      "market_cap": 460513164207,
+      "daily_volume": 27508459604,
+      "last_update_timestamp": 1660598250101
+    }
+  }

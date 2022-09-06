@@ -1,8 +1,15 @@
 import React from "react"
 
-function CoinMarketHeader({ name, symbol, lastUpdate }) {
+function CoinMarketHeader({
+    name = "NAME",
+    symbol = "SYMBOL",
+    lastUpdate = "DD-MM-YYYY"
+}) {
     return (
-        <span className="text-gray-600 dark:text-white text-2xl font-medium mb-2 flex flex-row justify-between items-center">
+        <span
+            data-cy="coin-market-header"
+            className="text-gray-600 dark:text-white text-2xl font-medium mb-2 flex flex-row justify-between items-center"
+        >
             <span>
                 {name} ({symbol.toUpperCase()})
             </span>

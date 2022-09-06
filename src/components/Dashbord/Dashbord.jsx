@@ -7,18 +7,18 @@ import useFetchDataApi from "../../customizedhooks/useFetchDataApi"
 import Loader from "../Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
-function Dashbord({ coinName }) {
+function Dashbord({ coinSymbol }) {
     // do the API call using ---- /api/coins/coinName
     const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "_" + coinName
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol
     )
     // do the API call for the Chart component using ---- /api/coins/coinName/chart
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "_" + coinName + "_chart"
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart"
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "_"+ coinName + "_marketdata"
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata"
     )
 
     return (
@@ -27,15 +27,15 @@ function Dashbord({ coinName }) {
             className="pt-4 px-2 grid md:grid-cols-3 gap-2 grid-cols-1 h-full dark:bg-gray-800 dark:text-white"
         >
             <div className="md:col-span-2 col-span-1">
-                {!loaderCoinMarket ? (
-                    statusCoinMarket !== 200  ? (
+                {!loaderCoinMarket && !loaderCoinInfo ? (
+                    statusCoinMarket !== 200 ? (
                         <ErrorRequestMessage
                             message={statusCoinMarket.message}
                         />
                     ) : (
                         <CoinMarketData
                             data={coinMarket}
-                            urlImage={coinInfo.image_url}
+                            urlImage={coinInfo ? coinInfo.image_url : null}
                         />
                     )
                 ) : (
@@ -43,10 +43,10 @@ function Dashbord({ coinName }) {
                 )}
 
                 {!loaderCoinChart ? (
-                   statusCoinChart !== 200  ? (
+                    statusCoinChart !== 200 ? (
                         <ErrorRequestMessage
                             message={statusCoinChart.message}
-                            margin={true}
+                            margin
                         />
                     ) : (
                         <ChartCoin data={coinChart} />
@@ -67,16 +67,16 @@ function Dashbord({ coinName }) {
                 )}
 
                 {!loaderCoinMarket ? (
-                   statusCoinMarket !== 200 ? (
+                    statusCoinMarket !== 200 ? (
                         <ErrorRequestMessage
                             message={statusCoinMarket.message}
-                            margin={true}
+                            margin
                         />
                     ) : (
                         <ListCoinInfo data={coinMarket} />
                     )
                 ) : (
-                    <Loader height={80} width={80} chart={true} />
+                    <Loader height={80} width={80} chart />
                 )}
             </div>
         </main>
