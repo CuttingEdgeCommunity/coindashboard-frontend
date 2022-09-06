@@ -41,4 +41,3 @@ function ChartCoin({ data }) {
     )
 }
 export default ChartCoin
-

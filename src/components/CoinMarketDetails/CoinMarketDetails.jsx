@@ -1,4 +1,5 @@
 import React from "react"
+import { formatAmount } from "../../helpers/helpers"
 import CoinDetails from "../CoinDetails/CoinDetails"
 
 function CoinMarketDetails({ data }) {
@@ -9,13 +10,13 @@ function CoinMarketDetails({ data }) {
         >
             <div className="flex flex-row justify-between w-full">
                 <CoinDetails field="Price">
-                    {new Intl.NumberFormat().format(data.price)}
+                    {formatAmount(data.price)}
                 </CoinDetails>
                 <CoinDetails field="Market Cap">
-                    {new Intl.NumberFormat().format(data.market_cap)}
+                    ${new Intl.NumberFormat().format(data.market_cap)}
                 </CoinDetails>
                 <CoinDetails field="24H Volume">
-                    {new Intl.NumberFormat().format(data.daily_volume)}
+                    ${new Intl.NumberFormat().format(data.daily_volume)}
                 </CoinDetails>
             </div>
         </div>

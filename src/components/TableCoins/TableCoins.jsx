@@ -52,7 +52,7 @@ function TableCoins({ setCoinSymbol }) {
                     `?page=${page}&take=${take()}`
             )
             setItems([...items, ...data.data])
-            if (data.data.length < 10 || data.data.length === 0) {
+            if (data.data.length < take() || data.data.length === 0) {
                 setHasMore(false)
             } else {
                 setPage(page + 1)

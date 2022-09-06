@@ -1,87 +1,93 @@
 export const db = {
-    api_coins_Bitcoin_marketdata: {
-        name: "Bitcoin",
-        symbol: "btc",
-        CurrentQuote: {
-            price: 24073.4,
-            deltas: [
-                {
-                    interval: "ONE_HOUR",
-                    pct: 0.086318,
-                    nominal: 24131.6
-                },
-                {
-                    interval: "ONE_DAY",
-                    pct: 0.036318,
-                    nominal: 24144.6
-                },
-                {
-                    interval: "SEVEN_DAY",
-                    pct: 0.036318,
-                    nominal: 24144.6
-                }
-            ],
-            market_cap: 460513164207,
-            daily_volume: 27508459604,
-            last_update_timestamp: 1660598250101
+    api_coins_Bitcoin_marketdata: [
+        {
+            name: "Bitcoin",
+            symbol: "btc",
+            CurrentQuote: {
+                price: 24073.4,
+                deltas: [
+                    {
+                        interval: "ONE_HOUR",
+                        pct: 0.086318,
+                        nominal: 24131.6
+                    },
+                    {
+                        interval: "ONE_DAY",
+                        pct: 0.036318,
+                        nominal: 24144.6
+                    },
+                    {
+                        interval: "SEVEN_DAY",
+                        pct: 0.036318,
+                        nominal: 24144.6
+                    }
+                ],
+                market_cap: 460513164207,
+                daily_volume: 27508459604,
+                last_update_timestamp: 1660598250101
+            }
         }
-    },
+    ],
 
-    api_coins_Ethereum_marketdata: {
-        name: "Ethereum",
-        symbol: "eth",
-        CurrentQuote: {
-            price: 1628.42,
-            deltas: [
-                {
-                    interval: "ONE_HOUR",
-                    pct: -1.1,
-                    nominal: 24131.6
-                },
-                {
-                    interval: "ONE_DAY",
-                    pct: 1.1,
-                    nominal: 24144.6
-                },
-                {
-                    interval: "SEVEN_DAY",
-                    pct: -13.4,
-                    nominal: 24144.6
-                }
-            ],
-            market_cap: 195682139657,
-            daily_volume: 17390482685,
-            last_update_timestamp: 1661328419722
+    api_coins_Ethereum_marketdata: [
+        {
+            name: "Ethereum",
+            symbol: "eth",
+            CurrentQuote: {
+                price: 1628.42,
+                deltas: [
+                    {
+                        interval: "ONE_HOUR",
+                        pct: -1.1,
+                        nominal: 24131.6
+                    },
+                    {
+                        interval: "ONE_DAY",
+                        pct: 1.1,
+                        nominal: 24144.6
+                    },
+                    {
+                        interval: "SEVEN_DAY",
+                        pct: -13.4,
+                        nominal: 24144.6
+                    }
+                ],
+                market_cap: 195682139657,
+                daily_volume: 17390482685,
+                last_update_timestamp: 1661328419722
+            }
         }
-    },
+    ],
 
-    api_coins_Tether_marketdata: {
-        name: "Tether",
-        symbol: "usdt",
-        CurrentQuote: {
-            price: 0.997218,
-            deltas: [
-                {
-                    interval: "ONE_HOUR",
-                    pct: 0.0,
-                    nominal: 24131.6
-                },
-                {
-                    interval: "ONE_DAY",
-                    pct: -0.1,
-                    nominal: 24144.6
-                },
-                {
-                    interval: "SEVEN_DAY",
-                    pct: -0.1,
-                    nominal: 24144.6
-                }
-            ],
-            market_cap: 67587929903,
-            daily_volume: 39961582354,
-            last_update_timestamp: 1661328419722
+    api_coins_Tether_marketdata: [
+        {
+            name: "Tether",
+            symbol: "usdt",
+            CurrentQuote: {
+                price: 0.997218,
+                deltas: [
+                    {
+                        interval: "ONE_HOUR",
+                        pct: 0.0,
+                        nominal: 24131.6
+                    },
+                    {
+                        interval: "ONE_DAY",
+                        pct: -0.1,
+                        nominal: 24144.6
+                    },
+                    {
+                        interval: "SEVEN_DAY",
+                        pct: -0.1,
+                        nominal: 24144.6
+                    }
+                ],
+                market_cap: 67587929903,
+                daily_volume: 39961582354,
+                last_update_timestamp: 1661328419722
+            }
         }
-    },
+    ],
 
     api_coins_bitcoin_chart: [
         {

@@ -4,7 +4,6 @@ import CoinMarketDetails from "../CoinMarketDetails/CoinMarketDetails"
 import CoinMarketHeader from "../CoinMarketHeader/CoinMarketHeader"
 
 function CoinMarketData({ data, urlImage }) {
-    data = data[0]
     return (
         <div
             data-cy="coin-market-data"
