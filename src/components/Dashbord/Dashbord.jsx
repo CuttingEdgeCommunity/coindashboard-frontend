@@ -34,7 +34,7 @@ function Dashbord({ coinSymbol }) {
                         />
                     ) : (
                         <CoinMarketData
-                            data={coinMarket}
+                            data={coinMarket[0]}
                             urlImage={coinInfo ? coinInfo.image_url : null}
                         />
                     )
@@ -73,7 +73,7 @@ function Dashbord({ coinSymbol }) {
                             margin
                         />
                     ) : (
-                        <ListCoinInfo data={coinMarket} />
+                        <ListCoinInfo data={coinMarket[0]} />
                     )
                 ) : (
                     <Loader height={80} width={80} chart />

@@ -71,17 +71,22 @@ function TableRow({
                         </span>
                     )}
                 </div>
+                <div className="text-green-400 text-sm md:text-xl font-semibold w-1/5">
+                    {price ? formatAmount(price) : "Price"}
+                </div>
                 <div className="flex flex-col justify-center w-1/5 items-center">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {hour ? formatAmount(hour.nominal) : "1 Hour"}
                     </dd>
-                    {(hour && hour.pct.toPrecision(2)) >= 0 ? (
-                        <dd className="text-green-500 font-semibold text-md">
-                            {hour && hour.pct.toPrecision(2) + " %"}
+                    {(hour && hour.pct.toPrecision(5)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-xs md:text-md">
+                            {hour &&
+                                Number.parseFloat(hour.pct).toFixed(5) + " %"}
                         </dd>
                     ) : (
-                        <dd className="text-red-500 font-semibold text-md">
-                            {hour && hour.pct.toPrecision(2) + " %"}
+                        <dd className="text-red-500 font-semibold text-xs md:text-md">
+                            {hour &&
+                                Number.parseFloat(hour.pct).toFixed(5) + " %"}
                         </dd>
                     )}
                 </div>
@@ -89,13 +94,15 @@ function TableRow({
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {day ? formatAmount(day.nominal) : "1 Day"}
                     </dd>
-                    {(day && day.pct.toPrecision(2)) >= 0 ? (
-                        <dd className="text-green-500 font-semibold text-md">
-                            {day && day.pct.toPrecision(2) + " %"}
+                    {(day && day.pct.toPrecision(5)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-xs md:text-md">
+                            {day &&
+                                Number.parseFloat(day.pct).toFixed(5) + " %"}
                         </dd>
                     ) : (
-                        <dd className="text-red-500 font-semibold text-md">
-                            {day && day.pct.toPrecision(2) + " %"}
+                        <dd className="text-red-500 font-semibold text-xs md:text-md">
+                            {day &&
+                                Number.parseFloat(day.pct).toFixed(5) + " %"}
                         </dd>
                     )}
                 </div>
@@ -103,18 +110,17 @@ function TableRow({
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
                         {week ? formatAmount(week.nominal) : "1 Week"}
                     </dd>
-                    {(week && week.pct.toPrecision(2)) >= 0 ? (
-                        <dd className="text-green-500 font-semibold text-md">
-                            {week && week.pct.toPrecision(2) + " %"}
+                    {(week && week.pct.toPrecision(5)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-xs md:text-md">
+                            {week &&
+                                Number.parseFloat(week.pct).toFixed(5) + " %"}
                         </dd>
                     ) : (
-                        <dd className="text-red-500 font-semibold text-md">
-                            {week && week.pct.toPrecision(2) + " %"}
+                        <dd className="text-red-500 font-semibold text-xs md:text-md">
+                            {week &&
+                                Number.parseFloat(week.pct).toFixed(5) + " %"}
                         </dd>
                     )}
-                </div>
-                <div className="text-green-400 text-sm md:text-md font-semibold w-1/5">
-                    {price ? formatAmount(price) : "Price"}
                 </div>
             </div>
         </div>

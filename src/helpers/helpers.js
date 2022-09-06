@@ -1,9 +1,11 @@
 // Format the amount
 export function formatAmount(amount) {
     return (
-        (amount < 0 ? "-" : "") +
+        (Number.parseFloat(amount).toFixed(5) < 0 ? "-" : "") +
         "$" +
-        new Intl.NumberFormat().format(Math.abs(amount))
+        new Intl.NumberFormat().format(
+            Math.abs(Number.parseFloat(amount).toFixed(5))
+        )
     )
 }
 
