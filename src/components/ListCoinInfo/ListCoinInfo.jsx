@@ -2,7 +2,6 @@ import ListCoinInfoRow from "../ListCoinInfoRow/ListCoinInfoRow"
 import { formatAmount } from "../../helpers/helpers"
 
 function ListCoinInfo({ data }) {
-     data = data[0]
     return (
         <div id="list-coin-info" className="pt-2">
             <div className="border dark:border-gray-600 h-80 mt-2 mb-4  w-full p-4 bg-white dark:bg-gray-800 relative overflow-hidden">
@@ -51,5 +50,4 @@ function ListCoinInfo({ data }) {
         </div>
     )
 }
-
 export default ListCoinInfo
