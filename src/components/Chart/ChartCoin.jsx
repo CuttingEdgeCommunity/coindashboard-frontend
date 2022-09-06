@@ -40,5 +40,5 @@ function ChartCoin({ data }) {
         </div>
     )
 }
-
 export default ChartCoin
+
