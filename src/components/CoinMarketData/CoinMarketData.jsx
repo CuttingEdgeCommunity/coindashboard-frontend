@@ -3,6 +3,8 @@ import CoinImage from "../CoinImage/CoinImage"
 import CoinMarketDetails from "../CoinMarketDetails/CoinMarketDetails"
 import CoinMarketHeader from "../CoinMarketHeader/CoinMarketHeader"
 
+import altImage from "./../../img/star.png"
+
 function CoinMarketData({ data, urlImage }) {
     return (
         <div
@@ -10,7 +12,7 @@ function CoinMarketData({ data, urlImage }) {
             className="bg-white dark:bg-gray-800 p-4 pt-1"
         >
             <div className="flex-row flex gap-2">
-                <CoinImage urlImage={urlImage} alt="Alternative" />
+                <CoinImage urlImage={urlImage || altImage} alt="Alt" />
                 <div className=" flex flex-col w-full">
                     <CoinMarketHeader
                         name={data.name}

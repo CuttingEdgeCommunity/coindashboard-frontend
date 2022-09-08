@@ -3,9 +3,10 @@ export function formatAmount(amount) {
     return (
         (Number.parseFloat(amount).toFixed(5) < 0 ? "-" : "") +
         "$" +
-        new Intl.NumberFormat().format(
-            Math.abs(Number.parseFloat(amount).toFixed(5))
-        )
+        new Intl.NumberFormat("en-US", {
+            compactDisplay: "long",
+            maximumFractionDigits: 20
+        }).format(Math.abs(Number.parseFloat(amount).toFixed(5)))
     )
 }
 

@@ -7,12 +7,15 @@ import LoaderCoinItems from "../LoaderCoinItems/LoaderCoinItems"
 import Loader from "../Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
+import altImage from "./../../img/star.png"
+
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_BASE_SERVER_URL
 })
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
+
     const [items, setItems] = useState([])
     const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
@@ -34,6 +37,7 @@ function TableCoins({ setCoinSymbol }) {
                 const data = await axiosClient.get(
                     process.env.REACT_APP_COINS_PATH + `?page=0&take=${take()}`
                 )
+
                 setItems(data.data)
                 setStatusCoins(data.status)
             } catch (error) {
@@ -43,6 +47,8 @@ function TableCoins({ setCoinSymbol }) {
             }
         }
         fetching()
+        // const timer = setInterval(fetching, 5000)
+        // return () => clearInterval(timer)
     }, [])
 
     const fetchData = async () => {
@@ -122,8 +128,7 @@ function TableCoins({ setCoinSymbol }) {
                                             name={coin.name}
                                             symbol={coin.symbol}
                                             price={coin.CurrentQuote.price}
-                                            urlImage={coin.image_url}
-                                            alt={coin.symbol}
+                                            urlImage={coin.image_url || altImage}
                                             hour={coin.CurrentQuote.deltas[0]}
                                             day={coin.CurrentQuote.deltas[1]}
                                             week={coin.CurrentQuote.deltas[2]}
