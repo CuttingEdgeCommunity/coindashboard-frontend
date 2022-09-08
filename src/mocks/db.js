@@ -552,7 +552,7 @@ export const db = {
                 deltas: [
                     {
                         interval: "ONE_HOUR",
-                        pct: 0.086318,
+                        pct: pctchange(0.0043),
                         nominal: 24131.6
                     },
                     {
