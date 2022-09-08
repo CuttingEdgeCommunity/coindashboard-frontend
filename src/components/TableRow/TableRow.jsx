@@ -8,7 +8,6 @@ function TableRow({
     symbol,
     price,
     urlImage,
-    alt,
     hour,
     day,
     week,
@@ -50,7 +49,7 @@ function TableRow({
                         >
                             <CoinImage
                                 urlImage={urlImage}
-                                alt={alt}
+                                alt="alt"
                                 ratioChange={true}
                             />
                             <p className="dark:text-white ml-1 text-md md:text-lg overflow-hidden break-words">

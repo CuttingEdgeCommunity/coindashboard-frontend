@@ -7,14 +7,17 @@ import LoaderCoinItems from "../LoaderCoinItems/LoaderCoinItems"
 import Loader from "../Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
+import altImage from "./../../img/star.png"
+
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_BASE_SERVER_URL
 })
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
+
     const [items, setItems] = useState([])
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
     const [loaderCoins, setLoaderCoins] = useState(true)
     const [statusCoins, setStatusCoins] = useState(102)
@@ -29,19 +32,12 @@ function TableCoins({ setCoinSymbol }) {
     }
 
     useEffect(() => {
-        const fetching = async (length=0) => {
+        const fetching = async () => {
             try {
-                let data = null
-                if(length === 0){
-                    data = await axiosClient.get(
-                        process.env.REACT_APP_COINS_PATH + `?page=0&take=${take()}`
-                    )
-                }
-                else {
-                    data = await axiosClient.get(
-                        process.env.REACT_APP_COINS_PATH + `?take=${items.length}`
-                    )
-                }
+                const data = await axiosClient.get(
+                    process.env.REACT_APP_COINS_PATH + `?page=0&take=${take()}`
+                )
+
                 setItems(data.data)
                 setStatusCoins(data.status)
             } catch (error) {
@@ -50,9 +46,9 @@ function TableCoins({ setCoinSymbol }) {
                 setLoaderCoins(false)
             }
         }
-        fetching(items.length)
-        const timer = setInterval(fetching(items.length), 5000);
-        return ()=> clearInterval(timer)
+        fetching()
+        // const timer = setInterval(fetching, 5000)
+        // return () => clearInterval(timer)
     }, [])
 
     const fetchData = async () => {
@@ -132,8 +128,7 @@ function TableCoins({ setCoinSymbol }) {
                                             name={coin.name}
                                             symbol={coin.symbol}
                                             price={coin.CurrentQuote.price}
-                                            urlImage={coin.image_url}
-                                            alt={coin.symbol}
+                                            urlImage={coin.image_url || altImage}
                                             hour={coin.CurrentQuote.deltas[0]}
                                             day={coin.CurrentQuote.deltas[1]}
                                             week={coin.CurrentQuote.deltas[2]}
