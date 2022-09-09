@@ -14,6 +14,7 @@ function TableRow({
     setCoinSymbol
 }) {
     const [windowSize, setWindowSize] = useState(window.innerWidth)
+    const [data, setData] = useState(null)
     useEffect(() => {
         if (rank === 1) {
             setCoinSymbol(symbol)
@@ -29,6 +30,16 @@ function TableRow({
         }
         window.addEventListener("resize", handleWindowSize)
     })
+    useEffect(()=>{
+        const timer = setInterval(() => {
+           const arrayData = JSON.parse(window.localStorage.getItem("data"))
+           setData(arrayData[rank - 1])
+        }, 5000)
+        return ()=>{
+            clearInterval(timer)
+        }
+    },[])
+    
     return (
         <div className="flex items-center mb-2 pb-2 dark:border-gray-600 justify-between border-b">
             <div className="flex items-center w-full justify-around">
@@ -70,8 +81,9 @@ function TableRow({
                         </span>
                     )}
                 </div>
+        
                 <div className="text-green-400 text-sm md:text-xl font-semibold w-1/5">
-                    {price ? formatAmount(price) : "Price"}
+                    {!data ? price ? formatAmount(price) : "Price" : formatAmount(data.CurrentQuote.price)}
                 </div>
                 <div className="flex flex-col justify-center w-1/5 items-center">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">

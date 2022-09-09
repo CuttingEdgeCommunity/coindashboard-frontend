@@ -1,6 +1,8 @@
 import React from "react"
 import CoinImage from "../CoinImage/CoinImage"
 
+import AltImage from "./../../img/star.png"
+
 function CoinInfo({ data = null }) {
     return (
         <div
@@ -8,7 +10,7 @@ function CoinInfo({ data = null }) {
             className="flex flex-col justify-center items-center border dark:border-gray-600 bg-white dark:bg-gray-800 p-4"
         >
             <div className="flex-row gap-4 flex justify-center items-center">
-                <CoinImage urlImage={data.image_url} />
+                <CoinImage urlImage={data.image_url || AltImage} alt="alt" />
                 <div className=" flex flex-col">
                     <span className="text-gray-600 dark:text-white text-lg font-medium">
                         {data.name} ({data.symbol.toUpperCase()})

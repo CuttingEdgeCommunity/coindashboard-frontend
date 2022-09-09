@@ -30,14 +30,12 @@ function TableCoins({ setCoinSymbol }) {
             ) * 10
         )
     }
-
     useEffect(() => {
         const fetching = async () => {
             try {
                 const data = await axiosClient.get(
                     process.env.REACT_APP_COINS_PATH + `?page=0&take=${take()}`
                 )
-
                 setItems(data.data)
                 setStatusCoins(data.status)
             } catch (error) {
@@ -47,9 +45,24 @@ function TableCoins({ setCoinSymbol }) {
             }
         }
         fetching()
-        // const timer = setInterval(fetching, 5000)
-        // return () => clearInterval(timer)
     }, [])
+
+    useEffect(()=>{
+        const fetching = async () => {
+            try {
+                const data = await axiosClient.get(
+                    process.env.REACT_APP_COINS_PATH + `?take=${items.length}`
+                )
+                window.localStorage.setItem("data", JSON.stringify(data.data))
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        const timer = setInterval(fetching, 5000);
+        return ()=>{
+            clearInterval(timer)
+        }
+    })
 
     const fetchData = async () => {
         try {
