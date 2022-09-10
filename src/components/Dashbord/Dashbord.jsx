@@ -10,15 +10,15 @@ import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 function Dashbord({ coinSymbol }) {
     // do the API call using ---- /api/coins/coinName
     const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol, true
     )
     // do the API call for the Chart component using ---- /api/coins/coinName/chart
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart"
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart", true
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata"
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata", true
     )
 
     return (

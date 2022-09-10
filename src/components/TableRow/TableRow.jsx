@@ -34,6 +34,7 @@ function TableRow({
         const timer = setInterval(() => {
            const arrayData = JSON.parse(window.localStorage.getItem("data"))
            setData(arrayData[rank - 1])
+           console.log(data)
         }, 5000)
         return ()=>{
             clearInterval(timer)
@@ -87,51 +88,84 @@ function TableRow({
                 </div>
                 <div className="flex flex-col justify-center w-1/5 items-center">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
-                        {hour ? formatAmount(hour.nominal) : "1 Hour"}
+                        {!data ? hour ? formatAmount(hour.nominal) : "1 Hour" : formatAmount(data.CurrentQuote.deltas[0].nominal)}
                     </dd>
-                    {(hour && hour.pct.toPrecision(5)) >= 0 ? (
+                    {
+                    !data ?
+                    (hour && hour.pct.toPrecision(5)) >= 0 ? (
                         <dd className="text-green-500 font-semibold text-xs md:text-md">
-                            {hour &&
-                                Number.parseFloat(hour.pct).toFixed(5) + " %"}
+                            {Number.parseFloat(hour.pct).toFixed(5) + " %"}
                         </dd>
                     ) : (
                         <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {hour &&
-                                Number.parseFloat(hour.pct).toFixed(5) + " %"}
+                            {hour && Number.parseFloat(hour.pct).toFixed(5) + " %"}
                         </dd>
-                    )}
+                    )
+                    :
+                    (data.CurrentQuote.deltas[0].pct.toPrecision(5)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-xs md:text-md">
+                            {Number.parseFloat(data.CurrentQuote.deltas[0].pct).toFixed(5) + " %"}
+                        </dd>
+                    ) : (
+                        <dd className="text-red-500 font-semibold text-xs md:text-md">
+                            {Number.parseFloat(data.CurrentQuote.deltas[0].pct).toFixed(5) + " %"}
+                        </dd>
+                    )
+                }
                 </div>
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
-                        {day ? formatAmount(day.nominal) : "1 Day"}
+                        {!data ? day ? formatAmount(day.nominal) : "1 Day" : formatAmount(data.CurrentQuote.deltas[1].nominal)}
                     </dd>
-                    {(day && day.pct.toPrecision(5)) >= 0 ? (
+                    {
+                    !data ?
+                    (day && day.pct.toPrecision(5)) >= 0 ? (
                         <dd className="text-green-500 font-semibold text-xs md:text-md">
-                            {day &&
-                                Number.parseFloat(day.pct).toFixed(5) + " %"}
+                            {Number.parseFloat(day.pct).toFixed(5) + " %"}
                         </dd>
                     ) : (
                         <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {day &&
-                                Number.parseFloat(day.pct).toFixed(5) + " %"}
+                            {day && Number.parseFloat(day.pct).toFixed(5) + " %"}
                         </dd>
-                    )}
+                    )
+                    :
+                    (data.CurrentQuote.deltas[1].pct.toPrecision(5)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-xs md:text-md">
+                            {Number.parseFloat(data.CurrentQuote.deltas[1].pct).toFixed(5) + " %"}
+                        </dd>
+                    ) : (
+                        <dd className="text-red-500 font-semibold text-xs md:text-md">
+                            {Number.parseFloat(data.CurrentQuote.deltas[1].pct).toFixed(5) + " %"}
+                        </dd>
+                    )
+                }
                 </div>
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
-                        {week ? formatAmount(week.nominal) : "1 Week"}
+                        {!data ? week ? formatAmount(week.nominal) : "1 Week" : formatAmount(data.CurrentQuote.deltas[2].nominal)}
                     </dd>
-                    {(week && week.pct.toPrecision(5)) >= 0 ? (
+                    {
+                    !data ?
+                    (week && week.pct.toPrecision(5)) >= 0 ? (
                         <dd className="text-green-500 font-semibold text-xs md:text-md">
-                            {week &&
-                                Number.parseFloat(week.pct).toFixed(5) + " %"}
+                            {Number.parseFloat(week.pct).toFixed(5) + " %"}
                         </dd>
                     ) : (
                         <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {week &&
-                                Number.parseFloat(week.pct).toFixed(5) + " %"}
+                            {week && Number.parseFloat(week.pct).toFixed(5) + " %"}
                         </dd>
-                    )}
+                    )
+                    :
+                    (data.CurrentQuote.deltas[2].pct.toPrecision(5)) >= 0 ? (
+                        <dd className="text-green-500 font-semibold text-xs md:text-md">
+                            {Number.parseFloat(data.CurrentQuote.deltas[2].pct).toFixed(5) + " %"}
+                        </dd>
+                    ) : (
+                        <dd className="text-red-500 font-semibold text-xs md:text-md">
+                            {Number.parseFloat(data.CurrentQuote.deltas[2].pct).toFixed(5) + " %"}
+                        </dd>
+                    )
+                }
                 </div>
             </div>
         </div>
