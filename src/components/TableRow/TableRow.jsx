@@ -34,7 +34,6 @@ function TableRow({
         const timer = setInterval(() => {
            const arrayData = JSON.parse(window.localStorage.getItem("data"))
            setData(arrayData[rank - 1])
-           console.log(data)
         }, 5000)
         return ()=>{
             clearInterval(timer)
