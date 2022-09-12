@@ -13,10 +13,11 @@ function CoinInfo({ data = null }) {
                     <span className="text-gray-600 dark:text-white text-lg font-medium">
                         {data.name} ({data.symbol.toUpperCase()})
                     </span>
-                    <div className="text-gray-400 text-xs">
-                        {data.description}
-                        <br />
-                        <div className="flex-row mt-2 gap-4 text-xs">
+                   {data.links && 
+                      <div className="text-gray-400 text-xs">
+                         {data.description}
+                         <br />
+                         <div className="flex-row mt-2 gap-4 text-xs">
                             <a
                                 href={data.links[0].url}
                                 target="_blink"
@@ -32,7 +33,7 @@ function CoinInfo({ data = null }) {
                                 {data.links[1].title}
                             </a>
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>
