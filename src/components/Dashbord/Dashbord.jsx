@@ -60,7 +60,7 @@ function Dashbord({ coinSymbol }) {
                     statusCoinInfo !== 200 ? (
                         <ErrorRequestMessage message={statusCoinInfo.message} />
                     ) : (
-                        <CoinInfo data={coinInfo} />
+                        <CoinInfo data={coinInfo[0]} />
                     )
                 ) : (
                     <Loader height={80} width={80} />
