@@ -8,17 +8,20 @@ import Loader from "../Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
 
 function Dashbord({ coinSymbol }) {
-    // do the API call using ---- /api/coins/coinName
+    // do the API call using ---- /api/coins/coinName and set the refresh param to TRUE
     const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol, true
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol,
+        true
     )
-    // do the API call for the Chart component using ---- /api/coins/coinName/chart
+    // do the API call for the Chart component using ---- /api/coins/coinName/chart and set the refresh param to TRUE
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart", true
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart",
+        true
     )
-    // do the API call for the coin market using ---- /api/coins/coinName/marketdata
+    // do the API call for the coin market using ---- /api/coins/coinName/marketdata and set the refresh param to TRUE
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata", true
+        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata",
+        true
     )
 
     return (

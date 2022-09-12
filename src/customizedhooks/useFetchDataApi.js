@@ -23,6 +23,7 @@ const useFetchDataApi = (path,refresh= false) => {
             }
         }
         fetching()
+        // if the refresh param is TRUE we do refresh the call avary 5 secondes  
         if(refresh){
             const timer = setInterval(() => {
                 fetching()

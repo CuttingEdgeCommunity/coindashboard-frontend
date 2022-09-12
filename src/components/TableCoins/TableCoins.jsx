@@ -45,10 +45,9 @@ function TableCoins({ setCoinSymbol }) {
             }
         }
         fetching()
-    }, [])
-
-    useEffect(()=>{
-        const fetching = async () => {
+        
+        // Call the api every 5 secondes using a timer 
+        const refreshData = async () => {
             try {
                 const data = await axiosClient.get(
                     process.env.REACT_APP_COINS_PATH + `?take=${items.length}`
@@ -58,11 +57,12 @@ function TableCoins({ setCoinSymbol }) {
                 console.log(error)
             }
         }
-        const timer = setInterval(fetching, 5000);
+        const timer = setInterval(refreshData, 5000);
         return ()=>{
             clearInterval(timer)
         }
-    })
+
+    }, [])
 
     const fetchData = async () => {
         try {
