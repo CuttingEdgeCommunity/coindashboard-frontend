@@ -45,8 +45,10 @@ function TableCoins({ setCoinSymbol }) {
             }
         }
         fetching()
-        
-        // Call the api every 5 secondes using a timer 
+    }, [])
+
+    useEffect(()=>{
+        // Call the api every 5 secondes using a timer and stock it in the localstorage
         const refreshData = async () => {
             try {
                 const data = await axiosClient.get(
@@ -61,8 +63,7 @@ function TableCoins({ setCoinSymbol }) {
         return ()=>{
             clearInterval(timer)
         }
-
-    }, [])
+    })
 
     const fetchData = async () => {
         try {
@@ -78,7 +79,7 @@ function TableCoins({ setCoinSymbol }) {
             }
             setStatusCoins(data.status)
         } catch (error) {
-            setStatusCoins(error)
+            setHasMore(false)
         } finally {
             setLoaderCoins(false)
         }

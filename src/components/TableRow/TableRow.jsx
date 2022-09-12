@@ -31,6 +31,7 @@ function TableRow({
         window.addEventListener("resize", handleWindowSize)
     })
     useEffect(()=>{
+        // extract the new data appropriate coin from LocalStorage every 5 seconds
         const timer = setInterval(() => {
            const arrayData = JSON.parse(window.localStorage.getItem("data"))
            setData(arrayData[rank - 1])

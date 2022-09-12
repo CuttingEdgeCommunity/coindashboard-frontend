@@ -17,3 +17,13 @@ export function getChartData(data, i) {
         i === "x" ? formatTimestamp(element.timestamp) : element.price
     )
 }
+
+// // extract the coin using its the Name
+// export function extractCoinByName(listCoins, name){
+//     console.log(name)
+//     let coin = {}
+//     listCoins.forEach((currentCoin)=>{
+//          if(currentCoin.name == name) coin = currentCoin
+//     })
+//     return coin
+// }

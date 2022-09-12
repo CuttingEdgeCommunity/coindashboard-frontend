@@ -11,19 +11,18 @@ function Dashbord({ coinSymbol }) {
     // do the API call using ---- /api/coins/coinName and set the refresh param to TRUE
     const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
         process.env.REACT_APP_COINS_PATH + "/" + coinSymbol,
-        true
+        false
     )
     // do the API call for the Chart component using ---- /api/coins/coinName/chart and set the refresh param to TRUE
     const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
         process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart",
-        true
+        false
     )
     // do the API call for the coin market using ---- /api/coins/coinName/marketdata and set the refresh param to TRUE
     const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
         process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata",
         true
     )
-
     return (
         <main
             id="dashboard"
