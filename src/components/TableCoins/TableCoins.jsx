@@ -59,7 +59,7 @@ function TableCoins({ setCoinSymbol }) {
                 console.log(error)
             }
         }
-        const timer = setInterval(refreshData, 5000);
+        const timer = setInterval(refreshData, 10_000);
         return ()=>{
             clearInterval(timer)
         }
