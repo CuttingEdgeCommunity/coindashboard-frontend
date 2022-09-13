@@ -3,7 +3,7 @@ import CoinImage from "../CoinImage/CoinImage"
 
 import AltImage from "./../../img/star.png"
 
-function CoinInfo({ data = null }) {
+function CoinInfo({ data }) {
     return (
         <div
             data-cy="coin-info"
@@ -18,22 +18,24 @@ function CoinInfo({ data = null }) {
                     <div className="text-gray-400 text-xs">
                         {data.description}
                         <br />
-                        <div className="flex-row mt-2 gap-4 text-xs">
-                            <a
-                                href={data.links[0].url}
-                                target="_blink"
-                                className="mr-2"
-                            >
-                                {data.links[0].title}
-                            </a>
-                            <a
-                                href={data.links[1].url}
-                                target="_blink"
-                                className="mr-2"
-                            >
-                                {data.links[1].title}
-                            </a>
-                        </div>
+                        {data.links && (
+                            <div className="flex-row mt-2 gap-4 text-xs">
+                                <a
+                                    href={data.links[0].url}
+                                    target="_blink"
+                                    className="mr-2"
+                                >
+                                    {data.links[0].title}
+                                </a>
+                                <a
+                                    href={data.links[1].url}
+                                    target="_blink"
+                                    className="mr-2"
+                                >
+                                    {data.links[1].title}
+                                </a>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

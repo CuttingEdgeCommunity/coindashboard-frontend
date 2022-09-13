@@ -278,7 +278,7 @@ export const db = {
         }
     ],
 
-    api_coins_bitcoin: {
+    api_coins_bitcoin: [{
         name: "Bitcoin",
         symbol: "BTC",
         image_url: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
@@ -297,8 +297,8 @@ export const db = {
         ],
         description:
             "Bitcoin, often described as a cryptocurrency, a virtual currency or a digital currency - is a type of money that is completely virtual. It's like an online version of cash. You can use it to buy products and services, but not many shops accept Bitcoin yet and some countries have banned it altogether."
-    },
-    api_coins_Ethereum: {
+    }],
+    api_coins_Ethereum: [{
         name: "Ethereum",
         symbol: "eth",
         image_url:
@@ -318,8 +318,8 @@ export const db = {
         ],
         description:
             "Ethereum is a decentralized, open-source blockchain with smart contract functionality. Ether is the native cryptocurrency of the platform. Among cryptocurrencies, Ether is second only to Bitcoin in market capitalization."
-    },
-    api_coins_Tether: {
+    }],
+    api_coins_Tether: [{
         name: "Tether",
         symbol: "usdt",
         image_url:
@@ -339,8 +339,8 @@ export const db = {
         ],
         description:
             "Tether, is an asset-backed cryptocurrency stablecoin. It was launched by the company Tether Limited Inc. in 2014. Tether Limited is owned by the Hong Kong-based company iFinex Inc."
-    },
-    api_coins_Lido_Staked_Ether: {
+    }],
+    api_coins_Lido_Staked_Ether: [{
         name: "Lido Staked Ether",
         symbol: "steth",
         image_url:
@@ -360,8 +360,8 @@ export const db = {
         ],
         description:
             "Lido is a staking pool that allows people to stake any amount of their ETH through smart contracts –automated self-executing financial contracts. Users earn yields in stETH, which currently cannot be redeemed 1:1 for Ethereum, though after the merge it will be."
-    },
-    api_coins_USD_Coin: {
+    }],
+    api_coins_USD_Coin: [{
         name: "USD Coin",
         symbol: "usdc",
         image_url:
@@ -381,7 +381,7 @@ export const db = {
         ],
         description:
             "USD Coin is a digital stablecoin that was pegged to the United States dollar. USD Coin is managed by a consortium called Centre, which was founded by Circle and includes members from the cryptocurrency exchange Coinbase and Bitcoin mining company Bitmain, an investor in Circle."
-    },
+    }],
 
     api_coins: [
         {
