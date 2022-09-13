@@ -45,64 +45,6 @@ function TableCoins({ setCoinSymbol }) {
     const fetchNext = async () => {
         return await fetchNextPage()
     }
-<<<<<<< HEAD
-    useEffect(() => {
-        const fetching = async () => {
-            try {
-                const data = await axiosClient.get(
-                    process.env.REACT_APP_COINS_PATH + `?page=0&take=${take()}`
-                )
-                setItems(data.data)
-                setStatusCoins(data.status)
-            } catch (error) {
-                setStatusCoins(error)
-            } finally {
-                setLoaderCoins(false)
-            }
-        }
-        fetching()
-    }, [])
-
-    useEffect(()=>{
-        // Call the api every 5 secondes using a timer and stock it in the localstorage
-        const refreshData = async () => {
-            try {
-                const data = await axiosClient.get(
-                    process.env.REACT_APP_COINS_PATH + `?take=${items.length}`
-                )
-                window.localStorage.setItem("data", JSON.stringify(data.data))
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        const timer = setInterval(refreshData, 10_000);
-        return ()=>{
-            clearInterval(timer)
-        }
-    })
-
-    const fetchData = async () => {
-        try {
-            const data = await axiosClient.get(
-                process.env.REACT_APP_COINS_PATH +
-                    `?page=${page}&take=${take()}`
-            )
-            setItems([...items, ...data.data])
-            if (data.data.length < take() || data.data.length === 0) {
-                setHasMore(false)
-            } else {
-                setPage(page + 1)
-            }
-            setStatusCoins(data.status)
-        } catch (error) {
-            setHasMore(false)
-        } finally {
-            setLoaderCoins(false)
-        }
-    }
-
-=======
->>>>>>> migration
     const handleChange = (e) => {
         setInput(e.target.value)
         // make an API call with input state as a params
