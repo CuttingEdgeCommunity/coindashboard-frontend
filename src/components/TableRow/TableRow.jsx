@@ -14,7 +14,6 @@ function TableRow({
     setCoinSymbol
 }) {
     const [windowSize, setWindowSize] = useState(window.innerWidth)
-    const [data, setData] = useState(null)
     useEffect(() => {
         if (rank === 1) {
             setCoinSymbol(symbol)
@@ -30,16 +29,6 @@ function TableRow({
         }
         window.addEventListener("resize", handleWindowSize)
     })
-    useEffect(()=>{
-        // extract the new data appropriate coin from LocalStorage every 5 seconds
-        const timer = setInterval(() => {
-           const arrayData = JSON.parse(window.localStorage.getItem("data"))
-           setData(arrayData[rank - 1])
-        }, 5000)
-        return ()=>{
-            clearInterval(timer)
-        }
-    },[])
     
     return (
         <div className="flex items-center mb-2 pb-2 dark:border-gray-600 justify-between border-b">
@@ -84,14 +73,13 @@ function TableRow({
                 </div>
         
                 <div className="text-green-400 text-sm md:text-xl font-semibold w-1/5">
-                    {!data ? price ? formatAmount(price) : "Price" : formatAmount(data.CurrentQuote.price)}
+                    {price ? formatAmount(price) : "Price"}
                 </div>
                 <div className="flex flex-col justify-center w-1/5 items-center">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
-                        {!data ? hour ? formatAmount(hour.nominal) : "1 Hour" : formatAmount(data.CurrentQuote.deltas[0].nominal)}
+                        {hour ? formatAmount(hour.nominal) : "1 Hour"}
                     </dd>
                     {
-                    !data ?
                     (hour && hour.pct.toPrecision(5)) >= 0 ? (
                         <dd className="text-green-500 font-semibold text-xs md:text-md">
                             {Number.parseFloat(hour.pct).toFixed(5) + " %"}
@@ -101,24 +89,13 @@ function TableRow({
                             {hour && Number.parseFloat(hour.pct).toFixed(5) + " %"}
                         </dd>
                     )
-                    :
-                    (data.CurrentQuote.deltas[0].pct.toPrecision(5)) >= 0 ? (
-                        <dd className="text-green-500 font-semibold text-xs md:text-md">
-                            {Number.parseFloat(data.CurrentQuote.deltas[0].pct).toFixed(5) + " %"}
-                        </dd>
-                    ) : (
-                        <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {Number.parseFloat(data.CurrentQuote.deltas[0].pct).toFixed(5) + " %"}
-                        </dd>
-                    )
                 }
                 </div>
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
-                        {!data ? day ? formatAmount(day.nominal) : "1 Day" : formatAmount(data.CurrentQuote.deltas[1].nominal)}
+                        {day ? formatAmount(day.nominal) : "1 Day"}
                     </dd>
                     {
-                    !data ?
                     (day && day.pct.toPrecision(5)) >= 0 ? (
                         <dd className="text-green-500 font-semibold text-xs md:text-md">
                             {Number.parseFloat(day.pct).toFixed(5) + " %"}
@@ -128,24 +105,13 @@ function TableRow({
                             {day && Number.parseFloat(day.pct).toFixed(5) + " %"}
                         </dd>
                     )
-                    :
-                    (data.CurrentQuote.deltas[1].pct.toPrecision(5)) >= 0 ? (
-                        <dd className="text-green-500 font-semibold text-xs md:text-md">
-                            {Number.parseFloat(data.CurrentQuote.deltas[1].pct).toFixed(5) + " %"}
-                        </dd>
-                    ) : (
-                        <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {Number.parseFloat(data.CurrentQuote.deltas[1].pct).toFixed(5) + " %"}
-                        </dd>
-                    )
                 }
                 </div>
                 <div className="flex flex-col justify-center items-center w-1/5">
                     <dd className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">
-                        {!data ? week ? formatAmount(week.nominal) : "1 Week" : formatAmount(data.CurrentQuote.deltas[2].nominal)}
+                        {week ? formatAmount(week.nominal) : "1 Week"}
                     </dd>
                     {
-                    !data ?
                     (week && week.pct.toPrecision(5)) >= 0 ? (
                         <dd className="text-green-500 font-semibold text-xs md:text-md">
                             {Number.parseFloat(week.pct).toFixed(5) + " %"}
@@ -155,17 +121,7 @@ function TableRow({
                             {week && Number.parseFloat(week.pct).toFixed(5) + " %"}
                         </dd>
                     )
-                    :
-                    (data.CurrentQuote.deltas[2].pct.toPrecision(5)) >= 0 ? (
-                        <dd className="text-green-500 font-semibold text-xs md:text-md">
-                            {Number.parseFloat(data.CurrentQuote.deltas[2].pct).toFixed(5) + " %"}
-                        </dd>
-                    ) : (
-                        <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {Number.parseFloat(data.CurrentQuote.deltas[2].pct).toFixed(5) + " %"}
-                        </dd>
-                    )
-                }
+                   }
                 </div>
             </div>
         </div>
