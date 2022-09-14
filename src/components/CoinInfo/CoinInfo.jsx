@@ -44,3 +44,5 @@ function CoinInfo({ data }) {
 }
 
 export default CoinInfo
+
+

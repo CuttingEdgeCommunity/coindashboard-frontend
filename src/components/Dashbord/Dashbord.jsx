@@ -14,7 +14,7 @@ function Dashbord({ coinSymbol }) {
     const {
         isLoading: loaderCoinInfo,
         data: coinInfo,
-        error: statusCoinInfo
+        error: coinInfoError
     } = useQuery(
         ["coinsInfo", coinSymbol],
         () =>
@@ -22,16 +22,12 @@ function Dashbord({ coinSymbol }) {
             coinPath
             )
     )
-    // const {isLoading:loaderCoinInfo, data:coinInfo, error:statusCoinInfo} = useQuery("listCoins", ()=> fetchData(process.env.REACT_APP_COINS_PATH + "/" + coinSymbol),{
-    //     staleTime: 5_000,
-    //     refetchInterval: 5_000
-    // })
     // do the API call for the Chart component using ---- /api/coins/coinName/chart and set the refresh param to TRUE
     const chartPath = "/" + coinSymbol + "/chart"
     const {
         isLoading: loaderCoinChart,
         data: coinChart,
-        error: statusCoinChart
+        error: coinChartError
     } = useQuery(
         ["coinsMarketChart", coinSymbol],
         () =>
@@ -42,16 +38,11 @@ function Dashbord({ coinSymbol }) {
             staleTime: 30_000,
         }
     )
-    // do the API call for the coin market using ---- /api/coins/coinName/marketdata and set the refresh param to TRUE
-    // const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-    //     process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata",
-    //     true
-    // )
     const marketdataPath = "/" + coinSymbol + "/marketdata"
     const {
         isLoading: loaderCoinMarket,
         data: coinMarket,
-        error: statusCoinMarket
+        error: coinMarketError
     } = useQuery(
         ["coinsMarketData", coinSymbol],
         () =>
@@ -70,9 +61,9 @@ function Dashbord({ coinSymbol }) {
         > 
             <div className="md:col-span-2 col-span-1">
                 {!loaderCoinMarket && !loaderCoinInfo ? (
-                    statusCoinMarket ? (
+                    coinMarketError ? (
                         <ErrorRequestMessage
-                            message={statusCoinMarket.message}
+                            message={coinMarketError.message}
                         />
                     ) : (
                         <CoinMarketData
@@ -85,9 +76,9 @@ function Dashbord({ coinSymbol }) {
                 )}
 
                 {!loaderCoinChart ? (
-                    statusCoinChart ? (
+                    coinChartError ? (
                         <ErrorRequestMessage
-                            message={statusCoinChart.message}
+                            message={coinChartError.message}
                             margin
                         />
                     ) : (
@@ -99,8 +90,8 @@ function Dashbord({ coinSymbol }) {
             </div>
             <div>
                 {!loaderCoinInfo ? (
-                    statusCoinInfo ? (
-                        <ErrorRequestMessage message={statusCoinInfo.message} />
+                    coinInfoError ? (
+                        <ErrorRequestMessage message={coinInfoError.message} />
                     ) : (
                         <CoinInfo data={coinInfo.data[0]} />
                     )
@@ -108,9 +99,9 @@ function Dashbord({ coinSymbol }) {
                     <Loader height={80} width={80} />
                 )}
                 {!loaderCoinMarket ? (
-                    statusCoinMarket ? (
+                    coinMarketError ? (
                         <ErrorRequestMessage
-                            message={statusCoinMarket.message}
+                            message={coinMarketError.message}
                             margin
                         />
                     ) : (
