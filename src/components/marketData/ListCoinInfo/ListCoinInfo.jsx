@@ -2,6 +2,7 @@ import ListCoinInfoRow from "../ListCoinInfoRow/ListCoinInfoRow"
 import { formatAmount } from "../../../helperFunctions/helpers"
 
 function ListCoinInfo({ data }) {
+    const extractedData = data.data[0]
     return (
         <div id="list-coin-info" className="pt-2">
             <div className="border dark:border-gray-600 h-80 mt-2 mb-4  w-full p-4 bg-white dark:bg-gray-800 relative overflow-hidden">
@@ -12,21 +13,27 @@ function ListCoinInfo({ data }) {
                     <ListCoinInfoRow
                         name="Volume / Market Cap"
                         display={(
-                            data.CurrentQuote.daily_volume /
-                            data.CurrentQuote.market_cap
+                            extractedData.CurrentQuote.daily_volume /
+                            extractedData.CurrentQuote.market_cap
                         ).toPrecision(3)}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Hour)"}
-                        display={formatAmount(data.CurrentQuote.deltas[0].nominal)}
+                        display={formatAmount(
+                            extractedData.CurrentQuote.deltas[0].nominal
+                        )}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Day)"}
-                        display={formatAmount(data.CurrentQuote.deltas[1].nominal)}
+                        display={formatAmount(
+                            extractedData.CurrentQuote.deltas[1].nominal
+                        )}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Week)"}
-                        display={formatAmount(data.CurrentQuote.deltas[2].nominal)}
+                        display={formatAmount(
+                            extractedData.CurrentQuote.deltas[2].nominal
+                        )}
                     />
                     <ListCoinInfoRow name="Market Cap Rank*" display={1} />
                     <ListCoinInfoRow

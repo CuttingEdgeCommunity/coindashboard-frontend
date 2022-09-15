@@ -29,8 +29,8 @@ function TableCoins({ setCoinSymbol }) {
                     ? undefined
                     : nextPage
             },
-            staleTime: 5_000,
-            refetchInterval: 5_000
+            staleTime: 30_000,
+            refetchInterval: 30_000
         }
     )
 
