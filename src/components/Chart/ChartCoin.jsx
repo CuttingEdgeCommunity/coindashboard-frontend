@@ -1,7 +1,7 @@
 import React from "react"
 import { Line } from "react-chartjs-2"
 import { Chart, registerables } from "chart.js"
-import { getChartData } from "../../helpers/helpers"
+import { getChartData } from "../../helperFunctions/helpers"
 Chart.register(...registerables)
 const OPTIONS = {
     scales: {
@@ -20,12 +20,13 @@ const OPTIONS = {
 }
 
 function ChartCoin({ data }) {
+    const extractedData = data.data
     const chartData = {
-        labels: getChartData(data, "x"),
+        labels: getChartData(extractedData, "x"),
         datasets: [
             {
                 label: "Prices",
-                data: getChartData(data, "y"),
+                data: getChartData(extractedData, "y"),
                 fill: "origin",
                 backgroundColor: "#09C1EC80",
                 borderColor: "#09C1EC",

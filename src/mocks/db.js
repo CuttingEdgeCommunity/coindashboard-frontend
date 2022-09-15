@@ -278,110 +278,120 @@ export const db = {
         }
     ],
 
-    api_coins_bitcoin: {
-        name: "Bitcoin",
-        symbol: "BTC",
-        image_url: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
-        genesis_date: 1233681305000,
-        is_token: false,
-        contract_address: "address...",
-        links: [
-            {
-                title: "Official Website",
-                url: "https://bitcoin.org/en/"
-            },
-            {
-                title: "Github project",
-                url: "https://github.com/bitcoin/bitcoin.git"
-            }
-        ],
-        description:
-            "Bitcoin, often described as a cryptocurrency, a virtual currency or a digital currency - is a type of money that is completely virtual. It's like an online version of cash. You can use it to buy products and services, but not many shops accept Bitcoin yet and some countries have banned it altogether."
-    },
-    api_coins_Ethereum: {
-        name: "Ethereum",
-        symbol: "eth",
-        image_url:
-            "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
-        genesis_date: 1438207200000,
-        is_token: false,
-        contract_address: "address...",
-        links: [
-            {
-                title: "Official Website",
-                url: "https://ethereum.org/en/"
-            },
-            {
-                title: "Github project",
-                url: "https://github.com/ethereum"
-            }
-        ],
-        description:
-            "Ethereum is a decentralized, open-source blockchain with smart contract functionality. Ether is the native cryptocurrency of the platform. Among cryptocurrencies, Ether is second only to Bitcoin in market capitalization."
-    },
-    api_coins_Tether: {
-        name: "Tether",
-        symbol: "usdt",
-        image_url:
-            "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
-        genesis_date: 1412613555000,
-        is_token: false,
-        contract_address: "address...",
-        links: [
-            {
-                title: "Official Website",
-                url: "https://tether.to/"
-            },
-            {
-                title: "Github project",
-                url: "https://github.com/ethereum"
-            }
-        ],
-        description:
-            "Tether, is an asset-backed cryptocurrency stablecoin. It was launched by the company Tether Limited Inc. in 2014. Tether Limited is owned by the Hong Kong-based company iFinex Inc."
-    },
-    api_coins_Lido_Staked_Ether: {
-        name: "Lido Staked Ether",
-        symbol: "steth",
-        image_url:
-            "https://assets.coingecko.com/coins/images/13442/thumb/steth_logo.png?1608607546",
-        genesis_date: 1535666400000,
-        is_token: false,
-        contract_address: "address...",
-        links: [
-            {
-                title: "Official Website",
-                url: "https://lido.fi/"
-            },
-            {
-                title: "Github project",
-                url: "https://github.com/lidofinance"
-            }
-        ],
-        description:
-            "Lido is a staking pool that allows people to stake any amount of their ETH through smart contracts –automated self-executing financial contracts. Users earn yields in stETH, which currently cannot be redeemed 1:1 for Ethereum, though after the merge it will be."
-    },
-    api_coins_USD_Coin: {
-        name: "USD Coin",
-        symbol: "usdc",
-        image_url:
-            "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
-        genesis_date: 1412613555000,
-        is_token: false,
-        contract_address: "address...",
-        links: [
-            {
-                title: "Official Website",
-                url: "https://www.circle.com/en/usdc"
-            },
-            {
-                title: "Github project",
-                url: "https://github.com/centrehq"
-            }
-        ],
-        description:
-            "USD Coin is a digital stablecoin that was pegged to the United States dollar. USD Coin is managed by a consortium called Centre, which was founded by Circle and includes members from the cryptocurrency exchange Coinbase and Bitcoin mining company Bitmain, an investor in Circle."
-    },
+    api_coins_bitcoin: [
+        {
+            name: "Bitcoin",
+            symbol: "BTC",
+            image_url: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+            genesis_date: 1233681305000,
+            is_token: false,
+            contract_address: "address...",
+            links: [
+                {
+                    title: "Official Website",
+                    url: "https://bitcoin.org/en/"
+                },
+                {
+                    title: "Github project",
+                    url: "https://github.com/bitcoin/bitcoin.git"
+                }
+            ],
+            description:
+                "Bitcoin, often described as a cryptocurrency, a virtual currency or a digital currency - is a type of money that is completely virtual. It's like an online version of cash. You can use it to buy products and services, but not many shops accept Bitcoin yet and some countries have banned it altogether."
+        }
+    ],
+    api_coins_Ethereum: [
+        {
+            name: "Ethereum",
+            symbol: "eth",
+            image_url:
+                "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+            genesis_date: 1438207200000,
+            is_token: false,
+            contract_address: "address...",
+            links: [
+                {
+                    title: "Official Website",
+                    url: "https://ethereum.org/en/"
+                },
+                {
+                    title: "Github project",
+                    url: "https://github.com/ethereum"
+                }
+            ],
+            description:
+                "Ethereum is a decentralized, open-source blockchain with smart contract functionality. Ether is the native cryptocurrency of the platform. Among cryptocurrencies, Ether is second only to Bitcoin in market capitalization."
+        }
+    ],
+    api_coins_Tether: [
+        {
+            name: "Tether",
+            symbol: "usdt",
+            image_url:
+                "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
+            genesis_date: 1412613555000,
+            is_token: false,
+            contract_address: "address...",
+            links: [
+                {
+                    title: "Official Website",
+                    url: "https://tether.to/"
+                },
+                {
+                    title: "Github project",
+                    url: "https://github.com/ethereum"
+                }
+            ],
+            description:
+                "Tether, is an asset-backed cryptocurrency stablecoin. It was launched by the company Tether Limited Inc. in 2014. Tether Limited is owned by the Hong Kong-based company iFinex Inc."
+        }
+    ],
+    api_coins_Lido_Staked_Ether: [
+        {
+            name: "Lido Staked Ether",
+            symbol: "steth",
+            image_url:
+                "https://assets.coingecko.com/coins/images/13442/thumb/steth_logo.png?1608607546",
+            genesis_date: 1535666400000,
+            is_token: false,
+            contract_address: "address...",
+            links: [
+                {
+                    title: "Official Website",
+                    url: "https://lido.fi/"
+                },
+                {
+                    title: "Github project",
+                    url: "https://github.com/lidofinance"
+                }
+            ],
+            description:
+                "Lido is a staking pool that allows people to stake any amount of their ETH through smart contracts –automated self-executing financial contracts. Users earn yields in stETH, which currently cannot be redeemed 1:1 for Ethereum, though after the merge it will be."
+        }
+    ],
+    api_coins_USD_Coin: [
+        {
+            name: "USD Coin",
+            symbol: "usdc",
+            image_url:
+                "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
+            genesis_date: 1412613555000,
+            is_token: false,
+            contract_address: "address...",
+            links: [
+                {
+                    title: "Official Website",
+                    url: "https://www.circle.com/en/usdc"
+                },
+                {
+                    title: "Github project",
+                    url: "https://github.com/centrehq"
+                }
+            ],
+            description:
+                "USD Coin is a digital stablecoin that was pegged to the United States dollar. USD Coin is managed by a consortium called Centre, which was founded by Circle and includes members from the cryptocurrency exchange Coinbase and Bitcoin mining company Bitmain, an investor in Circle."
+        }
+    ],
 
     api_coins: [
         {

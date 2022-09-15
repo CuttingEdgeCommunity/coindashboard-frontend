@@ -17,3 +17,14 @@ export function getChartData(data, i) {
         i === "x" ? formatTimestamp(element.timestamp) : element.price
     )
 }
+
+// Getting more coins while the size of the screen is getting heigher (height) which allows to trigger scroll bar
+const MIN_CONTAINER_SIZE_FOR_10COINS = 654
+export const numberCoinsGettingAtOnce = () => {
+    return (
+        Math.ceil(
+            document.getElementById("scrollable-div").offsetHeight /
+                MIN_CONTAINER_SIZE_FOR_10COINS
+        ) * 10
+    )
+}

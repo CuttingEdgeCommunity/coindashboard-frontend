@@ -1,83 +1,74 @@
 import React from "react"
-import CoinInfo from "../CoinInfo/CoinInfo"
+import CoinInfo from "../coinStaticInfo/CoinInfo/CoinInfo"
 import ChartCoin from "../Chart/ChartCoin"
-import CoinMarketData from "../CoinMarketData/CoinMarketData"
-import ListCoinInfo from "../ListCoinInfo/ListCoinInfo"
-import useFetchDataApi from "../../customizedhooks/useFetchDataApi"
-import Loader from "../Loader/Loader"
-import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
+import CoinMarketData from "../marketData/CoinMarketData/CoinMarketData"
+import ListCoinInfo from "../marketData/ListCoinInfo/ListCoinInfo"
+import { fetchData } from "../../helperFunctions/fetchingData"
+import { useQuery } from "react-query"
+import RenderComponent from "./RenderComponent"
 
 function Dashbord({ coinSymbol }) {
-    // do the API call using ---- /api/coins/coinName
-    const [statusCoinInfo, loaderCoinInfo, coinInfo] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol
-    )
-    // do the API call for the Chart component using ---- /api/coins/coinName/chart
-    const [statusCoinChart, loaderCoinChart, coinChart] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/chart"
-    )
-    // do the API call for the coin market using ---- /api/coins/coinName/marketdata
-    const [statusCoinMarket, loaderCoinMarket, coinMarket] = useFetchDataApi(
-        process.env.REACT_APP_COINS_PATH + "/" + coinSymbol + "/marketdata"
-    )
-
+    // do the API call using ---- /api/coins/coinName and set the refresh param to TRUE
+    const coinPath = "/" + coinSymbol
+    const {
+        isLoading: loaderCoinInfo,
+        data: coinInfo,
+        error: coinInfoError
+    } = useQuery(["coinsInfo", coinSymbol], () => fetchData(coinPath))
+    // do the API call for the Chart component using ---- /api/coins/coinSymbol/chart
+    const chartPath = "/" + coinSymbol + "/chart"
+    const {
+        isLoading: loaderCoinChart,
+        data: coinChart,
+        error: coinChartError
+    } = useQuery(["coinsMarketChart", coinSymbol], () => fetchData(chartPath), {
+        staleTime: 30_000
+    })
+    // do the API call for the Market data component using ---- /api/coins/coinSymbol/marketdata
+    const marketdataPath = "/" + coinSymbol + "/marketdata"
+    const {
+        isLoading: loaderCoinMarket,
+        data: coinMarket,
+        error: coinMarketError
+    } = useQuery(["coinsMarketData", coinSymbol], () => fetchData(marketdataPath), {
+        staleTime: 30_000,
+        refetchInterval: 30_000
+    })
     return (
         <main
             id="dashboard"
             className="pt-4 px-2 grid md:grid-cols-3 gap-2 grid-cols-1 h-full dark:bg-gray-800 dark:text-white"
         >
             <div className="md:col-span-2 col-span-1">
-                {!loaderCoinMarket && !loaderCoinInfo ? (
-                    statusCoinMarket !== 200 ? (
-                        <ErrorRequestMessage
-                            message={statusCoinMarket.message}
-                        />
-                    ) : (
-                        <CoinMarketData
-                            data={coinMarket[0]}
-                            urlImage={coinInfo ? coinInfo.image_url : null}
-                        />
-                    )
-                ) : (
-                    <Loader height={80} width={80} />
-                )}
+                <RenderComponent
+                    loader={loaderCoinMarket || loaderCoinInfo}
+                    error={coinMarketError}
+                >
+                    <CoinMarketData data={coinMarket} />
+                </RenderComponent>
 
-                {!loaderCoinChart ? (
-                    statusCoinChart !== 200 ? (
-                        <ErrorRequestMessage
-                            message={statusCoinChart.message}
-                            margin
-                        />
-                    ) : (
-                        <ChartCoin data={coinChart} />
-                    )
-                ) : (
-                    <Loader chart={true} />
-                )}
+                <RenderComponent
+                    loader={loaderCoinChart}
+                    error={coinChartError}
+                    margin
+                    chart
+                >
+                    <ChartCoin data={coinChart} />
+                </RenderComponent>
             </div>
             <div>
-                {!loaderCoinInfo ? (
-                    statusCoinInfo !== 200 ? (
-                        <ErrorRequestMessage message={statusCoinInfo.message} />
-                    ) : (
-                        <CoinInfo data={coinInfo} />
-                    )
-                ) : (
-                    <Loader height={80} width={80} />
-                )}
+                <RenderComponent loader={loaderCoinInfo} error={coinInfoError}>
+                    <CoinInfo data={coinInfo} />
+                </RenderComponent>
 
-                {!loaderCoinMarket ? (
-                    statusCoinMarket !== 200 ? (
-                        <ErrorRequestMessage
-                            message={statusCoinMarket.message}
-                            margin
-                        />
-                    ) : (
-                        <ListCoinInfo data={coinMarket[0]} />
-                    )
-                ) : (
-                    <Loader height={80} width={80} chart />
-                )}
+                <RenderComponent
+                    loader={loaderCoinMarket}
+                    error={coinMarketError}
+                    margin
+                    chart
+                >
+                    <ListCoinInfo data={coinMarket} />
+                </RenderComponent>
             </div>
         </main>
     )

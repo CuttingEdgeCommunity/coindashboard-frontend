@@ -1,6 +1,6 @@
 import React from "react"
-import { formatAmount } from "../../helpers/helpers"
-import CoinDetails from "../CoinDetails/CoinDetails"
+import { formatAmount } from "../../../helperFunctions/helpers"
+import CoinDetails from "../../coinStaticInfo/CoinDetails/CoinDetails"
 
 function CoinMarketDetails({ data }) {
     return (
@@ -9,9 +9,7 @@ function CoinMarketDetails({ data }) {
             className="text-gray-400 text-xs border dark:border-gray-600 p-2 flex flex-col justify-center items-center"
         >
             <div className="flex flex-row justify-between w-full">
-                <CoinDetails field="Price">
-                    {formatAmount(data.price)}
-                </CoinDetails>
+                <CoinDetails field="Price">{formatAmount(data.price)}</CoinDetails>
                 <CoinDetails field="Market Cap">
                     ${new Intl.NumberFormat().format(data.market_cap)}
                 </CoinDetails>
