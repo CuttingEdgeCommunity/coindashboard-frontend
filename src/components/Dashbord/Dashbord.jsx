@@ -30,14 +30,10 @@ function Dashbord({ coinSymbol }) {
         isLoading: loaderCoinMarket,
         data: coinMarket,
         error: coinMarketError
-    } = useQuery(
-        ["coinsMarketData", coinSymbol],
-        () => fetchData(marketdataPath),
-        {
-            staleTime: 5_000,
-            refetchInterval: 5_000
-        }
-    )
+    } = useQuery(["coinsMarketData", coinSymbol], () => fetchData(marketdataPath), {
+        staleTime: 5_000,
+        refetchInterval: 5_000
+    })
     return (
         <main
             id="dashboard"
@@ -46,9 +42,7 @@ function Dashbord({ coinSymbol }) {
             <div className="md:col-span-2 col-span-1">
                 {!loaderCoinMarket && !loaderCoinInfo ? (
                     coinMarketError ? (
-                        <ErrorRequestMessage
-                            message={coinMarketError.message}
-                        />
+                        <ErrorRequestMessage message={coinMarketError.message} />
                     ) : (
                         <CoinMarketData
                             data={coinMarket.data[0]}

@@ -23,7 +23,8 @@ const MIN_CONTAINER_SIZE_FOR_10COINS = 654
 export const numberCoinsGettingAtOnce = () => {
     return (
         Math.ceil(
-            document.getElementById("scrollable-div").offsetHeight / MIN_CONTAINER_SIZE_FOR_10COINS
+            document.getElementById("scrollable-div").offsetHeight /
+                MIN_CONTAINER_SIZE_FOR_10COINS
         ) * 10
     )
 }

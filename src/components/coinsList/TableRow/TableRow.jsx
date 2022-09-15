@@ -85,8 +85,7 @@ function TableRow({
                         </dd>
                     ) : (
                         <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {hour &&
-                                Number.parseFloat(hour.pct).toFixed(5) + " %"}
+                            {hour && Number.parseFloat(hour.pct).toFixed(5) + " %"}
                         </dd>
                     )}
                 </div>
@@ -100,8 +99,7 @@ function TableRow({
                         </dd>
                     ) : (
                         <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {day &&
-                                Number.parseFloat(day.pct).toFixed(5) + " %"}
+                            {day && Number.parseFloat(day.pct).toFixed(5) + " %"}
                         </dd>
                     )}
                 </div>
@@ -115,8 +113,7 @@ function TableRow({
                         </dd>
                     ) : (
                         <dd className="text-red-500 font-semibold text-xs md:text-md">
-                            {week &&
-                                Number.parseFloat(week.pct).toFixed(5) + " %"}
+                            {week && Number.parseFloat(week.pct).toFixed(5) + " %"}
                         </dd>
                     )}
                 </div>

@@ -6,9 +6,7 @@ function ListCoinInfo({ data }) {
         <div id="list-coin-info" className="pt-2">
             <div className="border dark:border-gray-600 h-80 mt-2 mb-4  w-full p-4 bg-white dark:bg-gray-800 relative overflow-hidden">
                 <div className="w-full flex items-center justify-between mb-2 border-b pb-1 dark:border-gray-600">
-                    <p className="text-gray-800 dark:text-white text-xl">
-                        Details
-                    </p>
+                    <p className="text-gray-800 dark:text-white text-xl">Details</p>
                 </div>
                 <div className="overflow-y-scroll h-72 pb-4 px-1">
                     <ListCoinInfoRow
@@ -20,21 +18,15 @@ function ListCoinInfo({ data }) {
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Hour)"}
-                        display={formatAmount(
-                            data.CurrentQuote.deltas[0].nominal
-                        )}
+                        display={formatAmount(data.CurrentQuote.deltas[0].nominal)}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Day)"}
-                        display={formatAmount(
-                            data.CurrentQuote.deltas[1].nominal
-                        )}
+                        display={formatAmount(data.CurrentQuote.deltas[1].nominal)}
                     />
                     <ListCoinInfoRow
                         name={"Nominal change (Week)"}
-                        display={formatAmount(
-                            data.CurrentQuote.deltas[2].nominal
-                        )}
+                        display={formatAmount(data.CurrentQuote.deltas[2].nominal)}
                     />
                     <ListCoinInfoRow name="Market Cap Rank*" display={1} />
                     <ListCoinInfoRow

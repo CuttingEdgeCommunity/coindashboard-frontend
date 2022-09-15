@@ -5,55 +5,31 @@ export const handlers = [
     rest.get("http://localhost:3001/api/coins", (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(db.api_coins))
     }),
-    rest.get(
-        "http://localhost:3001/api/coins/btc/marketdata",
-        (req, res, ctx) => {
-            return res(
-                ctx.status(200),
-                ctx.json(db.api_coins_Bitcoin_marketdata)
-            )
-        }
-    ),
-    rest.get(
-        "http://localhost:3001/api/coins/eth/marketdata",
-        (req, res, ctx) => {
-            return res(
-                ctx.status(200),
-                ctx.json(db.api_coins_Ethereum_marketdata)
-            )
-        }
-    ),
-    rest.get(
-        "http://localhost:3001/api/coins/usdt/marketdata",
-        (req, res, ctx) => {
-            return res(
-                ctx.status(200),
-                ctx.json(db.api_coins_Tether_marketdata)
-            )
-        }
-    ),
-    rest.get(
-        "http://localhost:3001/api/coins/usdc/marketdata",
-        (req, res, ctx) => {
-            return res(
-                ctx.status(404),
-                ctx.json({
-                    message: "Not found"
-                })
-            )
-        }
-    ),
-    rest.get(
-        "http://localhost:3001/api/coins/steth/marketdata",
-        (req, res, ctx) => {
-            return res(
-                ctx.status(404),
-                ctx.json({
-                    message: "Not found"
-                })
-            )
-        }
-    ),
+    rest.get("http://localhost:3001/api/coins/btc/marketdata", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(db.api_coins_Bitcoin_marketdata))
+    }),
+    rest.get("http://localhost:3001/api/coins/eth/marketdata", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(db.api_coins_Ethereum_marketdata))
+    }),
+    rest.get("http://localhost:3001/api/coins/usdt/marketdata", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(db.api_coins_Tether_marketdata))
+    }),
+    rest.get("http://localhost:3001/api/coins/usdc/marketdata", (req, res, ctx) => {
+        return res(
+            ctx.status(404),
+            ctx.json({
+                message: "Not found"
+            })
+        )
+    }),
+    rest.get("http://localhost:3001/api/coins/steth/marketdata", (req, res, ctx) => {
+        return res(
+            ctx.status(404),
+            ctx.json({
+                message: "Not found"
+            })
+        )
+    }),
     rest.get("http://localhost:3001/api/coins/btc", (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(db.api_coins_bitcoin))
     }),
