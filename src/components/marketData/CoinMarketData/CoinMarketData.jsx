@@ -1,11 +1,13 @@
 import React from "react"
-import CoinImage from "../CoinImage/CoinImage"
+import CoinImage from "../../coinStaticInfo/CoinImage/CoinImage"
 import CoinMarketDetails from "../CoinMarketDetails/CoinMarketDetails"
 import CoinMarketHeader from "../CoinMarketHeader/CoinMarketHeader"
 
-import altImage from "./../../img/star.png"
+import altImage from "./../../../img/star.png"
 
-function CoinMarketData({ data, urlImage }) {
+function CoinMarketData({ data }) {
+    const extractedData = data.data[0]
+    const urlImage = extractedData.url_image
     return (
         <div
             data-cy="coin-market-data"
@@ -15,14 +17,14 @@ function CoinMarketData({ data, urlImage }) {
                 <CoinImage urlImage={urlImage || altImage} alt="Alt" />
                 <div className=" flex flex-col w-full">
                     <CoinMarketHeader
-                        name={data.name}
-                        symbol={data.symbol}
-                        price={data.CurrentQuote.price}
+                        name={extractedData.name}
+                        symbol={extractedData.symbol}
+                        price={extractedData.CurrentQuote.price}
                         lastUpdate={new Date(
-                            data.CurrentQuote.last_update_timestamp
+                            extractedData.CurrentQuote.last_update_timestamp
                         ).toLocaleString()}
                     />
-                    <CoinMarketDetails data={data.CurrentQuote} />
+                    <CoinMarketDetails data={extractedData.CurrentQuote} />
                 </div>
             </div>
         </div>

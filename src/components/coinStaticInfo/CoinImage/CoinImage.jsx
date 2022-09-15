@@ -18,10 +18,7 @@ function CoinImage({
                     alt={alt}
                     src={urlImage}
                     className={
-                        "mx-auto object-cover rounded-full " +
-                        height +
-                        " " +
-                        width
+                        "mx-auto object-cover rounded-full " + height + " " + width
                     }
                 />
             </span>
