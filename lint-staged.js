@@ -4,5 +4,5 @@ export default {
     "react-scripts test --bail --watchAll=false --findRelatedTests --passWithNoTests",
     () => "tsc-files --noEmit",
   ],
-  "*.{js,jsx,ts,tsx,json,css,js}": ["prettier --write"],
+  "*.{js,jsx,ts,tsx,json,css,js}": ["eslint","prettier --write"],
 };
