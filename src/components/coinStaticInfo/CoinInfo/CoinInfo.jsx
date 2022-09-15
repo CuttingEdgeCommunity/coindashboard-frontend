@@ -1,7 +1,7 @@
 import React from "react"
 import CoinImage from "../CoinImage/CoinImage"
 
-import AltImage from "./../../img/star.png"
+import AltImage from "./../../../img/star.png"
 
 function CoinInfo({ data }) {
     return (
@@ -44,5 +44,3 @@ function CoinInfo({ data }) {
 }
 
 export default CoinInfo
-
-

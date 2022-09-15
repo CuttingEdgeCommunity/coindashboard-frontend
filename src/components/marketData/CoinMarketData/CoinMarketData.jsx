@@ -1,9 +1,9 @@
 import React from "react"
-import CoinImage from "../CoinImage/CoinImage"
+import CoinImage from "../../coinStaticInfo/CoinImage/CoinImage"
 import CoinMarketDetails from "../CoinMarketDetails/CoinMarketDetails"
 import CoinMarketHeader from "../CoinMarketHeader/CoinMarketHeader"
 
-import altImage from "./../../img/star.png"
+import altImage from "./../../../img/star.png"
 
 function CoinMarketData({ data, urlImage }) {
     return (

@@ -1,11 +1,11 @@
 import React from "react"
-import CoinInfo from "../CoinInfo/CoinInfo"
+import CoinInfo from "../coinStaticInfo/CoinInfo/CoinInfo"
 import ChartCoin from "../Chart/ChartCoin"
-import CoinMarketData from "../CoinMarketData/CoinMarketData"
-import ListCoinInfo from "../ListCoinInfo/ListCoinInfo"
-import Loader from "../Loader/Loader"
+import CoinMarketData from "../marketData/CoinMarketData/CoinMarketData"
+import ListCoinInfo from "../marketData/ListCoinInfo/ListCoinInfo"
+import Loader from "../loaders/Loader/Loader"
 import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
-import { fetchData } from "../../customizedhooks/fetchingData"
+import { fetchData } from "../../helperFunctions/fetchingData"
 import { useQuery } from "react-query"
 
 function Dashbord({ coinSymbol }) {
@@ -15,29 +15,16 @@ function Dashbord({ coinSymbol }) {
         isLoading: loaderCoinInfo,
         data: coinInfo,
         error: coinInfoError
-    } = useQuery(
-        ["coinsInfo", coinSymbol],
-        () =>
-        fetchData(
-            coinPath
-            )
-    )
+    } = useQuery(["coinsInfo", coinSymbol], () => fetchData(coinPath))
     // do the API call for the Chart component using ---- /api/coins/coinName/chart and set the refresh param to TRUE
     const chartPath = "/" + coinSymbol + "/chart"
     const {
         isLoading: loaderCoinChart,
         data: coinChart,
         error: coinChartError
-    } = useQuery(
-        ["coinsMarketChart", coinSymbol],
-        () =>
-        fetchData(
-            chartPath
-            ),
-        {
-            staleTime: 30_000,
-        }
-    )
+    } = useQuery(["coinsMarketChart", coinSymbol], () => fetchData(chartPath), {
+        staleTime: 30_000
+    })
     const marketdataPath = "/" + coinSymbol + "/marketdata"
     const {
         isLoading: loaderCoinMarket,
@@ -45,10 +32,7 @@ function Dashbord({ coinSymbol }) {
         error: coinMarketError
     } = useQuery(
         ["coinsMarketData", coinSymbol],
-        () =>
-        fetchData(
-            marketdataPath
-            ),
+        () => fetchData(marketdataPath),
         {
             staleTime: 5_000,
             refetchInterval: 5_000
@@ -58,7 +42,7 @@ function Dashbord({ coinSymbol }) {
         <main
             id="dashboard"
             className="pt-4 px-2 grid md:grid-cols-3 gap-2 grid-cols-1 h-full dark:bg-gray-800 dark:text-white"
-        > 
+        >
             <div className="md:col-span-2 col-span-1">
                 {!loaderCoinMarket && !loaderCoinInfo ? (
                     coinMarketError ? (

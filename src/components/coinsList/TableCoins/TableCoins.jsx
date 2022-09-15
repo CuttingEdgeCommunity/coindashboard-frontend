@@ -2,20 +2,13 @@ import { useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useInfiniteQuery } from "react-query"
 import TableRow from "../TableRow/TableRow"
-import LoaderCoinItems from "../LoaderCoinItems/LoaderCoinItems"
-import ErrorRequestMessage from "../ErrorRequestMessage/ErrorRequestMessage"
-import Loader from "../Loader/Loader"
-import altImage from "./../../img/star.png"
+import LoaderCoinItems from "../../loaders/LoaderCoinItems/LoaderCoinItems"
+import ErrorRequestMessage from "../../ErrorRequestMessage/ErrorRequestMessage"
+import Loader from "../../loaders/Loader/Loader"
+import altImage from "./../../../img/star.png"
 
-import { getListCoins } from "../../customizedhooks/fetchingData"
-
-const take = () => {
-    return (
-        Math.ceil(
-            document.getElementById("scrollable-div").offsetHeight / 654
-        ) * 10
-    )
-}
+import { getListCoins } from "../../../helperFunctions/fetchingData"
+import { numberCoinsGettingAtOnce } from "../../../helperFunctions/helpers"
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
@@ -27,15 +20,12 @@ function TableCoins({ setCoinSymbol }) {
         hasNextPage,
         fetchNextPage
     } = useInfiniteQuery(
-
         "listCoins",
-        ({ pageParam = 0 }) => getListCoins(pageParam, take()),
+        ({ pageParam = 0 }) => getListCoins(pageParam, numberCoinsGettingAtOnce()),
         {
             getNextPageParam: (undifined, allPages) => {
                 const nextPage = allPages.length
-                return allPages.length * take() >= 241
-                    ? undefined
-                    : nextPage
+                return allPages.length * numberCoinsGettingAtOnce() >= 241 ? undefined : nextPage
             },
             staleTime: 5_000,
             refetchInterval: 5_000
@@ -80,13 +70,13 @@ function TableCoins({ setCoinSymbol }) {
                             />
                         ) : (
                             <InfiniteScroll
-                                dataLength={items.pages.length * take()} //This is important field to render the next data
+                                dataLength={items.pages.length * numberCoinsGettingAtOnce()} //This is important field to render the next data
                                 next={fetchNext}
                                 hasMore={hasNextPage}
                                 scrollableTarget={"scrollable-div"}
                                 loader={<LoaderCoinItems />}
                                 className="infinite-scroll"
-                            > 
+                            >
                                 {items?.pages?.map((page, pageIndex) =>
                                     page.data?.map((coin, index) => {
                                         if (
@@ -99,8 +89,10 @@ function TableCoins({ setCoinSymbol }) {
                                             return null
                                         return (
                                             <TableRow
-                                                key={(index + 1) + (pageIndex)*10}
-                                                rank={(index + 1) + (pageIndex)*10}
+                                                key={index + 1 + pageIndex * 10}
+                                                rank={
+                                                    index + 1 + pageIndex * 10
+                                                }
                                                 name={coin.name}
                                                 symbol={coin.symbol}
                                                 price={coin.CurrentQuote.price}

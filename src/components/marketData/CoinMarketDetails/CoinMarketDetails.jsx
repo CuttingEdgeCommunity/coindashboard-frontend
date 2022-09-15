@@ -1,6 +1,6 @@
 import React from "react"
-import { formatAmount } from "../../helpers/helpers"
-import CoinDetails from "../CoinDetails/CoinDetails"
+import { formatAmount } from "../../../helperFunctions/helpers"
+import CoinDetails from "../../coinStaticInfo/CoinDetails/CoinDetails"
 
 function CoinMarketDetails({ data }) {
     return (

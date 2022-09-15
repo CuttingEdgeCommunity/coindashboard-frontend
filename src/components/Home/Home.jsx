@@ -1,5 +1,5 @@
 import React from "react"
-import TableCoins from "../TableCoins/TableCoins"
+import TableCoins from "../coinsList/TableCoins/TableCoins"
 
 function Home({ setCoinSymbol }) {
     return (

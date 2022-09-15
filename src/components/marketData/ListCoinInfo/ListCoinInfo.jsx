@@ -1,5 +1,5 @@
 import ListCoinInfoRow from "../ListCoinInfoRow/ListCoinInfoRow"
-import { formatAmount } from "../../helpers/helpers"
+import { formatAmount } from "../../../helperFunctions/helpers"
 
 function ListCoinInfo({ data }) {
     return (
