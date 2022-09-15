@@ -34,6 +34,7 @@ function App() {
             </header>
             <main>
                 <Home setCoinSymbol={setCoinSymbol} />
+
                 {coinSymbol.length !== 0 && <Dashbord coinSymbol={coinSymbol} />}
             </main>
         </div>
