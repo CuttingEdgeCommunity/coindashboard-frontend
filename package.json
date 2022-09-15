@@ -28,9 +28,7 @@
     "test": "cross-env BROWSER=none concurrently \"npm run start\" \"npx cypress run\"",
     "test:browser": "cross-env BROWSER=none concurrently \"npm run start\" \"npx cypress open\"",
     "eject": "react-scripts eject",
-    "lint": "eslint src --color",
-    "prettier": "prettier src --check",
-    "husky-install": "husky install"
+    "prepare": "husky install ./.husky"
   },
   "eslintConfig": {
     "extends": [

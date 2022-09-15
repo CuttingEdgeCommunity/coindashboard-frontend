@@ -14,16 +14,10 @@ if (process.env.NODE_ENV === "development") {
 const root = ReactDOM.createRoot(document.getElementById("root"))
 const queryClient = new QueryClient()
 
-                   root.render(
-    
-    
+root.render(
     <React.StrictMode>
-        
-        
         <QueryClientProvider client={queryClient}>
-                <App />
-           
-           
+            <App />
             <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
     </React.StrictMode>
