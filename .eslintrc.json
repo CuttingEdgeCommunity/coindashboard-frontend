@@ -6,9 +6,19 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+         "plugin:cypress/recommended"
     ],
     "overrides": [
+            {
+              "files": [
+                "**/*.cy.js",
+                "**/*.cy.jsx"
+              ],
+              "env": {
+                "jest": true
+              }
+            }
     ],
     "parserOptions": {
         "ecmaVersion": "latest",

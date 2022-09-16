@@ -69,5 +69,11 @@ export const handlers = [
                 message: "Not found"
             })
         )
+    }),
+    rest.get("http://localhost:3001/api/coins/search/ether", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(db.api_coins_search_ether))
+    }),
+    rest.get("http://localhost:3001/api/coins/search/zig", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(db.api_coins_search_zig))
     })
 ]
