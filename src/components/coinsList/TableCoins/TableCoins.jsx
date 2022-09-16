@@ -1,25 +1,23 @@
 import { useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
-import { useInfiniteQuery } from "react-query"
+import { useInfiniteQuery, useQuery } from "react-query"
 import TableRow from "../TableRow/TableRow"
 import LoaderCoinItems from "../../loaders/LoaderCoinItems/LoaderCoinItems"
 import ErrorRequestMessage from "../../ErrorRequestMessage/ErrorRequestMessage"
 import Loader from "../../loaders/Loader/Loader"
 import altImage from "./../../../img/star.png"
 
-import { getListCoins } from "../../../helperFunctions/fetchingData"
+import { fetchData, getListCoins } from "../../../helperFunctions/fetchingData"
 import { numberCoinsGettingAtOnce } from "../../../helperFunctions/helpers"
+import { useEffect } from "react"
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
+    const [items, setItems] = useState({})
+    const [loader, setLoader] = useState(true)
+    const [reqError, setReqError] = useState()
     const [input, setInput] = useState("")
-    const {
-        isLoading,
-        data: items,
-        error,
-        hasNextPage,
-        fetchNextPage
-    } = useInfiniteQuery(
+    const { isLoading, data, error, hasNextPage, fetchNextPage } = useInfiniteQuery(
         "listCoins",
         ({ pageParam = 0 }) => getListCoins(pageParam, numberCoinsGettingAtOnce()),
         {
@@ -33,13 +31,30 @@ function TableCoins({ setCoinSymbol }) {
             refetchInterval: 30_000
         }
     )
+    const marketdataPath = "/search/" + input.trim()
+    const {
+        isLoading: searchLoading,
+        data: searchResult,
+        error: searchError
+    } = useQuery(["search", marketdataPath], () => fetchData(marketdataPath))
+
+    useEffect(() => {
+        if (input.trim().length === 0) {
+            setReqError(error)
+            setLoader(isLoading)
+            setItems(data)
+        } else {
+            setReqError(searchError)
+            setLoader(searchLoading)
+            setItems(searchResult)
+        }
+    }, [input, searchResult, data])
 
     const fetchNext = async () => {
         return await fetchNextPage()
     }
     const handleChange = (e) => {
         setInput(e.target.value)
-        // make an API call with input state as a params
     }
 
     return (
@@ -59,10 +74,13 @@ function TableCoins({ setCoinSymbol }) {
                 </div>
                 <TableRow type="header" />
                 <div id="scrollable-div" className="overflow-y-scroll h-5/6 px-1">
-                    {!isLoading ? (
-                        error ? (
-                            <ErrorRequestMessage message={error.message} margin />
-                        ) : (
+                    {!loader ? (
+                        reqError ? (
+                            <ErrorRequestMessage
+                                message={reqError?.message || "Unknown error"}
+                                margin
+                            />
+                        ) : items.pages ? (
                             <InfiniteScroll
                                 dataLength={
                                     items.pages.length * numberCoinsGettingAtOnce()
@@ -75,12 +93,6 @@ function TableCoins({ setCoinSymbol }) {
                             >
                                 {items?.pages?.map((page, pageIndex) =>
                                     page.data?.map((coin, index) => {
-                                        if (
-                                            coin.name
-                                                .toUpperCase()
-                                                .indexOf(input.toUpperCase()) === -1
-                                        )
-                                            return null
                                         return (
                                             <TableRow
                                                 key={index + 1 + pageIndex * 10}
@@ -98,6 +110,31 @@ function TableCoins({ setCoinSymbol }) {
                                     })
                                 )}
                             </InfiniteScroll>
+                        ) : (
+                            <div>
+                                {items?.data?.length === 0 ? (
+                                    <ErrorRequestMessage
+                                        info
+                                        message={'No result for "' + input + '"'}
+                                        margin
+                                    />
+                                ) : (
+                                    items.data.map((coin, index) => (
+                                        <TableRow
+                                            key={index}
+                                            rank={index + 1}
+                                            name={coin.name}
+                                            symbol={coin.symbol}
+                                            price={coin.CurrentQuote.price}
+                                            urlImage={coin.image_url || altImage}
+                                            hour={coin.CurrentQuote.deltas[0]}
+                                            day={coin.CurrentQuote.deltas[1]}
+                                            week={coin.CurrentQuote.deltas[2]}
+                                            setCoinSymbol={setCoinSymbol}
+                                        />
+                                    ))
+                                )}
+                            </div>
                         )
                     ) : (
                         <div className="w-full h-5/6 flex justify-center items-center">

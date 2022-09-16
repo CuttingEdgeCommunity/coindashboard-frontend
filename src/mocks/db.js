@@ -392,6 +392,101 @@ export const db = {
                 "USD Coin is a digital stablecoin that was pegged to the United States dollar. USD Coin is managed by a consortium called Centre, which was founded by Circle and includes members from the cryptocurrency exchange Coinbase and Bitcoin mining company Bitmain, an investor in Circle."
         }
     ],
+    api_coins_search_zig: [],
+    api_coins_search_ether: [
+        {
+            name: "Ethereum",
+            symbol: "eth",
+            image_url:
+                "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+            CurrentQuote: {
+                price: 1628.42,
+                deltas: [
+                    {
+                        interval: "ONE_HOUR",
+                        pct: -1.1,
+                        nominal: 24131.6
+                    },
+                    {
+                        interval: "ONE_DAY",
+                        pct: 1.1,
+                        nominal: 24144.6
+                    },
+                    {
+                        interval: "SEVEN_DAY",
+                        pct: -13.4,
+                        nominal: 24144.6
+                    }
+                ],
+                market_cap: 195682139657,
+                daily_volume: 17390482685,
+                last_update_timestamp: 1661328419722
+            }
+        },
+        {
+            name: "Tether",
+            symbol: "usdt",
+            image_url:
+                "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
+            CurrentQuote: {
+                price: 0.997218,
+                deltas: [
+                    {
+                        interval: "ONE_HOUR",
+                        pct: 0.0,
+                        nominal: 24131.6
+                    },
+                    {
+                        interval: "ONE_DAY",
+                        pct: -0.1,
+                        nominal: 24144.6
+                    },
+                    {
+                        interval: "SEVEN_DAY",
+                        pct: -0.1,
+                        nominal: 24144.6
+                    }
+                ],
+                market_cap: 67587929903,
+                daily_volume: 39961582354,
+                last_update_timestamp: 1661328419722
+            }
+        },
+        {
+            name: "Lido Staked Ether",
+            symbol: "steth",
+            image_url:
+                "https://assets.coingecko.com/coins/images/13442/thumb/steth_logo.png?1608607546",
+            CurrentQuote: {
+                price: 1589.25,
+                deltas: [
+                    {
+                        interval: "ONE_HOUR",
+                        pct: -1.0,
+                        nominal: 24131.6
+                    },
+                    {
+                        interval: "ONE_DAY",
+                        pct: 1.6,
+                        nominal: 24144.6
+                    },
+                    {
+                        interval: "SEVEN_DAY",
+                        pct: -13.3,
+                        nominal: 24144.6
+                    },
+                    {
+                        interval: "THIRTY_DAY",
+                        pct: 12.552752825351243,
+                        nominal: 2613.986893569027
+                    }
+                ],
+                market_cap: 6791063466,
+                daily_volume: 4714629,
+                last_update_timestamp: 1661328419722
+            }
+        }
+    ],
 
     api_coins: [
         {
