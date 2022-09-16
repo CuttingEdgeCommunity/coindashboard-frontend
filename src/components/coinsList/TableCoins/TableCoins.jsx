@@ -31,7 +31,7 @@ function TableCoins({ setCoinSymbol }) {
             refetchInterval: 30_000
         }
     )
-    const marketdataPath = "/search/" + input
+    const marketdataPath = "/search/" + input.trim()
     const {
         isLoading: searchLoading,
         data: searchResult,
@@ -39,7 +39,7 @@ function TableCoins({ setCoinSymbol }) {
     } = useQuery(["search", marketdataPath], () => fetchData(marketdataPath))
 
     useEffect(() => {
-        if (input.length === 0) {
+        if (input.trim().length === 0) {
             setReqError(error)
             setLoader(isLoading)
             setItems(data)
