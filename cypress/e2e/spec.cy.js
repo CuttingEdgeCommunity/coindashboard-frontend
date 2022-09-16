@@ -1,5 +1,3 @@
-import "@testing-library/jest-dom"
-
 describe("User interaction", () => {
     beforeEach(() => {
         cy.visit("http://localhost:3000")
