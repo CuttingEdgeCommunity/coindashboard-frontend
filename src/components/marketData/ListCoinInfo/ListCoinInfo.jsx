@@ -37,8 +37,10 @@ function ListCoinInfo({ data }) {
                     />
                     <ListCoinInfoRow name="Market Cap Rank*" display={1} />
                     <ListCoinInfoRow
-                        name="Market Cap Dominance*"
-                        display="38.339%"
+                        name="Market Cap Dominance"
+                        display={
+                            extractedData.CurrentQuote.Market_Cap_Dominance || "NaN"
+                        }
                     />
                     <ListCoinInfoRow name="24h High*" display="$24,285.47" />
                     <ListCoinInfoRow name="24h Low*" display="$23,848.34" />

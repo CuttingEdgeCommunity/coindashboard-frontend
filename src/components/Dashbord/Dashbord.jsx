@@ -44,7 +44,7 @@ function Dashbord({ coinSymbol }) {
                     loader={loaderCoinMarket || loaderCoinInfo}
                     error={coinMarketError}
                 >
-                    <CoinMarketData data={coinMarket} />
+                    <CoinMarketData data={coinMarket} coinInfo={coinInfo} />
                 </RenderComponent>
 
                 <RenderComponent
