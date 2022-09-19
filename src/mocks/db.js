@@ -24,7 +24,13 @@ export const db = {
                 ],
                 market_cap: 460513164207,
                 daily_volume: 27508459604,
-                last_update_timestamp: 1660598250101
+                last_update_timestamp: 1660598250101,
+                market_cap_rank: 1,
+                market_cap_dominance: 38.076,
+                h24_high: 19643.72,
+                h24_low: 20136.88,
+                d7_high: 19473.37,
+                d7_low: 22534.61
             }
         }
     ],
@@ -54,7 +60,13 @@ export const db = {
                 ],
                 market_cap: 195682139657,
                 daily_volume: 17390482685,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 2,
+                market_cap_dominance: 16.794,
+                h24_high: 1471.42,
+                h24_low: 1376.34,
+                d7_high: 1777.18,
+                d7_low: 1379.89
             }
         }
     ],
@@ -84,7 +96,13 @@ export const db = {
                 ],
                 market_cap: 67587929903,
                 daily_volume: 39961582354,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 3,
+                market_cap_dominance: 6.853,
+                h24_high: 1.0,
+                h24_low: 0.9969,
+                d7_high: 1.01,
+                d7_low: 0.9969
             }
         }
     ],
@@ -424,7 +442,13 @@ export const db = {
                 ],
                 market_cap: 460513164207,
                 daily_volume: 27508459604,
-                last_update_timestamp: 1660598250101
+                last_update_timestamp: 1660598250101,
+                market_cap_rank: 1,
+                market_cap_dominance: 38.076,
+                h24_high: 19643.72,
+                h24_low: 20136.88,
+                d7_high: 19473.37,
+                d7_low: 22534.61
             }
         },
         {
@@ -453,7 +477,13 @@ export const db = {
                 ],
                 market_cap: 195682139657,
                 daily_volume: 17390482685,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 2,
+                market_cap_dominance: 16.794,
+                h24_high: 1471.42,
+                h24_low: 1376.34,
+                d7_high: 1777.18,
+                d7_low: 1379.89
             }
         },
         {
@@ -482,7 +512,13 @@ export const db = {
                 ],
                 market_cap: 67587929903,
                 daily_volume: 39961582354,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 3,
+                market_cap_dominance: 6.853,
+                h24_high: 1,
+                h24_low: 0.9969,
+                d7_high: 1.01,
+                d7_low: 0.9969
             }
         },
         {
@@ -516,7 +552,13 @@ export const db = {
                 ],
                 market_cap: 6791063466,
                 daily_volume: 4714629,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 4,
+                market_cap_dominance: 0.594,
+                h24_high: 1459.44,
+                h24_low: 1360.64,
+                d7_high: 1730.34,
+                d7_low: 1360.64
             }
         },
         {
@@ -550,7 +592,13 @@ export const db = {
                 ],
                 market_cap: 52317345999,
                 daily_volume: 7127309860,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 5,
+                market_cap_dominance: 5.065,
+                h24_high: 1.01,
+                h24_low: 0.996,
+                d7_high: 1.01,
+                d7_low: 0.9958
             }
         },
         {
@@ -583,7 +631,13 @@ export const db = {
                 ],
                 market_cap: 460513164207,
                 daily_volume: 27508459604,
-                last_update_timestamp: 1660598250101
+                last_update_timestamp: 1660598250101,
+                market_cap_rank: 1,
+                market_cap_dominance: 38.076,
+                h24_high: 19643.72,
+                h24_low: 20136.88,
+                d7_high: 19473.37,
+                d7_low: 22534.61
             }
         },
         {
@@ -612,7 +666,13 @@ export const db = {
                 ],
                 market_cap: 195682139657,
                 daily_volume: 17390482685,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 2,
+                market_cap_dominance: 16.794,
+                h24_high: 1471.42,
+                h24_low: 1376.34,
+                d7_high: 1777.18,
+                d7_low: 1379.89
             }
         },
         {
@@ -641,7 +701,13 @@ export const db = {
                 ],
                 market_cap: 67587929903,
                 daily_volume: 39961582354,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 3,
+                market_cap_dominance: 6.853,
+                h24_high: 1,
+                h24_low: 0.9969,
+                d7_high: 1.01,
+                d7_low: 0.9969
             }
         },
         {
@@ -675,7 +741,13 @@ export const db = {
                 ],
                 market_cap: 6791063466,
                 daily_volume: 4714629,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 4,
+                market_cap_dominance: 0.594,
+                h24_high: 1459.44,
+                h24_low: 1360.64,
+                d7_high: 1730.34,
+                d7_low: 1360.64
             }
         },
         {
@@ -709,7 +781,13 @@ export const db = {
                 ],
                 market_cap: 52317345999,
                 daily_volume: 7127309860,
-                last_update_timestamp: 1661328419722
+                last_update_timestamp: 1661328419722,
+                market_cap_rank: 5,
+                market_cap_dominance: 5.065,
+                h24_high: 1.01,
+                h24_low: 0.996,
+                d7_high: 1.01,
+                d7_low: 0.9958
             }
         }
     ]

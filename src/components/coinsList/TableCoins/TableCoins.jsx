@@ -9,10 +9,12 @@ import altImage from "./../../../img/star.png"
 
 import { getListCoins } from "../../../helperFunctions/fetchingData"
 import { numberCoinsGettingAtOnce } from "../../../helperFunctions/helpers"
+// import CoinDetails from "components/coinStaticInfo/CoinDetails/CoinDetails"
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
     const [input, setInput] = useState("")
+
     const {
         isLoading,
         data: items,
@@ -25,6 +27,7 @@ function TableCoins({ setCoinSymbol }) {
         {
             getNextPageParam: (undifined, allPages) => {
                 const nextPage = allPages.length
+
                 return allPages.length * numberCoinsGettingAtOnce() >= 241
                     ? undefined
                     : nextPage
@@ -39,7 +42,6 @@ function TableCoins({ setCoinSymbol }) {
     }
     const handleChange = (e) => {
         setInput(e.target.value)
-        // make an API call with input state as a params
     }
 
     return (
@@ -57,6 +59,7 @@ function TableCoins({ setCoinSymbol }) {
                         />
                     </div>
                 </div>
+
                 <TableRow type="header" />
                 <div id="scrollable-div" className="overflow-y-scroll h-5/6 px-1">
                     {!isLoading ? (
@@ -81,6 +84,7 @@ function TableCoins({ setCoinSymbol }) {
                                                 .indexOf(input.toUpperCase()) === -1
                                         )
                                             return null
+
                                         return (
                                             <TableRow
                                                 key={index + 1 + pageIndex * 10}
@@ -93,6 +97,9 @@ function TableCoins({ setCoinSymbol }) {
                                                 day={coin.CurrentQuote.deltas[1]}
                                                 week={coin.CurrentQuote.deltas[2]}
                                                 setCoinSymbol={setCoinSymbol}
+                                                marketCap={
+                                                    coin.CurrentQuote.market_cap
+                                                }
                                             />
                                         )
                                     })

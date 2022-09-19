@@ -5,9 +5,9 @@ import CoinMarketHeader from "../CoinMarketHeader/CoinMarketHeader"
 
 import altImage from "./../../../img/star.png"
 
-function CoinMarketData({ data }) {
+function CoinMarketData({ data, coinInfo }) {
     const extractedData = data.data[0]
-    const urlImage = extractedData.url_image
+    const urlImage = coinInfo.data[0].image_url || undefined
     return (
         <div
             data-cy="coin-market-data"
