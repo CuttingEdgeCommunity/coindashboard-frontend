@@ -37,7 +37,7 @@ function ListCoinInfo({ data }) {
                     />
                     <ListCoinInfoRow
                         name={"Market Cap Rank"}
-                        display={extractedData.CurrentQuote.market_cap_rank}
+                        display={"#" + extractedData.CurrentQuote.market_cap_rank}
                     />
                     <ListCoinInfoRow
                         name="Market Cap Dominance"

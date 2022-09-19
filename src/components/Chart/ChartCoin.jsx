@@ -4,6 +4,11 @@ import { Chart, registerables } from "chart.js"
 import { getChartData } from "../../helperFunctions/helpers"
 Chart.register(...registerables)
 const OPTIONS = {
+    plugins: {
+        legend: {
+            display: false
+        }
+    },
     scales: {
         y: {
             beginAtZero: false,
@@ -37,6 +42,7 @@ function ChartCoin({ data }) {
 
     return (
         <div className="w-full">
+            ,
             <Line data={chartData} options={OPTIONS} />
         </div>
     )

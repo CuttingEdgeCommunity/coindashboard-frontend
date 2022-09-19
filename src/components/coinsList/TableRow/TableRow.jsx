@@ -51,7 +51,7 @@ function TableRow({
     return (
         <div className="flex items-center mb-2 pb-2 dark:border-gray-600 justify-between border-b">
             <div className="flex items-center w-full justify-around">
-                <div className="flex flex-col justify-center w-10 items-center">
+                <div className="flex flex-col justify-center w-5 md:w-10 items-center">
                     <dd className="text-xs md:text-lg text-gray-900 dark:text-white">
                         {rank ? rank : "#"}
                     </dd>
@@ -71,7 +71,7 @@ function TableRow({
                                 alt="alt"
                                 ratioChange={true}
                             />
-                            <p className="dark:text-white ml-1 text-md md:text-lg overflow-hidden break-words">
+                            <p className="dark:text-white ml-1 text-left text-md md:text-lg overflow-hidden break-words">
                                 {windowSize >= MIN_WINDOW_WIDTH
                                     ? name
                                         ? name
@@ -97,11 +97,11 @@ function TableRow({
                 <TableColumn data={day} text="1 Day" />
                 <TableColumn data={week} text="1 Week" />
 
-                {
+                {windowSize >= MIN_WINDOW_WIDTH && (
                     <div className="text-green-400 text-xs md:text-lg font-semibold w-1/6">
                         {marketCap ? formatAmount(marketCap) : "Market Cap"}
                     </div>
-                }
+                )}
             </div>
         </div>
     )

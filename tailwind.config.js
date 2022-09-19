@@ -3,14 +3,18 @@ module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx}"],
     darkMode: "class",
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                Poppins: ['"Poppins"', '"sans-serif"']
+            }
+        },
         screens: {
             xs: "570px",
 
             sm: "640px",
             // => @media (min-width: 640px) { ... }
 
-            md: "768px",
+            md: "848px",
             // => @media (min-width: 768px) { ... }
 
             lg: "1024px",

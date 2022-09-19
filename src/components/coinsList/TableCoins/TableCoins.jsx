@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useInfiniteQuery, useQuery } from "react-query"
 import TableRow from "../TableRow/TableRow"
@@ -9,7 +9,6 @@ import altImage from "./../../../img/star.png"
 
 import { fetchData, getListCoins } from "../../../helperFunctions/fetchingData"
 import { numberCoinsGettingAtOnce } from "../../../helperFunctions/helpers"
-import { useEffect } from "react"
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
@@ -95,13 +94,6 @@ function TableCoins({ setCoinSymbol }) {
                             >
                                 {items?.pages?.map((page, pageIndex) =>
                                     page.data?.map((coin, index) => {
-                                        if (
-                                            coin.name
-                                                .toUpperCase()
-                                                .indexOf(input.toUpperCase()) === -1
-                                        )
-                                            return null
-
                                         return (
                                             <TableRow
                                                 key={index + 1 + pageIndex * 10}

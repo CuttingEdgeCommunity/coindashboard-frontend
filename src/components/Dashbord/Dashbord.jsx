@@ -37,7 +37,7 @@ function Dashbord({ coinSymbol }) {
     return (
         <main
             id="dashboard"
-            className="pt-4 px-2 grid md:grid-cols-3 gap-2 grid-cols-1 h-full dark:bg-gray-800 dark:text-white"
+            className="py-4 px-2 grid md:grid-cols-3 gap-2 grid-cols-1 h-full dark:bg-gray-800 dark:text-white"
         >
             <div className="md:col-span-2 col-span-1">
                 <RenderComponent
