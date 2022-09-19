@@ -20,6 +20,9 @@ function App() {
                 <h1>
                     C<span className="text-red-600">Dashboard</span>
                 </h1>
+                <h6 className="text-gray-800 dark:text-white text-xs">
+                    Powered by coingecko API & Coinmarketcap
+                </h6>
                 <div
                     id="modeChnage"
                     onClick={() => setIsDark(!isDark)}

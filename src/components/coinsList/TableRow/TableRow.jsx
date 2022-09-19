@@ -15,9 +15,22 @@ function TableRow({
     hour,
     day,
     week,
-    setCoinSymbol
+    setCoinSymbol,
+    marketCap
 }) {
     const [windowSize, setWindowSize] = useState(window.innerWidth)
+    const [finalvalue] = useState({})
+    finalvalue.type = type
+    finalvalue.rank = rank
+    finalvalue.name = name
+    finalvalue.symbol = symbol
+    finalvalue.urlImage = urlImage
+    finalvalue.hour = hour
+    finalvalue.day = day
+    finalvalue.week = week
+    finalvalue.setCoinSymbol = setCoinSymbol
+    finalvalue.marketCap = marketCap
+
     useEffect(() => {
         if (rank === 1) {
             setCoinSymbol(symbol)
@@ -31,6 +44,7 @@ function TableRow({
         const handleWindowSize = () => {
             setWindowSize(window.innerWidth)
         }
+
         window.addEventListener("resize", handleWindowSize)
     })
 
@@ -44,7 +58,7 @@ function TableRow({
                 </div>
                 <div
                     data-cy="list-item"
-                    className="flex text-sm w-1/5 flex-col ml-2 items-start justify-between"
+                    className="flex text-sm w-1/6 flex-col ml-2 items-start justify-between"
                 >
                     {type !== "header" ? (
                         <a
@@ -76,12 +90,18 @@ function TableRow({
                     )}
                 </div>
 
-                <div className="text-green-400 text-sm md:text-xl font-semibold w-1/5">
+                <div className="text-green-400 text-sm md:text-xl font-semibold w-1/6">
                     {price ? formatAmount(price) : "Price"}
                 </div>
                 <TableColumn data={hour} text="1 Hour" />
                 <TableColumn data={day} text="1 Day" />
                 <TableColumn data={week} text="1 Week" />
+
+                {
+                    <div className="text-green-400 text-xs md:text-lg font-semibold w-1/6">
+                        {marketCap ? formatAmount(marketCap) : "Market Cap"}
+                    </div>
+                }
             </div>
         </div>
     )

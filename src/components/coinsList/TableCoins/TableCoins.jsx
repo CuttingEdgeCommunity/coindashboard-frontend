@@ -17,6 +17,7 @@ function TableCoins({ setCoinSymbol }) {
     const [loader, setLoader] = useState(true)
     const [reqError, setReqError] = useState()
     const [input, setInput] = useState("")
+
     const { isLoading, data, error, hasNextPage, fetchNextPage } = useInfiniteQuery(
         "listCoins",
         ({ pageParam = 0 }) => getListCoins(pageParam, numberCoinsGettingAtOnce()),
@@ -72,6 +73,7 @@ function TableCoins({ setCoinSymbol }) {
                         />
                     </div>
                 </div>
+
                 <TableRow type="header" />
                 <div id="scrollable-div" className="overflow-y-scroll h-5/6 px-1">
                     {!loader ? (
@@ -93,6 +95,13 @@ function TableCoins({ setCoinSymbol }) {
                             >
                                 {items?.pages?.map((page, pageIndex) =>
                                     page.data?.map((coin, index) => {
+                                        if (
+                                            coin.name
+                                                .toUpperCase()
+                                                .indexOf(input.toUpperCase()) === -1
+                                        )
+                                            return null
+
                                         return (
                                             <TableRow
                                                 key={index + 1 + pageIndex * 10}
@@ -105,6 +114,9 @@ function TableCoins({ setCoinSymbol }) {
                                                 day={coin.CurrentQuote.deltas[1]}
                                                 week={coin.CurrentQuote.deltas[2]}
                                                 setCoinSymbol={setCoinSymbol}
+                                                marketCap={
+                                                    coin.CurrentQuote.market_cap
+                                                }
                                             />
                                         )
                                     })
