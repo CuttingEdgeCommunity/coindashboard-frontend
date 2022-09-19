@@ -15,9 +15,22 @@ function TableRow({
     hour,
     day,
     week,
-    setCoinSymbol
+    setCoinSymbol,
+    marketCap
 }) {
     const [windowSize, setWindowSize] = useState(window.innerWidth)
+    const [finalvalue] = useState({})
+    finalvalue.type = type
+    finalvalue.rank = rank
+    finalvalue.name = name
+    finalvalue.symbol = symbol
+    finalvalue.urlImage = urlImage
+    finalvalue.hour = hour
+    finalvalue.day = day
+    finalvalue.week = week
+    finalvalue.setCoinSymbol = setCoinSymbol
+    finalvalue.marketCap = marketCap
+
     useEffect(() => {
         if (rank === 1) {
             setCoinSymbol(symbol)
@@ -31,20 +44,21 @@ function TableRow({
         const handleWindowSize = () => {
             setWindowSize(window.innerWidth)
         }
+
         window.addEventListener("resize", handleWindowSize)
     })
 
     return (
         <div className="flex items-center mb-2 pb-2 dark:border-gray-600 justify-between border-b">
             <div className="flex items-center w-full justify-around">
-                <div className="flex flex-col justify-center w-10 items-center">
+                <div className="flex flex-col justify-center w-5 md:w-10 items-center">
                     <dd className="text-xs md:text-lg text-gray-900 dark:text-white">
                         {rank ? rank : "#"}
                     </dd>
                 </div>
                 <div
                     data-cy="list-item"
-                    className="flex text-sm w-1/5 flex-col ml-2 items-start justify-between"
+                    className="flex text-sm w-1/6 flex-col ml-2 items-start justify-between"
                 >
                     {type !== "header" ? (
                         <a
@@ -57,7 +71,7 @@ function TableRow({
                                 alt="alt"
                                 ratioChange={true}
                             />
-                            <p className="dark:text-white ml-1 text-md md:text-lg overflow-hidden break-words">
+                            <p className="dark:text-white ml-1 text-left text-md md:text-lg overflow-hidden break-words">
                                 {windowSize >= MIN_WINDOW_WIDTH
                                     ? name
                                         ? name
@@ -76,12 +90,18 @@ function TableRow({
                     )}
                 </div>
 
-                <div className="text-green-400 text-sm md:text-xl font-semibold w-1/5">
+                <div className="text-green-400 text-sm md:text-xl font-semibold w-1/6">
                     {price ? formatAmount(price) : "Price"}
                 </div>
                 <TableColumn data={hour} text="1 Hour" />
                 <TableColumn data={day} text="1 Day" />
                 <TableColumn data={week} text="1 Week" />
+
+                {windowSize >= MIN_WINDOW_WIDTH && (
+                    <div className="text-green-400 text-xs md:text-lg font-semibold w-1/6">
+                        {marketCap ? formatAmount(marketCap) : "Market Cap"}
+                    </div>
+                )}
             </div>
         </div>
     )

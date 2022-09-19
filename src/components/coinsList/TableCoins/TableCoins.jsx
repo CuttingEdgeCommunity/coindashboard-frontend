@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useInfiniteQuery, useQuery } from "react-query"
 import TableRow from "../TableRow/TableRow"
@@ -9,7 +9,6 @@ import altImage from "./../../../img/star.png"
 
 import { fetchData, getListCoins } from "../../../helperFunctions/fetchingData"
 import { numberCoinsGettingAtOnce } from "../../../helperFunctions/helpers"
-import { useEffect } from "react"
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
@@ -17,6 +16,7 @@ function TableCoins({ setCoinSymbol }) {
     const [loader, setLoader] = useState(true)
     const [reqError, setReqError] = useState()
     const [input, setInput] = useState("")
+
     const { isLoading, data, error, hasNextPage, fetchNextPage } = useInfiniteQuery(
         "listCoins",
         ({ pageParam = 0 }) => getListCoins(pageParam, numberCoinsGettingAtOnce()),
@@ -72,6 +72,7 @@ function TableCoins({ setCoinSymbol }) {
                         />
                     </div>
                 </div>
+
                 <TableRow type="header" />
                 <div id="scrollable-div" className="overflow-y-scroll h-5/6 px-1">
                     {!loader ? (
@@ -105,6 +106,9 @@ function TableCoins({ setCoinSymbol }) {
                                                 day={coin.CurrentQuote.deltas[1]}
                                                 week={coin.CurrentQuote.deltas[2]}
                                                 setCoinSymbol={setCoinSymbol}
+                                                marketCap={
+                                                    coin.CurrentQuote.market_cap
+                                                }
                                             />
                                         )
                                     })

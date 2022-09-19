@@ -16,9 +16,10 @@ function App() {
 
     return (
         <div id="App" className={isDark ? "dark" : "light"}>
-            <header className="flex justify-between px-8 py-4 text-xl font-semibold border-b dark:border-gray-600 shadow-sm dark:bg-gray-800 dark:text-white">
-                <h1>
-                    C<span className="text-red-600">Dashboard</span>
+            <header className="flex justify-between px-8 py-3 text-xl font-semibold border-b dark:border-gray-600 shadow-sm dark:bg-gray-800 dark:text-white">
+                <h1 className="text-4xl font-Poppins">
+                    C<span className="text-red-600 inline-block">D</span>
+                    <span className="text-xl font-normal">ashboard</span>
                 </h1>
                 <div
                     id="modeChnage"
@@ -37,6 +38,11 @@ function App() {
 
                 {coinSymbol.length !== 0 && <Dashbord coinSymbol={coinSymbol} />}
             </main>
+            <footer className="flex justify-center px-8 py-4 text-xl border-t dark:border-gray-600 shadow-sm dark:bg-gray-800 dark:text-white">
+                <h6 className="text-gray-600 dark:text-white text-xs">
+                    Powered by coingecko API & Coinmarketcap
+                </h6>
+            </footer>
         </div>
     )
 }
