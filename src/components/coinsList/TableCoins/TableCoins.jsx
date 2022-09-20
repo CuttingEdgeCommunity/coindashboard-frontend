@@ -135,6 +135,7 @@ function TableCoins({ setCoinSymbol }) {
                                             day={coin.CurrentQuote.deltas[1]}
                                             week={coin.CurrentQuote.deltas[2]}
                                             setCoinSymbol={setCoinSymbol}
+                                            marketCap={coin.CurrentQuote.market_cap}
                                         />
                                     ))
                                 )}
