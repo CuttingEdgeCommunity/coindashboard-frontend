@@ -9,7 +9,6 @@ function App() {
     const [isDark, setIsDark] = useState(
         JSON.parse(window.sessionStorage.getItem("isDark"))
     )
-
     useEffect(() => {
         window.sessionStorage.setItem("isDark", isDark)
     }, [isDark])
@@ -35,14 +34,12 @@ function App() {
             </header>
             <main>
                 <Home setCoinSymbol={setCoinSymbol} />
-
                 {coinSymbol.length !== 0 && <Dashbord coinSymbol={coinSymbol} />}
             </main>
             <footer className="flex justify-center px-8 py-4 text-xl border-t dark:border-gray-600 shadow-sm dark:bg-gray-800 dark:text-white">
                 <h6 className="text-gray-600 dark:text-white text-xs">
                     <p>
-                        {" "}
-                        Powered by{" "}
+                        Powered by
                         <a href="https://www.coingecko.com/"> Coingecko API </a> &
                         <a href="https://coinmarketcap.com/"> CoinMarketCap</a>
                     </p>
