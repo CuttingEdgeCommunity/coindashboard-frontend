@@ -31,7 +31,7 @@ function TableCoins({ setCoinSymbol }) {
             refetchInterval: 30_000
         }
     )
-    const marketdataPath = "/search/" + input.trim()
+    const marketdataPath = "/find/" + input.trim()
     const {
         isLoading: searchLoading,
         data: searchResult,

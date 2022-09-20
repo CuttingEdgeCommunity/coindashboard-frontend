@@ -70,10 +70,10 @@ export const handlers = [
             })
         )
     }),
-    rest.get("http://localhost:3001/api/coins/search/ether", (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json(db.api_coins_search_ether))
+    rest.get("http://localhost:3001/api/coins/find/ether", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(db.api_coins_find_ether))
     }),
-    rest.get("http://localhost:3001/api/coins/search/zig", (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json(db.api_coins_search_zig))
+    rest.get("http://localhost:3001/api/coins/find/zig", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(db.api_coins_find_zig))
     })
 ]
