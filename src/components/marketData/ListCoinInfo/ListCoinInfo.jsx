@@ -9,7 +9,11 @@ function ListCoinInfo({ data }) {
                 <div className="w-full flex items-center justify-between mb-2 border-b pb-1 dark:border-gray-600">
                     <p className="text-gray-800 dark:text-white text-xl">Details</p>
                 </div>
-                <div className="overflow-y-scroll h-72 pb-4 px-1">
+                <div className="h-72 pb-4 px-1">
+                    <ListCoinInfoRow
+                        name={"Market Cap Rank"}
+                        display={"#" + extractedData.CurrentQuote.marketCapRank}
+                    />
                     <ListCoinInfoRow
                         name="Volume / Market Cap"
                         display={(
@@ -34,33 +38,6 @@ function ListCoinInfo({ data }) {
                         display={formatAmount(
                             extractedData.CurrentQuote.deltas[2].nominal
                         )}
-                    />
-                    <ListCoinInfoRow
-                        name={"Market Cap Rank"}
-                        display={"#" + extractedData.CurrentQuote.marketCapRank}
-                    />
-                    <ListCoinInfoRow
-                        name="Market Cap Dominance"
-                        display={
-                            extractedData.CurrentQuote.market_cap_dominance + "%"
-                        }
-                    />
-
-                    <ListCoinInfoRow
-                        name={"24h High"}
-                        display={formatAmount(extractedData.CurrentQuote.h24_high)}
-                    />
-                    <ListCoinInfoRow
-                        name={"24h Low"}
-                        display={formatAmount(extractedData.CurrentQuote.h24_low)}
-                    />
-                    <ListCoinInfoRow
-                        name={"7d High"}
-                        display={formatAmount(extractedData.CurrentQuote.d7_high)}
-                    />
-                    <ListCoinInfoRow
-                        name={"7d Low"}
-                        display={formatAmount(extractedData.CurrentQuote.d7_low)}
                     />
                 </div>
             </div>

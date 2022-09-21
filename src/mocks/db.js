@@ -314,8 +314,8 @@ export const db = {
                 "USD Coin is a digital stablecoin that was pegged to the United States dollar. USD Coin is managed by a consortium called Centre, which was founded by Circle and includes members from the cryptocurrency exchange Coinbase and Bitcoin mining company Bitmain, an investor in Circle."
         }
     ],
-    api_coins_search_zig: [],
-    api_coins_search_ether: [
+    api_coins_find_zig: [],
+    api_coins_find_ether: [
         {
             name: "Ethereum",
             symbol: "eth",

@@ -25,6 +25,12 @@ function CoinInfo({ data }) {
                         {extractedData.name} ({extractedData.symbol.toUpperCase()})
                     </span>
                     <div className="text-gray-400 text-xs">
+                        <p>Genisis block : {extractedData.genesis_date} </p>
+                        <p style={addressstyle}>
+                            Contract address : {extractedData.contract_address}
+                        </p>
+                    </div>
+                    <div className="text-gray-400 text-xs">
                         {extractedData.description?.length > 100
                             ? `${extractedData.description.substring(0, 250)}...`
                             : extractedData.description}
@@ -41,13 +47,6 @@ function CoinInfo({ data }) {
                                 </a>
                             </div>
                         )}
-                        <div className="flex-row mt-2 gap-4 text-xs">
-                            <p>genisis block {extractedData.genesis_date} </p>
-
-                            <p style={addressstyle}>
-                                contract address {extractedData.contract_address}{" "}
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
