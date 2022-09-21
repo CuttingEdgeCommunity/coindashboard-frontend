@@ -66,6 +66,7 @@ function TableCoins({ setCoinSymbol }) {
                         <input
                             type="text"
                             id="simple-email"
+                            maxLength="25"
                             onChange={handleChange}
                             className=" flex-1 appearance-none border-b border-gray-700s dark:border-gray-300 w-full px-4 bg-white dark:bg-gray-800 dark:text-white text-gray-700 placeholder-gray-400 text-base focus:outline-none "
                             placeholder="Search"
@@ -97,9 +98,7 @@ function TableCoins({ setCoinSymbol }) {
                                         return (
                                             <TableRow
                                                 key={index + 1 + pageIndex * 10}
-                                                rank={
-                                                    coin.CurrentQuote.marketCapRank
-                                                }
+                                                rank={coin.marketCapRank}
                                                 name={coin.name}
                                                 symbol={coin.symbol}
                                                 price={coin.CurrentQuote.price}
@@ -128,7 +127,7 @@ function TableCoins({ setCoinSymbol }) {
                                     items.data.map((coin, index) => (
                                         <TableRow
                                             key={index}
-                                            rank={coin.CurrentQuote.marketCapRank}
+                                            rank={coin.marketCapRank}
                                             name={coin.name}
                                             symbol={coin.symbol}
                                             price={coin.CurrentQuote.price}

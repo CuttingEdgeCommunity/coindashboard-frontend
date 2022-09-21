@@ -415,6 +415,7 @@ export const db = {
         {
             name: "Ethereum",
             symbol: "eth",
+            marketCapRank: 2,
             image_url:
                 "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
             CurrentQuote: {
@@ -439,7 +440,6 @@ export const db = {
                 market_cap: 195682139657,
                 daily_volume: 17390482685,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 2,
                 market_cap_dominance: 16.794,
                 h24_high: 1471.42,
                 h24_low: 1376.34,
@@ -450,6 +450,7 @@ export const db = {
         {
             name: "Tether",
             symbol: "usdt",
+            marketCapRank: 3,
             image_url:
                 "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
             CurrentQuote: {
@@ -474,7 +475,6 @@ export const db = {
                 market_cap: 67587929903,
                 daily_volume: 39961582354,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 3,
                 market_cap_dominance: 6.853,
                 h24_high: 1,
                 h24_low: 0.9969,
@@ -485,6 +485,7 @@ export const db = {
         {
             name: "Lido Staked Ether",
             symbol: "steth",
+            marketCapRank: 4,
             image_url:
                 "https://assets.coingecko.com/coins/images/13442/thumb/steth_logo.png?1608607546",
             CurrentQuote: {
@@ -514,7 +515,6 @@ export const db = {
                 market_cap: 6791063466,
                 daily_volume: 4714629,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 4,
                 market_cap_dominance: 0.594,
                 h24_high: 1459.44,
                 h24_low: 1360.64,
@@ -528,6 +528,7 @@ export const db = {
         {
             name: "Bitcoin",
             symbol: "BTC",
+            marketCapRank: 1,
             image_url: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
             CurrentQuote: {
                 price: 24073.4,
@@ -556,7 +557,6 @@ export const db = {
                 market_cap: 460513164207,
                 daily_volume: 27508459604,
                 last_update_timestamp: 1660598250101,
-                marketCapRank: 1,
                 market_cap_dominance: 38.076,
                 h24_high: 19643.72,
                 h24_low: 20136.88,
@@ -567,6 +567,7 @@ export const db = {
         {
             name: "Ethereum",
             symbol: "eth",
+            marketCapRank: 2,
             image_url:
                 "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
             CurrentQuote: {
@@ -591,7 +592,6 @@ export const db = {
                 market_cap: 195682139657,
                 daily_volume: 17390482685,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 2,
                 market_cap_dominance: 16.794,
                 h24_high: 1471.42,
                 h24_low: 1376.34,
@@ -637,6 +637,7 @@ export const db = {
         {
             name: "Lido Staked Ether",
             symbol: "steth",
+            marketCapRank: 4,
             image_url:
                 "https://assets.coingecko.com/coins/images/13442/thumb/steth_logo.png?1608607546",
             CurrentQuote: {
@@ -666,7 +667,6 @@ export const db = {
                 market_cap: 6791063466,
                 daily_volume: 4714629,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 4,
                 market_cap_dominance: 0.594,
                 h24_high: 1459.44,
                 h24_low: 1360.64,
@@ -677,6 +677,7 @@ export const db = {
         {
             name: "USD Coin",
             symbol: "usdc",
+            marketCapRank: 5,
             image_url:
                 "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
             CurrentQuote: {
@@ -706,7 +707,6 @@ export const db = {
                 market_cap: 52317345999,
                 daily_volume: 7127309860,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 5,
                 market_cap_dominance: 5.065,
                 h24_high: 1.01,
                 h24_low: 0.996,
@@ -717,6 +717,7 @@ export const db = {
         {
             name: "Bitcoin",
             symbol: "BTC",
+            marketCapRank: 1,
             image_url: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
             CurrentQuote: {
                 price: 24073.4,
@@ -745,7 +746,6 @@ export const db = {
                 market_cap: 460513164207,
                 daily_volume: 27508459604,
                 last_update_timestamp: 1660598250101,
-                marketCapRank: 1,
                 market_cap_dominance: 38.076,
                 h24_high: 19643.72,
                 h24_low: 20136.88,
@@ -756,6 +756,7 @@ export const db = {
         {
             name: "Ethereum",
             symbol: "eth",
+            marketCapRank: 2,
             image_url:
                 "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
             CurrentQuote: {
@@ -780,7 +781,6 @@ export const db = {
                 market_cap: 195682139657,
                 daily_volume: 17390482685,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 2,
                 market_cap_dominance: 16.794,
                 h24_high: 1471.42,
                 h24_low: 1376.34,
@@ -791,6 +791,7 @@ export const db = {
         {
             name: "Tether",
             symbol: "usdt",
+            marketCapRank: 3,
             image_url:
                 "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
             CurrentQuote: {
@@ -815,7 +816,6 @@ export const db = {
                 market_cap: 67587929903,
                 daily_volume: 39961582354,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 3,
                 market_cap_dominance: 6.853,
                 h24_high: 1,
                 h24_low: 0.9969,
@@ -826,6 +826,7 @@ export const db = {
         {
             name: "Lido Staked Ether",
             symbol: "steth",
+            marketCapRank: 4,
             image_url:
                 "https://assets.coingecko.com/coins/images/13442/thumb/steth_logo.png?1608607546",
             CurrentQuote: {
@@ -855,7 +856,6 @@ export const db = {
                 market_cap: 6791063466,
                 daily_volume: 4714629,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 4,
                 market_cap_dominance: 0.594,
                 h24_high: 1459.44,
                 h24_low: 1360.64,
@@ -866,6 +866,7 @@ export const db = {
         {
             name: "USD Coin",
             symbol: "usdc",
+            marketCapRank: 5,
             image_url:
                 "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
             CurrentQuote: {
@@ -895,7 +896,6 @@ export const db = {
                 market_cap: 52317345999,
                 daily_volume: 7127309860,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 5,
                 market_cap_dominance: 5.065,
                 h24_high: 1.01,
                 h24_low: 0.996,

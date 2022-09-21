@@ -21,7 +21,7 @@ function App() {
                     <span className="text-xl font-normal">ashboard</span>
                 </h1>
                 <div
-                    id="modeChnage"
+                    id="modeChange"
                     onClick={() => setIsDark(!isDark)}
                     className="cursor-pointer text-sm mr-12"
                 >
@@ -34,7 +34,7 @@ function App() {
             </header>
             <main>
                 <Home setCoinSymbol={setCoinSymbol} />
-                {coinSymbol.length !== 0 && <Dashbord coinSymbol={coinSymbol} />}
+                <Dashbord coinSymbol={coinSymbol} />
             </main>
             <footer className="flex justify-center px-8 py-4 text-xl border-t dark:border-gray-600 shadow-sm dark:bg-gray-800 dark:text-white">
                 <h6 className="text-gray-600 dark:text-white text-xs">

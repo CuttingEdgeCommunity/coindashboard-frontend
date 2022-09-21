@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useState } from "react"
 import CoinImage from "../../coinStaticInfo/CoinImage/CoinImage"
 import { formatAmount } from "../../../helperFunctions/helpers"
 import TableColumn from "./TableColumn"
-
-const MIN_WINDOW_WIDTH = 655
+import { MIN_WINDOW_WIDTH } from "helperFunctions/constants"
 
 function TableRow({
     type,
@@ -19,17 +18,6 @@ function TableRow({
     marketCap
 }) {
     const [windowSize, setWindowSize] = useState(window.innerWidth)
-    const [finalvalue] = useState({})
-    finalvalue.type = type
-    finalvalue.rank = rank
-    finalvalue.name = name
-    finalvalue.symbol = symbol
-    finalvalue.urlImage = urlImage
-    finalvalue.hour = hour
-    finalvalue.day = day
-    finalvalue.week = week
-    finalvalue.setCoinSymbol = setCoinSymbol
-    finalvalue.marketCap = marketCap
 
     useEffect(() => {
         if (rank === 1) {
@@ -38,6 +26,7 @@ function TableRow({
     }, [rank, symbol, setCoinSymbol])
     const handleClick = useCallback(() => {
         setCoinSymbol(symbol)
+        document.getElementById("dashboard").scrollIntoView()
     }, [symbol, setCoinSymbol])
 
     useEffect(() => {
@@ -62,9 +51,8 @@ function TableRow({
                 >
                     {type !== "header" ? (
                         <a
-                            href="#dashboard"
                             onClick={handleClick}
-                            className="flex items-center"
+                            className="flex items-center cursor-pointer"
                         >
                             <CoinImage
                                 urlImage={urlImage}
@@ -93,13 +81,15 @@ function TableRow({
                 <div className="text-green-400 text-sm md:text-xl font-semibold w-1/6">
                     {price ? formatAmount(price) : "Price"}
                 </div>
-                <TableColumn data={hour} text="1 Hour" />
-                <TableColumn data={day} text="1 Day" />
-                <TableColumn data={week} text="1 Week" />
+                <TableColumn data={hour} width={windowSize} text="1 Hour" />
+                <TableColumn data={day} width={windowSize} text="1 Day" />
+                <TableColumn data={week} width={windowSize} text="1 Week" />
 
                 {windowSize >= MIN_WINDOW_WIDTH && (
                     <div className="text-green-400 text-xs md:text-lg font-semibold w-1/6">
-                        {marketCap ? formatAmount(marketCap) : "Market Cap"}
+                        {marketCap
+                            ? "$" + new Intl.NumberFormat().format(marketCap)
+                            : "Market Cap"}
                     </div>
                 )}
             </div>

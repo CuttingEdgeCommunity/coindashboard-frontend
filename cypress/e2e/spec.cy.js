@@ -21,13 +21,13 @@ describe("User interaction", () => {
     })
     it("Dark and light mode", () => {
         cy.get("#App.light").should("be.visible")
-        cy.get("#modeChnage").click()
+        cy.get("#modeChange").click()
         cy.get("#App.dark").should("be.visible")
-        cy.get("#modeChnage").click()
+        cy.get("#modeChange").click()
     })
     it("Dark and light mode state stored", () => {
         cy.get("#App.light").should("be.visible")
-        cy.get("#modeChnage").click()
+        cy.get("#modeChange").click()
         cy.get("#App.dark").should("be.visible")
         cy.reload()
         cy.get("#App.dark").should("be.visible")

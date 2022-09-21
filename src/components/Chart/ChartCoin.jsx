@@ -42,7 +42,6 @@ function ChartCoin({ data }) {
 
     return (
         <div className="w-full">
-            ,
             <Line data={chartData} options={OPTIONS} />
         </div>
     )

@@ -1,0 +1,2 @@
+export const MIN_WINDOW_WIDTH = 655
+export const MIN_CONTAINER_SIZE_FOR_10COINS = 654
