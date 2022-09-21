@@ -1,10 +1,15 @@
 import React from "react"
+
 import CoinImage from "../CoinImage/CoinImage"
 
 import AltImage from "./../../../img/star.png"
 
 function CoinInfo({ data }) {
     const extractedData = data.data[0]
+
+    const addressstyle = { display: extractedData.is_token ? "flex" : "none" }
+
+    console.log(addressstyle)
     return (
         <div
             data-cy="coin-info"
@@ -20,7 +25,10 @@ function CoinInfo({ data }) {
                         {extractedData.name} ({extractedData.symbol.toUpperCase()})
                     </span>
                     <div className="text-gray-400 text-xs">
-                        {extractedData.description}
+                        {extractedData.description?.length > 100
+                            ? `${extractedData.description.substring(0, 250)}...`
+                            : extractedData.description}
+
                         <br />
                         {extractedData.links && (
                             <div className="flex-row mt-2 gap-4 text-xs">
@@ -31,15 +39,15 @@ function CoinInfo({ data }) {
                                 >
                                     {extractedData.links[0].title}
                                 </a>
-                                <a
-                                    href={extractedData.links[1].url}
-                                    target="_blink"
-                                    className="mr-2"
-                                >
-                                    {extractedData.links[1].title}
-                                </a>
                             </div>
                         )}
+                        <div className="flex-row mt-2 gap-4 text-xs">
+                            <p>genisis block {extractedData.genesis_date} </p>
+
+                            <p style={addressstyle}>
+                                contract address {extractedData.contract_address}{" "}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
