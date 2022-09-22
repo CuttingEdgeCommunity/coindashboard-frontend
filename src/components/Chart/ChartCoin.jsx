@@ -56,8 +56,6 @@ const DEFAULT_CHART = [
 
 function ChartCoin({ data }) {
     const extractedData = data.data || DEFAULT_CHART
-    console.log(extractedData)
-
     const chartData = {
         labels: getChartData(extractedData, "x"),
         datasets: [
@@ -72,7 +70,6 @@ function ChartCoin({ data }) {
         ]
     }
 
-    console.log(chartData.datasets)
     return (
         <div className="w-full">
             <Line data={chartData} options={OPTIONS} />

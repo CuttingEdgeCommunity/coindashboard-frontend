@@ -73,7 +73,6 @@ function DefaultChart() {
         ]
     }
 
-    console.log(chartData.datasets)
     return (
         <div className="w-full relative">
             <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl opacity-70 font-semibold text-gray-500 dark:text-gray-400 ">

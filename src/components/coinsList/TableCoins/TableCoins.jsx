@@ -97,7 +97,7 @@ function TableCoins({ setCoinSymbol }) {
                                         return (
                                             <TableRow
                                                 key={index + 1 + pageIndex * 10}
-                                                rank={coin.marketCapRank}
+                                                rank={index + 1 + pageIndex * 10}
                                                 name={coin.name}
                                                 symbol={coin.symbol}
                                                 price={coin.CurrentQuote.price}
@@ -126,7 +126,7 @@ function TableCoins({ setCoinSymbol }) {
                                     items.data.map((coin, index) => (
                                         <TableRow
                                             key={index}
-                                            rank={coin.marketCapRank}
+                                            rank={index + 1}
                                             name={coin.name}
                                             symbol={coin.symbol}
                                             price={coin.CurrentQuote.price}

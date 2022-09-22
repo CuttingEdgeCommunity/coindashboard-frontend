@@ -12,7 +12,7 @@ function ListCoinInfo({ data }) {
                 <div className="h-72 pb-4 px-1">
                     <ListCoinInfoRow
                         name={"Market Cap Rank"}
-                        display={extractedData.CurrentQuote.marketCapRank}
+                        display={extractedData.CurrentQuote.market_cap_rank}
                     />
                     <ListCoinInfoRow
                         name="Volume / Market Cap"
