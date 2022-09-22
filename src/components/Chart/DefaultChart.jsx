@@ -19,45 +19,46 @@ const OPTIONS = {
         x: {
             grid: {
                 display: false
+            },
+            ticks: {
+                display: false
             }
         }
     }
 }
 const DEFAULT_CHART = [
     {
-        timestamp: 1663200000000,
+        timestamp: null,
         price: null
     },
     {
-        timestamp: 1663286400000,
+        timestamp: null,
         price: null
     },
     {
-        timestamp: 1663372800000,
+        timestamp: null,
         price: null
     },
     {
-        timestamp: 1663459200000,
+        timestamp: null,
         price: null
     },
     {
-        timestamp: 1663545600000,
+        timestamp: null,
         price: null
     },
     {
-        timestamp: 1663632000000,
+        timestamp: null,
         price: null
     },
     {
-        timestamp: 1663718400000,
+        timestamp: null,
         price: null
     }
 ]
 
-function ChartCoin({ data }) {
-    const extractedData = data.data || DEFAULT_CHART
-    console.log(extractedData)
-
+function DefaultChart() {
+    const extractedData = DEFAULT_CHART
     const chartData = {
         labels: getChartData(extractedData, "x"),
         datasets: [
@@ -74,10 +75,13 @@ function ChartCoin({ data }) {
 
     console.log(chartData.datasets)
     return (
-        <div className="w-full">
+        <div className="w-full relative">
+            <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl opacity-70 font-semibold text-gray-500 dark:text-gray-400 ">
+                Chart Unavailable
+            </p>
             <Line data={chartData} options={OPTIONS} />
         </div>
     )
 }
 
-export default ChartCoin
+export default DefaultChart

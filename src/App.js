@@ -41,8 +41,7 @@ function App() {
             <footer className="flex justify-center px-8 py-4 text-xl border-t dark:border-gray-600 shadow-sm dark:bg-gray-800 dark:text-white">
                 <h6 className="text-gray-600 dark:text-white text-xs">
                     <p>
-                        {" "}
-                        Powered by{" "}
+                        Powered by
                         <a href="https://www.coingecko.com/"> Coingecko API </a> &
                         <a href="https://coinmarketcap.com/"> CoinMarketCap</a>
                     </p>

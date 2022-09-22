@@ -24,6 +24,7 @@ function Dashbord({ coinSymbol }) {
     } = useQuery(["coinsMarketChart", coinSymbol], () => fetchData(chartPath), {
         staleTime: 30_000
     })
+
     // do the API call for the Market data component using ---- /api/coins/coinSymbol/marketdata
     const marketdataPath = "/" + coinSymbol + "/marketdata"
     const {
@@ -52,6 +53,7 @@ function Dashbord({ coinSymbol }) {
                     error={coinChartError}
                     margin
                     chart
+                    isChart
                 >
                     <ChartCoin data={coinChart} />
                 </RenderComponent>

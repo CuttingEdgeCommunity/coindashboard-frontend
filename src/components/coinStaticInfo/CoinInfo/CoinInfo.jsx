@@ -6,10 +6,7 @@ import AltImage from "./../../../img/star.png"
 
 function CoinInfo({ data }) {
     const extractedData = data.data[0]
-
     const addressstyle = { display: extractedData.is_token ? "flex" : "none" }
-
-    console.log(addressstyle)
     return (
         <div
             data-cy="coin-info"
@@ -24,7 +21,7 @@ function CoinInfo({ data }) {
                     <span className="text-gray-600 dark:text-white text-lg font-medium">
                         {extractedData.name} ({extractedData.symbol.toUpperCase()})
                     </span>
-                    <div className="text-gray-400 text-xs">
+                    <div className="text-gray-400 text-xs mb-2">
                         <p>Genisis block : {extractedData.genesis_date} </p>
                         <p style={addressstyle}>
                             Contract address : {extractedData.contract_address}
