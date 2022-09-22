@@ -17,7 +17,7 @@ describe("User interaction", () => {
     it("Search for an unexisting coin, see the message not found", () => {
         cy.get("#list-coins").should("be.visible")
         cy.get("#simple-email").type("zig")
-        cy.get('[data-cy="error-message"] div h3').contains("No result for")
+        cy.get('[data-cy="error-message"] div h3').contains("No result found")
     })
     it("Dark and light mode", () => {
         cy.get("#App.light").should("be.visible")
