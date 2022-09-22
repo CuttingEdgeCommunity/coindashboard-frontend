@@ -59,7 +59,19 @@ function formatNumber(x) {
 export function sortBy(array, paramName) {
     switch (paramName) {
         case "prices":
-            return array.sort((a, b) => a.CurrentQuote.price - b.CurrentQuote.price)
+            return array.sort((a, b) => b.CurrentQuote.price - a.CurrentQuote.price)
+        case "hour":
+            return array.sort(
+                (a, b) => b.CurrentQuote.deltas[0].pct - a.CurrentQuote.deltas[0].pct
+            )
+        case "day":
+            return array.sort(
+                (a, b) => b.CurrentQuote.deltas[1].pct - a.CurrentQuote.deltas[1].pct
+            )
+        case "week":
+            return array.sort(
+                (a, b) => b.CurrentQuote.deltas[2].pct - a.CurrentQuote.deltas[2].pct
+            )
         default:
             return array.sort((a, b) => a.marketCapRank - b.marketCapRank)
     }

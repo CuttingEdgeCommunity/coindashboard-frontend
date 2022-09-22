@@ -8,10 +8,12 @@ import Loader from "../../loaders/Loader/Loader"
 import altImage from "./../../../img/star.png"
 
 import { fetchData, getListCoins } from "../../../helperFunctions/fetchingData"
-import { numberCoinsGettingAtOnce } from "../../../helperFunctions/helpers"
+import { numberCoinsGettingAtOnce, sortBy } from "../../../helperFunctions/helpers"
+import DropDown from "components/DropDown/DropDown"
 
 function TableCoins({ setCoinSymbol }) {
     // Do our API call using ----- /api/coins
+    const [sortParam, setSortParam] = useState("")
     const [items, setItems] = useState({})
     const [loader, setLoader] = useState(true)
     const [reqError, setReqError] = useState()
@@ -42,11 +44,20 @@ function TableCoins({ setCoinSymbol }) {
         if (input.trim().length === 0) {
             setReqError(error)
             setLoader(isLoading)
-            setItems(data)
+            const x = []
+            x.push(
+                data?.pages?.map((page) =>
+                    page.data?.map((coin) => {
+                        return coin
+                    })
+                )
+            )
+            setItems(x.flat(2))
         } else {
             setReqError(searchError)
             setLoader(searchLoading)
-            setItems(searchResult)
+            const x = searchResult?.data
+            setItems(x)
         }
     }, [input, searchResult, data])
 
@@ -62,6 +73,7 @@ function TableCoins({ setCoinSymbol }) {
             <div className="border dark:border-gray-600 h-5/6 w-full p-4 pb-6 bg-white dark:bg-gray-800 relative overflow-hidden">
                 <div className="w-full flex data-center justify-between mb-2 border-b pb-1 dark:border-gray-600">
                     <p className="text-gray-800 dark:text-white text-xl">Coins</p>
+                    <DropDown setSortParam={setSortParam} />
                     <div className=" relative ">
                         <input
                             type="text"
@@ -73,7 +85,6 @@ function TableCoins({ setCoinSymbol }) {
                         />
                     </div>
                 </div>
-
                 <TableRow type="header" />
                 <div id="scrollable-div" className="overflow-y-scroll h-5/6 px-1">
                     {!loader ? (
@@ -82,10 +93,16 @@ function TableCoins({ setCoinSymbol }) {
                                 message={reqError?.message || "Unknown error"}
                                 margin
                             />
-                        ) : items.pages ? (
+                        ) : items?.length === 0 ? (
+                            <ErrorRequestMessage
+                                info
+                                message={"No result found"}
+                                margin
+                            />
+                        ) : (
                             <InfiniteScroll
                                 dataLength={
-                                    items.pages.length * numberCoinsGettingAtOnce()
+                                    items?.length * numberCoinsGettingAtOnce()
                                 } //This is important field to render the next data
                                 next={fetchNext}
                                 hasMore={hasNextPage}
@@ -93,40 +110,10 @@ function TableCoins({ setCoinSymbol }) {
                                 loader={<LoaderCoinItems />}
                                 className="infinite-scroll"
                             >
-                                {items?.pages?.map((page, pageIndex) =>
-                                    page.data?.map((coin, index) => {
-                                        return (
-                                            <TableRow
-                                                key={index + 1 + pageIndex * 10}
-                                                rank={coin.marketCapRank}
-                                                name={coin.name}
-                                                symbol={coin.symbol}
-                                                price={coin.CurrentQuote.price}
-                                                urlImage={coin.image_url || altImage}
-                                                hour={coin.CurrentQuote.deltas[0]}
-                                                day={coin.CurrentQuote.deltas[1]}
-                                                week={coin.CurrentQuote.deltas[2]}
-                                                setCoinSymbol={setCoinSymbol}
-                                                marketCap={
-                                                    coin.CurrentQuote.market_cap
-                                                }
-                                            />
-                                        )
-                                    })
-                                )}
-                            </InfiniteScroll>
-                        ) : (
-                            <div>
-                                {items?.data?.length === 0 ? (
-                                    <ErrorRequestMessage
-                                        info
-                                        message={'No result for "' + input + '"'}
-                                        margin
-                                    />
-                                ) : (
-                                    items.data.map((coin, index) => (
+                                {sortBy(items, sortParam).map((coin, index) => {
+                                    return (
                                         <TableRow
-                                            key={index}
+                                            key={index + 1}
                                             rank={coin.marketCapRank}
                                             name={coin.name}
                                             symbol={coin.symbol}
@@ -138,9 +125,9 @@ function TableCoins({ setCoinSymbol }) {
                                             setCoinSymbol={setCoinSymbol}
                                             marketCap={coin.CurrentQuote.market_cap}
                                         />
-                                    ))
-                                )}
-                            </div>
+                                    )
+                                })}
+                            </InfiniteScroll>
                         )
                     ) : (
                         <div className="w-full h-5/6 flex justify-center items-center">

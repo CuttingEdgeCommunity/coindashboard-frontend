@@ -78,8 +78,15 @@ function TableRow({
                     )}
                 </div>
 
-                <div className="text-green-400 text-sm md:text-xl font-semibold w-1/6">
-                    {price ? formatAmount(price) : "Price"}
+                <div
+                    className="text-green-400 text-sm md:text-xl font-semibold w-1/6 cursor-pointer"
+                    title="Sort by prices"
+                >
+                    {price ? (
+                        formatAmount(price)
+                    ) : (
+                        <p className="cursor-not-allowed">Price</p>
+                    )}
                 </div>
                 <TableColumn data={hour} width={windowSize} text="1 Hour" />
                 <TableColumn data={day} width={windowSize} text="1 Day" />
