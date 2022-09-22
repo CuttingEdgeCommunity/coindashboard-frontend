@@ -72,7 +72,6 @@ function TableCoins({ setCoinSymbol }) {
         <div id="list-coins" className="pt-2 h-screen">
             <div className="border dark:border-gray-600 h-5/6 w-full p-4 pb-6 bg-white dark:bg-gray-800 relative overflow-hidden">
                 <div className="w-full flex data-center justify-between mb-2 border-b pb-1 dark:border-gray-600">
-                    <p className="text-gray-800 dark:text-white text-xl">Coins</p>
                     <DropDown setSortParam={setSortParam} />
                     <div className=" relative ">
                         <input
