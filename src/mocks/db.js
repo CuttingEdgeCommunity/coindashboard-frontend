@@ -25,7 +25,7 @@ export const db = {
                 market_cap: 460513164207,
                 daily_volume: 27508459604,
                 last_update_timestamp: 1660598250101,
-                marketCapRank: 1,
+                market_cap_rank: 1,
                 market_cap_dominance: 38.076,
                 h24_high: 19643.72,
                 h24_low: 20136.88,
@@ -61,7 +61,7 @@ export const db = {
                 market_cap: 195682139657,
                 daily_volume: 17390482685,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 2,
+                market_cap_rank: 2,
                 market_cap_dominance: 16.794,
                 h24_high: 1471.42,
                 h24_low: 1376.34,
@@ -97,7 +97,7 @@ export const db = {
                 market_cap: 67587929903,
                 daily_volume: 39961582354,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 3,
+                market_cap_rank: 3,
                 market_cap_dominance: 6.853,
                 h24_high: 1.0,
                 h24_low: 0.9969,
@@ -109,190 +109,94 @@ export const db = {
 
     api_coins_bitcoin_chart: [
         {
-            timestamp: 1659398400000,
-            price: 23333.749243312184
+            timestamp: 1663200000000,
+            price: 20255.922978327133
         },
         {
-            timestamp: 1659484800000,
-            price: 23053.846847482677
+            timestamp: 1663286400000,
+            price: 19702.169889811717
         },
         {
-            timestamp: 1659571200000,
-            price: 22860.42098438317
+            timestamp: 1663372800000,
+            price: 19764.411712043777
         },
         {
-            timestamp: 1659657600000,
-            price: 22678.363633874185
+            timestamp: 1663459200000,
+            price: 20131.675305714027
         },
         {
-            timestamp: 1659744000000,
-            price: 23225.036201942938
+            timestamp: 1663545600000,
+            price: 19437.157867982634
         },
         {
-            timestamp: 1659830400000,
-            price: 22984.57953144855
+            timestamp: 1663632000000,
+            price: 19570.386709523507
         },
         {
-            timestamp: 1659916800000,
-            price: 23197.603469525384
-        },
-        {
-            timestamp: 1660003200000,
-            price: 23823.679442453606
-        },
-        {
-            timestamp: 1660089600000,
-            price: 23203.680696781623
-        },
-        {
-            timestamp: 1660176000000,
-            price: 23948.829553271633
-        },
-        {
-            timestamp: 1660262400000,
-            price: 23948.75170368143
-        },
-        {
-            timestamp: 1660348800000,
-            price: 24411.379871522615
-        },
-        {
-            timestamp: 1660435200000,
-            price: 24433.653747243658
-        },
-        {
-            timestamp: 1660521600000,
-            price: 24312.541424891562
-        },
-        {
-            timestamp: 1660593695000,
-            price: 24040.452576597032
+            timestamp: 1663718400000,
+            price: 18869.928809390534
         }
     ],
 
     api_coins_Tether_chart: [
         {
-            timestamp: 1659398400000,
-            price: 33.749243312184
+            timestamp: 1663200000000,
+            price: 1.000629490269563
         },
         {
-            timestamp: 1659484800000,
-            price: 53.846847482677
+            timestamp: 1663286400000,
+            price: 1.0002190356530958
         },
         {
-            timestamp: 1659571200000,
-            price: 86.42098438317
+            timestamp: 1663372800000,
+            price: 0.9997480764150961
         },
         {
-            timestamp: 1659657600000,
-            price: 678.363633874185
+            timestamp: 1663459200000,
+            price: 1.0002595756294854
         },
         {
             timestamp: 1659744000000,
-            price: 125.036201942938
+            price: 1.0017357519975174
         },
         {
-            timestamp: 1659830400000,
-            price: 184.57953144855
+            timestamp: 1663632000000,
+            price: 0.9999488114654055
         },
         {
-            timestamp: 1659916800000,
-            price: 97.603469525384
-        },
-        {
-            timestamp: 1660003200000,
-            price: 223.679442453606
-        },
-        {
-            timestamp: 1660089600000,
-            price: 23.680696781623
-        },
-        {
-            timestamp: 1660176000000,
-            price: 348.829553271633
-        },
-        {
-            timestamp: 1660262400000,
-            price: 248.75170368143
-        },
-        {
-            timestamp: 1660348800000,
-            price: 111.379871522615
-        },
-        {
-            timestamp: 1660435200000,
-            price: 433.653747243658
-        },
-        {
-            timestamp: 1660521600000,
-            price: 312.541424891562
-        },
-        {
-            timestamp: 1660593695000,
-            price: 40.452576597032
+            timestamp: 1663718400000,
+            price: 0.999982284892132
         }
     ],
 
     api_coins_Ethereum_chart: [
         {
-            timestamp: 1659398400000,
-            price: 2333.749243312184
+            timestamp: 1663200000000,
+            price: 1635.3682061921256
         },
         {
-            timestamp: 1659484800000,
-            price: 2053.846847482677
+            timestamp: 1663286400000,
+            price: 1471.999592516298
         },
         {
-            timestamp: 1659571200000,
-            price: 2860.42098438317
+            timestamp: 1663372800000,
+            price: 1432.215807478607
         },
         {
-            timestamp: 1659657600000,
-            price: 2678.363633874185
+            timestamp: 1663459200000,
+            price: 1471.2039553630448
         },
         {
-            timestamp: 1659744000000,
-            price: 2225.036201942938
+            timestamp: 1663545600000,
+            price: 1335.8525523850524
         },
         {
-            timestamp: 1659830400000,
-            price: 2984.57953144855
+            timestamp: 1663632000000,
+            price: 1379.920704526258
         },
         {
-            timestamp: 1659916800000,
-            price: 2197.603469525384
-        },
-        {
-            timestamp: 1660003200000,
-            price: 2823.679442453606
-        },
-        {
-            timestamp: 1660089600000,
-            price: 2203.680696781623
-        },
-        {
-            timestamp: 1660176000000,
-            price: 2948.829553271633
-        },
-        {
-            timestamp: 1660262400000,
-            price: 2948.75170368143
-        },
-        {
-            timestamp: 1660348800000,
-            price: 2411.379871522615
-        },
-        {
-            timestamp: 1660435200000,
-            price: 2433.653747243658
-        },
-        {
-            timestamp: 1660521600000,
-            price: 2312.541424891562
-        },
-        {
-            timestamp: 1660593695000,
-            price: 2040.452576597032
+            timestamp: 1663718400000,
+            price: 1324.1905646155858
         }
     ],
 
@@ -626,7 +530,7 @@ export const db = {
                 market_cap: 67587929903,
                 daily_volume: 39961582354,
                 last_update_timestamp: 1661328419722,
-                marketCapRank: 3,
+                market_cap_rank: 3,
                 market_cap_dominance: 6.853,
                 h24_high: 1,
                 h24_low: 0.9969,

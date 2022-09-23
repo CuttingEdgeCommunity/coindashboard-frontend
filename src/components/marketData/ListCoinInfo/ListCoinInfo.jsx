@@ -39,29 +39,6 @@ function ListCoinInfo({ data }) {
                             extractedData.CurrentQuote.deltas[2].nominal
                         )}
                     />
-                    {/* <ListCoinInfoRow
-                        name="Market Cap Dominance"
-                        display={
-                            extractedData.CurrentQuote.market_cap_dominance + "%"
-                        }
-                    />
-
-                    <ListCoinInfoRow
-                        name={"24h High"}
-                        display={formatAmount(extractedData.CurrentQuote.h24_high)}
-                    />
-                    <ListCoinInfoRow
-                        name={"24h Low"}
-                        display={formatAmount(extractedData.CurrentQuote.h24_low)}
-                    />
-                    <ListCoinInfoRow
-                        name={"7d High"}
-                        display={formatAmount(extractedData.CurrentQuote.d7_high)}
-                    />
-                    <ListCoinInfoRow
-                        name={"7d Low"}
-                        display={formatAmount(extractedData.CurrentQuote.d7_low)}
-                    /> */}
                 </div>
             </div>
         </div>
