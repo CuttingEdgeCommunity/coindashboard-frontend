@@ -16,6 +16,9 @@ export const DEFAULT_OPTIONS = {
         x: {
             grid: {
                 display: false
+            },
+            ticks: {
+                display: false
             }
         }
     }
@@ -50,24 +53,3 @@ export const DEFAULT_CHART = [
         price: null
     }
 ]
-
-export const OPTIONS = {
-    plugins: {
-        legend: {
-            display: false
-        }
-    },
-    scales: {
-        y: {
-            beginAtZero: false,
-            grid: {
-                display: true
-            }
-        },
-        x: {
-            grid: {
-                display: false
-            }
-        }
-    }
-}

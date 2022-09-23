@@ -9,7 +9,7 @@ export function formatAmount(amount) {
     )
 }
 
-const formatTimestamp = (timestamp) => new Date(timestamp).toLocaleDateString()
+const formatTimestamp = (timestamp) => new Date(timestamp).toLocaleString()
 //extract the x and y axis
 export function getChartData(data, i) {
     return data.map((element) =>

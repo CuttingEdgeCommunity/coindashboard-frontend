@@ -2,11 +2,11 @@ import React from "react"
 import { Line } from "react-chartjs-2"
 import { Chart, registerables } from "chart.js"
 import { getChartData } from "../../helperFunctions/helpers"
-import { DEFAULT_CHART, OPTIONS } from "helperFunctions/constants"
+import { DEFAULT_OPTIONS } from "helperFunctions/constants"
 Chart.register(...registerables)
 
 function ChartCoin({ data }) {
-    const extractedData = data.data || DEFAULT_CHART
+    const extractedData = data.data
     const chartData = {
         labels: getChartData(extractedData, "x"),
         datasets: [
@@ -23,7 +23,7 @@ function ChartCoin({ data }) {
 
     return (
         <div className="w-full">
-            <Line data={chartData} options={OPTIONS} />
+            <Line data={chartData} options={DEFAULT_OPTIONS} />
         </div>
     )
 }
