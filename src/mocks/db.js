@@ -506,6 +506,7 @@ export const db = {
         {
             name: "Tether",
             symbol: "usdt",
+            marketCapRank: 3,
             image_url:
                 "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
             CurrentQuote: {

@@ -21,9 +21,7 @@ function Dashbord({ coinSymbol }) {
         isLoading: loaderCoinChart,
         data: coinChart,
         error: coinChartError
-    } = useQuery(["coinsMarketChart", coinSymbol], () => fetchData(chartPath), {
-        staleTime: 30_000
-    })
+    } = useQuery(["coinsMarketChart", coinSymbol], () => fetchData(chartPath))
 
     // do the API call for the Market data component using ---- /api/coins/coinSymbol/marketdata
     const marketdataPath = "/" + coinSymbol + "/marketdata"
@@ -35,6 +33,7 @@ function Dashbord({ coinSymbol }) {
         staleTime: 30_000,
         refetchInterval: 30_000
     })
+
     return (
         <main
             id="dashboard"
